@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://duostrick.vercel.app
+
+# Sitemaps
+Sitemap: https://duostrick.vercel.app/sitemap.xml

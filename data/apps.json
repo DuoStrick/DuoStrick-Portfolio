@@ -1,9 +1,18 @@
 [
-    {
-        "id": "2048-infinity-grid",
-        "title": "2048 Infinity Grid",
-        "description": "Experience endless puzzle fun with our fresh take on the classic 2048 mechanics.",
-        "iconUrl": "https://play-lh.googleusercontent.com/nKHmZOSPR9xV-jWa-fAgQ3tyEUQngnczz6MDAIlHLOyulh8z_MrIkR_0neOGjT8hm_bZGLqTWE6T3oQkdo9n=w240-h480-rw",
-        "playStoreUrl": "https://play.google.com/store/apps/details?id=com.duostrick.infinitygrid"
-    }
+  {
+    "id": "2048-puzzle-game-offline",
+    "title": "2048 Puzzle Game Offline",
+    "genre": "Puzzle",
+    "description": "Play the best 2048 with an exciting infinite twist! Merge tiles, build higher numbers, and push your strategy beyond limits. No internet needed — endless offline puzzle fun with a global leaderboard.",
+    "iconUrl": "https://play-lh.googleusercontent.com/nKHmZOSPR9xV-jWa-fAgQ3tyEUQngnczz6MDAIlHLOyulh8z_MrIkR_0neOGjT8hm_bZGLqTWE6T3oQkdo9n=w240-h480-rw",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.duostrick.infinitygrid"
+  },
+  {
+    "id": "av-player",
+    "title": "AV Player: Video & MP3 Player",
+    "genre": "Media Player",
+    "description": "All-format HD video player and offline MP3 music player for Android. Supports MP4, MKV, AVI, FLAC and more. Features 4K playback, Picture-in-Picture, gesture controls, subtitles, and 8 premium themes. No ads, no internet required.",
+    "iconUrl": "/avplayer-icon.png",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.duostrick.avplayer"
+  }
 ]
