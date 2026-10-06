@@ -1,6 +1,6 @@
 ---
 title: "Top 10 Hidden Features in AV Player You're Probably Not Using"
-description: "10 hidden AV Player features Android users miss: gesture brightness & volume controls, AMOLED black theme, instant PiP swipe, sleep timer, private folder hiding & playback speed memory. Full guide."
+description: "10 hidden AV Player features Android users miss: gesture brightness and volume, AMOLED black theme, instant PiP swipe, sleep timer and private folder hiding."
 date: "2026-05-12"
 author: "Duostrick Studio"
 category: "Tips & Tricks"

@@ -1,6 +1,6 @@
 ---
 title: "2048 Puzzle Game Offline: Complete Beginner to Expert Guide"
-description: "Master 2048 Puzzle Game Offline: learn the infinite grid rules, snake pattern strategy, tile anchoring & board reset techniques. Beginner to expert guide to reaching 4096, 8192 and beyond."
+description: "Master 2048 Puzzle Game Offline: infinite grid rules, snake pattern strategy, tile anchoring and board resets. Beginner to expert guide to 4096 and 8192."
 date: "2026-05-26"
 author: "Duostrick Studio"
 category: "Game Dev"

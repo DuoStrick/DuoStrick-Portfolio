@@ -18,14 +18,26 @@ module.exports = {
   changefreq: "weekly",
   priority: 0.7,
 
-  /* Exclude pages with no SEO value (legal, errors) */
-  exclude: ["/privacy-policy", "/404"],
+  /* Exclude pages with no SEO value (legal, errors) and non-page routes
+     Next emits into the route manifest (icons, OG image endpoints, manifest). */
+  exclude: [
+    "/privacy-policy",
+    "/404",
+    "/icon.png",
+    "/manifest.webmanifest",
+    "/opengraph-image",
+    "/*/opengraph-image",
+    "/*/*/opengraph-image",
+  ],
 
   /* Override priorities per route type */
   transform: async (config, path) => {
     const today = new Date().toISOString().slice(0, 10);
     if (path === "/")        return { loc: path, changefreq: "weekly",   priority: 1.0,  lastmod: today };
     if (path === "/blog")    return { loc: path, changefreq: "weekly",   priority: 0.9,  lastmod: today };
+    if (path === "/apps")    return { loc: path, changefreq: "weekly",   priority: 0.9,  lastmod: today };
+    if (path.startsWith("/apps/"))
+                             return { loc: path, changefreq: "weekly",   priority: 0.85, lastmod: today };
     if (path === "/support") return { loc: path, changefreq: "monthly",  priority: 0.65, lastmod: today };
     return {
       loc:        path,

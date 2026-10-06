@@ -5,18 +5,19 @@ import SectionContainer from "../components/SectionContainer";
 import AppCard from "../components/AppCard";
 import BlogCard from "../components/BlogCard";
 import Reveal from "../components/Reveal";
-import appsData from "../data/apps.json";
+import { getAllApps } from "../data/apps";
+import { softwareApplicationSchema, appListSchema } from "../lib/appSchema";
 import { getAllPosts } from "../lib/posts";
 
 export const metadata: Metadata = {
   /* Use absolute to bypass layout template — avoids "Duostrick | Duostrick" */
   title: { absolute: "Duostrick — Indie Android Game Studio | Free Mobile Games & Apps" },
   description:
-    "Duostrick is an indie Android game studio. Download 2048 Puzzle Game Offline (infinite grid, no internet needed) and AV Player (all-format 4K video & MP3 player) — both free on Google Play.",
+    "Free Android apps from indie studio Duostrick: 2048 Puzzle Offline, AV Player (4K video & MP3) and Mediqora (offline media library). No ads, no internet needed.",
   keywords: [
     "duostrick game studio",
     "indie android game studio",
-    "free android games 2024",
+    "free offline android games",
     "2048 puzzle game offline",
     "2048 infinite grid android",
     "2048 strategy game",
@@ -28,6 +29,12 @@ export const metadata: Metadata = {
     "4k video player free",
     "mp3 player android offline",
     "flac player android",
+    "mediqora app",
+    "mediqora video music player",
+    "offline video player android",
+    "local media library android",
+    "series detection video player",
+    "episode tracking android app",
     "offline android games no wifi",
     "puzzle game google play",
     "brain training game android",
@@ -39,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Duostrick — Indie Android Game Studio | Free Mobile Games & Apps",
     description:
-      "Download 2048 Puzzle Game Offline (infinite grid) and AV Player (4K video & MP3) — both free on Google Play, no ads, no internet needed.",
+      "Download 2048 Puzzle Offline, AV Player (4K video & MP3) and Mediqora (offline media library) — free on Google Play, no ads, no internet needed.",
     url: "https://duostrick.vercel.app",
     siteName: "Duostrick Game Studio",
     type: "website",
@@ -50,55 +57,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Duostrick — Indie Android Game Studio",
     description:
-      "Free Android puzzle games & media apps — 2048 Puzzle Game Offline (infinite grid) and AV Player (4K + MP3) on Google Play.",
+      "Free Android puzzle games & media apps — 2048 Puzzle Game Offline (infinite grid), AV Player (4K + MP3) and Mediqora (offline media library) on Google Play.",
   },
 };
 
-/* ── SoftwareApplication schemas ─────────────────────────────── */
-const app2048Schema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "@id": "https://duostrick.vercel.app/#app-2048",
-  name: "2048 Puzzle Game Offline",
-  alternateName: "2048 Infinite Grid",
-  operatingSystem: "Android 5.0+",
-  applicationCategory: "GameApplication",
-  applicationSubCategory: "Puzzle",
-  description:
-    "2048 Puzzle Game Offline is an infinite twist on the classic 2048 tile-merging number puzzle. The grid never ends — merge tiles, chase high scores on the global leaderboard, and play completely offline with no internet required.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  url: "https://play.google.com/store/apps/details?id=com.duostrick.infinitygrid",
-  downloadUrl: "https://play.google.com/store/apps/details?id=com.duostrick.infinitygrid",
-  image: "https://play-lh.googleusercontent.com/nKHmZOSPR9xV-jWa-fAgQ3tyEUQngnczz6MDAIlHLOyulh8z_MrIkR_0neOGjT8hm_bZGLqTWE6T3oQkdo9n=w240-h480-rw",
-  screenshot: "https://play-lh.googleusercontent.com/nKHmZOSPR9xV-jWa-fAgQ3tyEUQngnczz6MDAIlHLOyulh8z_MrIkR_0neOGjT8hm_bZGLqTWE6T3oQkdo9n=w240-h480-rw",
-  publisher: { "@id": "https://duostrick.vercel.app/#organization" },
-  author: { "@id": "https://duostrick.vercel.app/#organization" },
-  inLanguage: "en",
-  isAccessibleForFree: true,
-  keywords: "2048, puzzle game, offline game, android, infinite grid, tile merging, number puzzle",
-};
-
-const avPlayerSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "@id": "https://duostrick.vercel.app/#app-avplayer",
-  name: "AV Player: Video & MP3 Player",
-  alternateName: "AV Player Android",
-  operatingSystem: "Android 5.0+",
-  applicationCategory: "MultimediaApplication",
-  applicationSubCategory: "Video Player",
-  description:
-    "AV Player is a free all-format video and offline MP3 music player for Android. Supports MP4, MKV, AVI, MOV, FLAC, WAV, and more. Features 4K hardware-accelerated playback, Picture-in-Picture, gesture controls, subtitle support, 8 premium themes, and zero ads.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  url: "https://play.google.com/store/apps/details?id=com.duostrick.avplayer",
-  downloadUrl: "https://play.google.com/store/apps/details?id=com.duostrick.avplayer",
-  image: "https://duostrick.vercel.app/avplayer-icon.png",
-  publisher: { "@id": "https://duostrick.vercel.app/#organization" },
-  author: { "@id": "https://duostrick.vercel.app/#organization" },
-  inLanguage: "en",
-  isAccessibleForFree: true,
-  keywords: "video player android, mp3 player, media player, mkv player, flac player, 4k player, offline music player",
-};
+/* ── Structured data, generated from data/apps.ts ───────────── */
+const APPS = getAllApps();
+const appSchemas = APPS.map(softwareApplicationSchema);
+const appsListSchema = appListSchema(APPS, "https://duostrick.vercel.app/#apps");
 
 export default function Home() {
   const latestPosts = getAllPosts().slice(0, 3);
@@ -106,13 +72,16 @@ export default function Home() {
   return (
     <>
       {/* App structured data */}
+      {appSchemas.map((schema) => (
+        <script
+          key={schema["@id"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(app2048Schema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(avPlayerSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appsListSchema) }}
       />
 
       <div className="w-full flex flex-col items-center">
@@ -134,7 +103,7 @@ export default function Home() {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {appsData.map((app, i) => (
+            {APPS.map((app, i) => (
               <Reveal key={app.id} delay={i * 120} direction="up">
                 <AppCard app={app} />
               </Reveal>
@@ -200,7 +169,7 @@ export default function Home() {
                   Duostrick is a small, independent mobile developer studio passionate about building engaging puzzle games and polished mobile applications. We believe in high-quality design, smart mechanics, and intuitive user experiences.
                 </p>
                 <p className="mb-8" style={{ color: "var(--body-text)", lineHeight: 1.8 }}>
-                  From the endless challenges of 2048 Puzzle Game Offline to our media player AV Player, our goal is to bring joy and seamless functionality to users worldwide across all their Android devices.
+                  From the endless challenges of 2048 Puzzle Game Offline to our media players AV Player and Mediqora, our goal is to bring joy and seamless functionality to users worldwide across all their Android devices.
                 </p>
                 <Link
                   href="/#contact"
@@ -216,7 +185,7 @@ export default function Home() {
             <Reveal direction="right" delay={80}>
               <div className="rounded-2xl p-8 flex flex-col gap-5 glow-blue" style={{ background: "var(--stat-bg)", border: "1px solid var(--stat-border)" }}>
                 {[
-                  { label: "Apps on Google Play", value: "2+",   icon: "🎮" },
+                  { label: "Apps on Google Play", value: "3+",   icon: "🎮" },
                   { label: "Happy Users",          value: "500+", icon: "😊" },
                   { label: "Countries Reached",    value: "30+",  icon: "🌍" },
                   { label: "Year Founded",         value: "2024", icon: "🚀" },

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: { absolute: "Support & FAQ — AV Player & 2048 Game Help | Duostrick" },
+  title: { absolute: "Support & FAQ — AV Player, Mediqora & 2048 Game Help | Duostrick" },
   description:
-    "Support and FAQ for Duostrick apps. Get help with AV Player (video formats, gesture controls, PiP) and 2048 Puzzle Game Offline (strategies, leaderboard, game modes).",
+    "Help for AV Player, Mediqora and 2048 Puzzle Offline — video formats, gesture controls, PiP, series detection, Up Next and troubleshooting.",
   keywords: [
     "duostrick support",
     "av player help",
@@ -14,22 +14,26 @@ export const metadata: Metadata = {
     "android app support",
     "av player not working",
     "2048 game faq",
+    "mediqora support",
+    "mediqora faq",
+    "mediqora series not detected",
+    "mediqora help",
   ],
   alternates: { canonical: "https://duostrick.vercel.app/support" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Support & FAQ — AV Player & 2048 Game | Duostrick",
+    title: "Support & FAQ — AV Player, Mediqora & 2048 Game | Duostrick",
     description:
-      "Get help with AV Player and 2048 Puzzle Game Offline. Answers to common questions about features, settings, and troubleshooting.",
+      "Get help with AV Player, Mediqora and 2048 Puzzle Game Offline. Answers to common questions about features, settings, and troubleshooting.",
     url: "https://duostrick.vercel.app/support",
     siteName: "Duostrick Game Studio",
     type: "website",
     locale: "en_US",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Duostrick Support & FAQ",
-    description: "Help and answers for AV Player and 2048 Puzzle Game Offline.",
+    description: "Help and answers for AV Player, Mediqora and 2048 Puzzle Game Offline.",
   },
 };
 
@@ -57,6 +61,22 @@ const faqItems = [
   {
     q: "How do I enable Picture-in-Picture (PiP) in AV Player?",
     a: "While a video is playing, pull down from the top of the video to instantly enter PiP mode, or press your device's Home button. The video will shrink to a floating window you can position anywhere on your screen. Android 8.0 (Oreo) or higher is required for PiP.",
+  },
+  {
+    q: "Why isn't Mediqora grouping my episodes into a series?",
+    a: "Mediqora builds series from the information in your filenames, so it needs that information to be present. Keep the season/episode pattern in the name (for example Show.Name.S03E04.1080p.mkv) and keep episodes of the same show together in one folder. Renaming a file down to something like 04.mkv removes the only signal the parser has. After adding files, open the app so it can rescan.",
+  },
+  {
+    q: "What is Up Next in Mediqora?",
+    a: "Once Mediqora has grouped a series, Up Next shows the next unwatched episode on the home screen so you can resume a show in one tap. Because progress is tracked per episode, finishing one episode automatically moves Up Next to the following one. You can also turn on autoplay so the next episode — or the next file in the folder — starts on its own.",
+  },
+  {
+    q: "Does Mediqora need an internet connection or an account?",
+    a: "Neither. Mediqora does not request the internet permission at all, so nothing you watch, search or listen to is able to leave your device. There is no account to create, no ads, no analytics and no tracking. Your library, watch history and favorites stay on your phone.",
+  },
+  {
+    q: "How do I add media from an SD card in Mediqora?",
+    a: "Use Add folder and pick the location with Android's own folder picker — it works for an SD card or any other location your device exposes. Mediqora only asks for access to the videos and music on your device; it does not ask for contacts, location, camera or microphone.",
   },
   {
     q: "I found a bug — how do I report it?",
@@ -125,7 +145,7 @@ export default function Support() {
           </h1>
           <div className="accent-bar-blue mb-4" />
           <p style={{ color: "var(--body-text)", fontSize: "1.05rem" }}>
-            Answers to common questions about AV Player and 2048 Puzzle Game Offline.
+            Answers to common questions about AV Player, Mediqora and 2048 Puzzle Game Offline.
           </p>
         </div>
 

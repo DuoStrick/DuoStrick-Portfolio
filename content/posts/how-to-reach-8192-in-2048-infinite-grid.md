@@ -1,6 +1,6 @@
 ---
 title: "How to Reach 8192 in 2048 Infinite Grid: Advanced Strategies"
-description: "Master the snake pattern, tile anchoring & board reset techniques to reach 8192 and beyond in 2048 Puzzle Game Offline. Step-by-step advanced strategy guide for the infinite grid mode."
+description: "Master the snake pattern, tile anchoring and board reset techniques to reach 8192 and beyond in 2048 Puzzle Game Offline. Step-by-step advanced strategy guide."
 date: "2026-05-18"
 author: "Duostrick Studio"
 category: "Tips & Tricks"

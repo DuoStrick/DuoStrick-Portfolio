@@ -7,7 +7,7 @@ import BlogFilters from "../../components/BlogFilters";
 export const metadata: Metadata = {
   title: { absolute: "Blog — Android Game Tips, App Guides & Studio News | Duostrick" },
   description:
-    "Duostrick blog: 2048 strategy guides to reach 8192+, AV Player tips & hidden features, Android app guides, and indie game studio updates. New posts every month.",
+    "2048 strategy guides to 8192+, AV Player hidden features, Mediqora offline library tips and Android app guides from the Duostrick indie studio.",
   keywords: [
     "duostrick blog",
     "2048 strategy guide",
@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     "2048 snake pattern",
     "av player tips android",
     "av player hidden features",
+    "mediqora guide",
+    "mediqora tips",
+    "offline video player guide",
+    "android series detection player",
     "android video player guide",
     "android game tips",
     "puzzle game strategy",
@@ -30,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blog — Android Game Tips, App Guides & Studio News | Duostrick",
     description:
-      "2048 strategy guides, AV Player hidden features, Android game tips and studio updates from the Duostrick indie game studio.",
+      "2048 strategy guides, AV Player hidden features, Mediqora offline library guides, Android game tips and studio updates from the Duostrick indie game studio.",
     url: "https://duostrick.vercel.app/blog",
     siteName: "Duostrick Game Studio",
     type: "website",
@@ -41,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Duostrick Blog — Android Game Tips & App Guides",
     description:
-      "2048 strategy guides, AV Player tips, and indie studio updates from Duostrick.",
+      "2048 strategy guides, AV Player and Mediqora tips, and indie studio updates from Duostrick.",
   },
 };
 
@@ -122,7 +126,7 @@ export default function BlogPage() {
           </h1>
           <div className="accent-bar-gradient mb-4" />
           <p style={{ color: "var(--body-text)", fontSize: "1.05rem" }}>
-            Android game strategies, AV Player tips, app guides and studio updates from our indie team.
+            Android game strategies, AV Player and Mediqora tips, app guides and studio updates from our indie team.
           </p>
         </div>
 

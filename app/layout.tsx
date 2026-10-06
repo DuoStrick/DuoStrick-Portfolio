@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | Duostrick",
   },
   description:
-    "Duostrick is an indie Android game studio. Build free mobile puzzle games and smart apps — download 2048 Puzzle Game Offline and AV Player: Video & MP3 Player on Google Play.",
+    "Indie Android studio building free, offline-first games and apps — 2048 Puzzle Offline, AV Player and Mediqora. No ads, no sign-up, free on Google Play.",
   keywords: [
     "duostrick",
     "indie game studio",
@@ -40,13 +40,19 @@ export const metadata: Metadata = {
     "4k video player android",
     "flac music player android",
     "offline media player android",
+    "mediqora",
+    "mediqora android app",
+    "mediqora video music player",
+    "offline video player android",
+    "local media library android",
+    "automatic series detection player",
     "free android games",
     "offline android games",
     "android puzzle game",
     "free android apps",
     "google play games",
     "mobile game download",
-    "android app 2024",
+    "offline first android apps",
   ],
   authors: [{ name: "Duostrick Studio", url: "https://duostrick.vercel.app" }],
   creator: "Duostrick Studio",
@@ -62,7 +68,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Duostrick — Indie Android Game Studio",
     description:
-      "Free mobile puzzle games and smart Android apps from an indie studio — 2048 Puzzle Game Offline (infinite grid) and AV Player (all-format 4K media player).",
+      "Free Android games and apps from an indie studio — 2048 Puzzle Offline, AV Player (all-format 4K media player) and Mediqora (offline media library).",
     url: "https://duostrick.vercel.app",
     siteName: "Duostrick Game Studio",
     /* No hardcoded images — Next.js auto-uses app/opengraph-image.tsx */
@@ -73,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Duostrick — Indie Android Game Studio",
     description:
-      "Free mobile puzzle games and smart Android apps — 2048 Puzzle Game Offline & AV Player on Google Play.",
+      "Free mobile puzzle games and smart Android apps — 2048 Puzzle Game Offline, AV Player & Mediqora on Google Play.",
     /* No hardcoded images — auto-detected from opengraph-image.tsx */
   },
   robots: {
@@ -130,7 +136,7 @@ const websiteSchema = {
   url: "https://duostrick.vercel.app",
   name: "Duostrick Game Studio",
   description:
-    "Indie Android mobile game and app studio — 2048 Puzzle Game Offline and AV Player.",
+    "Indie Android mobile game and app studio — 2048 Puzzle Game Offline, AV Player and Mediqora.",
   inLanguage: "en-US",
   publisher: { "@id": "https://duostrick.vercel.app/#organization" },
   potentialAction: {

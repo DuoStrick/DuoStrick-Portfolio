@@ -34,7 +34,15 @@ export default function Footer() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--muted)" }}>Navigate</p>
               <ul className="flex flex-col gap-2">
-                {[["Apps","/#apps"],["Blog","/blog"],["About","/#about"],["Contact","/#contact"]].map(([l,h])=>(
+                {[["All apps","/apps"],["Blog","/blog"],["About","/#about"],["Contact","/#contact"]].map(([l,h])=>(
+                  <li key={h}><Link href={h} className="text-sm" style={{ color: "var(--body-text)" }}>{l}</Link></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--muted)" }}>Our Apps</p>
+              <ul className="flex flex-col gap-2">
+                {[["Mediqora","/apps/mediqora"],["AV Player","/apps/av-player"],["2048 Offline","/apps/2048-offline"]].map(([l,h])=>(
                   <li key={h}><Link href={h} className="text-sm" style={{ color: "var(--body-text)" }}>{l}</Link></li>
                 ))}
               </ul>

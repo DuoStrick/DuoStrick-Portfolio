@@ -5,7 +5,7 @@ import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
-  { label: "Apps",    href: "/#apps"    },
+  { label: "Apps",    href: "/apps"     },
   { label: "Blog",    href: "/blog"     },
   { label: "About",   href: "/#about"   },
   { label: "Contact", href: "/#contact" },
