@@ -62,6 +62,8 @@ export interface AppEntry {
   inAppPurchases?: boolean;
   /** Blog post tags that mark a post as being about this app */
   postTags: string[];
+  /** Short "best for" line used by the home app picker */
+  highlight: string;
   /** Play Store short description */
   tagline: string;
   /** Card copy on the home grid and /apps index */

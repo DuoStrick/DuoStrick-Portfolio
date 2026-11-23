@@ -75,13 +75,13 @@ const PROMISES = [
   { title: "Free on Google Play", body: "Every app is free to download." },
   { title: "Works offline",       body: "All six apps work without Wi-Fi." },
   { title: "Files stay local",    body: "Our tools process media and PDFs on the phone." },
-  { title: "Clear about ads",     body: "Each app page says whether it shows ads." },
+  { title: "Real support",        body: "We read and answer every email." },
 ];
 
 const PRINCIPLES = [
   { n: "01", title: "Offline first",        body: "If an app can work without a connection, it should. Puzzles, players and tools all run on the phone." },
   { n: "02", title: "Easy from the first tap", body: "Short tutorials, plain settings and hints that teach instead of just giving answers." },
-  { n: "03", title: "Respect for your data", body: "Mediqora and Docqora don't even request internet access. We tell you plainly which apps carry ads." },
+  { n: "03", title: "Respect for your data", body: "Our tools keep your files on your phone — Mediqora and Docqora don't even request internet access." },
   { n: "04", title: "Built from feedback",  body: "We read every review and email, and the next update is shaped by what players actually ask for." },
 ];
 
@@ -206,37 +206,30 @@ export default function Home() {
           </Reveal>
 
           <Reveal direction="right" delay={80}>
-            <div className="rounded-[28px] p-4 sm:p-6 md:p-8" style={{ background: "var(--chip-amber-bg)" }}>
-              <p className="eyebrow mb-1" style={{ color: "var(--chip-amber-fg)" }}>At a glance</p>
-              <h3 className="title-3 mb-6">Which DuoStrick apps have ads?</h3>
-              <div className="rounded-[20px] overflow-hidden" style={{ background: "var(--surface)" }}>
-                <table className="w-full text-left small">
-                  <thead>
-                    <tr style={{ color: "var(--muted)" }}>
-                      <th scope="col" className="font-semibold px-3 sm:px-4 py-3">App</th>
-                      <th scope="col" className="font-semibold px-2 py-3">Price</th>
-                      <th scope="col" className="font-semibold px-3 sm:px-4 py-3">Ads</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {APPS.map((app) => (
-                      <tr key={app.id} style={{ borderTop: "1px solid var(--line)" }}>
-                        <th scope="row" className="px-3 sm:px-4 py-3 font-bold">
-                          <Link href={`/apps/${app.id}`} className="flex items-center gap-2.5">
-                            <Image src={app.iconUrl} alt="" width={28} height={28} className="rounded-[8px]" />
-                            {app.shortName}
-                          </Link>
-                        </th>
-                        <td className="px-2 py-3" style={{ color: "var(--text)" }}>{app.inAppPurchases ? "Free + IAP" : "Free"}</td>
-                        <td className="px-3 sm:px-4 py-3">
-                          <span className={`tag ${app.containsAds ? "tag-amber" : "tag-green"}`}>{app.containsAds ? "Contains ads" : "No ads"}</span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="small mt-4" style={{ color: "var(--chip-amber-fg)" }}>As listed on Google Play. Every app works offline.</p>
+            <div className="rounded-[28px] p-4 sm:p-6 md:p-8" style={{ background: "var(--bg-tint)" }}>
+              <p className="eyebrow mb-1" style={{ color: "var(--brand)" }}>Find your app</p>
+              <h3 className="title-3 mb-6">Which DuoStrick app is right for you?</h3>
+              <ul className="flex flex-col gap-2">
+                {APPS.map((app) => (
+                  <li key={app.id}>
+                    <Link
+                      href={`/apps/${app.id}`}
+                      className="group flex items-center gap-4 rounded-[18px] p-3 sm:p-3.5"
+                      style={{ background: "var(--surface)" }}
+                    >
+                      <Image src={app.iconUrl} alt="" width={48} height={48} className="rounded-[13px] shrink-0" />
+                      <div className="min-w-0 flex-1">
+                        <p className="line-clamp-1" style={{ fontWeight: 750, letterSpacing: "-0.02em" }}>{app.shortName}</p>
+                        <p className="small" style={{ color: "var(--muted)", lineHeight: 1.45 }}>{app.highlight}</p>
+                      </div>
+                      <span className="arrow-dot"><Icon name="arrow-up-right" size={16} /></span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <p className="small mt-5 flex items-center gap-2" style={{ color: "var(--brand-ink)" }}>
+                <Icon name="check" size={16} /> All free on Google Play, and every app works offline.
+              </p>
             </div>
           </Reveal>
         </div>

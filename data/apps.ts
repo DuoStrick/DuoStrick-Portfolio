@@ -25,6 +25,7 @@ export const apps: AppEntry[] = [
     storeUpdated: "2026-11-22",
     containsAds: true,
     postTags: ["bunny-puzzle", "queens-puzzle"],
+    highlight: "A calm daily brain break",
     tagline: "Queens logic puzzle: one bunny per row, column & colour. Like sudoku, but cuter!",
 
     description:
@@ -150,6 +151,7 @@ export const apps: AppEntry[] = [
     storeUpdated: "2026-09-26",
     containsAds: false,
     postTags: ["mediqora", "mediqora-android"],
+    highlight: "Your shows, sorted into series",
     tagline: "Play local videos & music. Auto-sorted into series. No ads, no internet needed.",
 
     description:
@@ -277,6 +279,7 @@ export const apps: AppEntry[] = [
     storeUpdated: "2026-08-13",
     containsAds: true,
     postTags: ["av-player", "av-player-android"],
+    highlight: "Plays almost any video or song",
     tagline: "All-format video & music player with equalizer & volume boost. Works offline.",
 
     description:
@@ -402,6 +405,7 @@ export const apps: AppEntry[] = [
     storeUpdated: "2026-10-23",
     containsAds: false,
     postTags: ["docqora", "pdf-tools"],
+    highlight: "PDF tools that never upload",
     tagline: "Compress, merge, split, protect & convert PDFs offline. 100% private & free",
 
     description:
@@ -512,6 +516,7 @@ export const apps: AppEntry[] = [
     containsAds: false,
     inAppPurchases: true,
     postTags: ["receiptvault", "warranty-tracker"],
+    highlight: "Never miss a warranty again",
     tagline: "Scan receipts, track warranties & bills. OCR + expiry reminders. Offline.",
 
     description:
@@ -624,6 +629,7 @@ export const apps: AppEntry[] = [
     storeUpdated: "2026-04-05",
     containsAds: true,
     postTags: ["2048", "2048-puzzle-game", "2048-offline", "2048-infinite-grid"],
+    highlight: "2048 that never ends",
     tagline: "Offline 2048 puzzle game! Merge numbers on an infinite grid & train your brain.",
 
     description:
