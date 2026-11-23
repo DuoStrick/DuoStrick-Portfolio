@@ -16,62 +16,60 @@ export default function BlogFilters({ posts }: { posts: PostMeta[] }) {
 
   function select(cat: string) { setActive(cat); setPage(1); }
 
+  const pill = (isActive: boolean) => ({
+    background: isActive ? "var(--btn-dark-bg)" : "var(--btn-light-bg)",
+    color: isActive ? "var(--btn-dark-text)" : "var(--text)",
+  });
+
   return (
     <>
-      {/* Category pills */}
-      <div className="flex flex-wrap gap-2 mb-10" role="group" aria-label="Filter by category">
+      <div className="flex gap-2 mb-10 overflow-x-auto no-scrollbar" role="group" aria-label="Filter by category">
         {CATEGORIES.map(cat => {
           const isActive = active === cat;
-          const count = cat === "All" ? null : posts.filter(p => p.category === cat).length;
+          const count = cat === "All" ? posts.length : posts.filter(p => p.category === cat).length;
           return (
             <button
               key={cat}
               onClick={() => select(cat)}
-              className="rounded-full px-4 py-1.5 text-sm font-medium"
-              style={isActive
-                ? { background: "var(--pill-active-bg)", color: "var(--pill-active-color)", border: "1.5px solid var(--pill-active-bg)" }
-                : { background: "var(--pill-bg)",        color: "var(--pill-color)",        border: "1.5px solid var(--pill-border)" }}
+              className="shrink-0 rounded-full px-4 py-2 text-sm font-bold"
+              style={pill(isActive)}
               aria-pressed={isActive}
             >
               {cat}
-              {count !== null && <span className="ml-1.5 text-xs opacity-60">{count}</span>}
+              <span className="ml-1.5 text-xs" style={{ opacity: 0.6 }}>{count}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Grid */}
       {paged.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 mb-12">
           {paged.map(post => <BlogCard key={post.slug} post={post} />)}
         </div>
       ) : (
-        <div className="text-center py-16 rounded-2xl mb-12" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
+        <div className="card text-center py-16 mb-12">
           <p style={{ color: "var(--muted)" }}>No posts in this category yet. Check back soon!</p>
         </div>
       )}
 
-      {/* Pagination */}
       {totalPages > 1 && (
         <nav className="flex items-center justify-center gap-2" aria-label="Pagination">
           <button
             onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
-            className="px-4 py-2 rounded-full text-sm font-medium"
-            style={{ background: "var(--pill-bg)", color: page === 1 ? "var(--muted)" : "var(--body-text)", border: "1px solid var(--border)", cursor: page === 1 ? "not-allowed" : "pointer" }}
+            className="rounded-full px-4 py-2 text-sm font-bold disabled:opacity-40"
+            style={pill(false)}
           >← Prev</button>
-
           {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
             <button key={n} onClick={() => setPage(n)}
-              className="w-9 h-9 rounded-full text-sm font-medium"
-              style={{ background: n === page ? "var(--pill-active-bg)" : "var(--pill-bg)", color: n === page ? "var(--pill-active-color)" : "var(--body-text)", border: "1px solid var(--border)" }}
+              className="w-10 h-10 rounded-full text-sm font-bold"
+              style={pill(n === page)}
               aria-current={n === page ? "page" : undefined}
             >{n}</button>
           ))}
-
           <button
             onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
-            className="px-4 py-2 rounded-full text-sm font-medium"
-            style={{ background: "var(--pill-bg)", color: page === totalPages ? "var(--muted)" : "var(--body-text)", border: "1px solid var(--border)", cursor: page === totalPages ? "not-allowed" : "pointer" }}
+            className="rounded-full px-4 py-2 text-sm font-bold disabled:opacity-40"
+            style={pill(false)}
           >Next →</button>
         </nav>
       )}

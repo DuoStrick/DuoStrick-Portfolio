@@ -9,6 +9,7 @@ image: "/blog/2048-banner.jpg"
 imageAlt: "How to reach 8192 in 2048 Offline — advanced strategy guide for the infinite grid"
 readTime: 5
 featured: false
+summary: ["Build a snake pattern: keep your highest tile in a corner and lay descending values along the edge row by row.", "Stick to two swipe directions and never move your highest tile out of its corner.", "On the infinite grid, recover a messy board with the reset technique: assess, expand strategically, then clean from the bottom."]
 ---
 
 Most 2048 players plateau at 512 or 1024. They swipe reactively, their boards get messy, and eventually there's nowhere to go. If that sounds familiar, this guide is for you.

@@ -10,7 +10,7 @@ export default function SupportOgImage() {
     (
       <div
         style={{
-          background: "linear-gradient(135deg, #0a0a0a 0%, #0d1520 60%, #080f0a 100%)",
+          background: "linear-gradient(135deg, #0a0a0a 0%, #17112e 60%, #0c0a16 100%)",
           width: "100%", height: "100%",
           display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center",
@@ -22,7 +22,7 @@ export default function SupportOgImage() {
         <div style={{
           position: "absolute", top: -130, right: -130,
           width: 600, height: 600, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(26,111,168,0.52) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(85,54,224,0.52) 0%, transparent 70%)",
           filter: "blur(85px)",
         }} />
         {/* Green glow */}
@@ -38,10 +38,10 @@ export default function SupportOgImage() {
           alignItems: "center", gap: 20, padding: "0 100px", zIndex: 1,
         }}>
           <div style={{
-            background: "rgba(26,111,168,0.18)",
-            border: "1px solid rgba(26,111,168,0.40)",
+            background: "rgba(85,54,224,0.18)",
+            border: "1px solid rgba(85,54,224,0.40)",
             borderRadius: 999, padding: "9px 28px",
-            color: "#93c5fd", fontSize: 20, fontWeight: 600,
+            color: "#c4b8ff", fontSize: 20, fontWeight: 600,
           }}>
             Help Centre
           </div>

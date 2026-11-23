@@ -9,6 +9,7 @@ image: "/blog/avplayer-banner.jpg"
 imageAlt: "AV Player Video & MP3 Player for Android — all format 4K media player by DuoStrick"
 readTime: 4
 featured: false
+summary: ["AV Player plays most video and audio formats, including MKV, MP4, AVI, FLAC and MP3, without extra codecs.", "Gestures control brightness, volume and seeking; picture-in-picture, playback speed and subtitles are built in.", "It works fully offline and is free, supported by a single banner ad on the library screens — never during playback."]
 ---
 
 AV Player: Video & MP3 Player is our all-in-one media player for Android. It handles every video and audio format you're likely to encounter — no third-party codecs and no subscriptions.

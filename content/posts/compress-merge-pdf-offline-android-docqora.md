@@ -9,6 +9,7 @@ image: "/blog/docqora-banner.jpg"
 imageAlt: "Docqora offline PDF tools for Android — compress, merge and split PDFs on your phone"
 readTime: 5
 featured: false
+summary: ["Online PDF tools upload your files to a server; Docqora compresses, merges, splits and protects PDFs on the phone instead.", "Docqora has no internet permission, so documents cannot be uploaded, and every tool works in airplane mode.", "Compress with light, balanced or strong settings, merge in any order, and split by range, every N pages or page by page."]
 ---
 
 You need to email a scanned form, but it's 18 MB and the limit is 5. Or a portal wants one PDF and you have four. The quickest fix is usually a search for "compress PDF online" — and a website that asks you to upload the file.

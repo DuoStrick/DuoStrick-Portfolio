@@ -9,6 +9,7 @@ image: "/blog/receiptvault-banner.jpg"
 imageAlt: "ReceiptVault warranty tracker for Android — receipts and expiry reminders in one place"
 readTime: 5
 featured: false
+summary: ["At claim time you need the purchase date, proof of purchase, model and serial number, and the warranty period.", "Photograph bills on the day you buy, record the warranty length, and set a reminder a month before it expires.", "ReceiptVault reads receipts with on-device OCR and reminds you 30, 14, 7 and 1 day before a warranty or AMC expires."]
 ---
 
 The washing machine stops spinning. You're fairly sure it's still under warranty — but the card is somewhere in a drawer, the invoice is buried in an email from last year, and you can't remember whether it was a one-year or two-year cover. So you pay for the repair.

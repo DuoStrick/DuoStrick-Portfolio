@@ -9,6 +9,7 @@ image: "/blog/mediqora-banner.png"
 imageAlt: "Mediqora: Video & Music Player for Android — offline media library with automatic series detection by DuoStrick"
 readTime: 6
 featured: true
+summary: ["Mediqora turns the video and music files on your phone into a library, grouping episodes into series and seasons from their filenames.", "It resumes every video and song where you stopped and shows the next unwatched episode in Up Next.", "It has no internet permission, no ads and no account, so nothing you watch or play can leave your device."]
 ---
 
 Most local video players on Android show you a list of filenames. You scroll, you squint at `Show.Name.S03E04.1080p.mkv`, you tap, and if you stopped halfway through last night you get to hunt for your place all over again.

@@ -11,7 +11,7 @@ export default function OgImage() {
     (
       <div
         style={{
-          background: "linear-gradient(135deg, #0a0a0a 0%, #0d1520 60%, #080f0a 100%)",
+          background: "linear-gradient(135deg, #0a0a0a 0%, #17112e 60%, #0c0a16 100%)",
           width: "100%", height: "100%",
           display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center",
@@ -23,7 +23,7 @@ export default function OgImage() {
         <div style={{
           position: "absolute", top: -140, right: -140,
           width: 640, height: 640, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(26,111,168,0.55) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(85,54,224,0.55) 0%, transparent 70%)",
           filter: "blur(90px)",
         }} />
         {/* Green glow — bottom left */}
@@ -42,10 +42,10 @@ export default function OgImage() {
         }}>
           {/* Badge */}
           <div style={{
-            background: "rgba(26,111,168,0.18)",
-            border: "1px solid rgba(26,111,168,0.38)",
+            background: "rgba(85,54,224,0.18)",
+            border: "1px solid rgba(85,54,224,0.38)",
             borderRadius: 999, padding: "9px 28px",
-            color: "#93c5fd", fontSize: 20, fontWeight: 600,
+            color: "#c4b8ff", fontSize: 20, fontWeight: 600,
             letterSpacing: "0.3px",
           }}>
             Independent Mobile Studio
@@ -72,10 +72,10 @@ export default function OgImage() {
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 14, marginTop: 12, maxWidth: 980 }}>
             {getAllApps().map((app, i) => (
               <div key={app.id} style={{
-                background: i % 2 ? "rgba(26,122,74,0.18)" : "rgba(26,111,168,0.18)",
-                border: `1px solid ${i % 2 ? "rgba(26,122,74,0.38)" : "rgba(26,111,168,0.38)"}`,
+                background: i % 2 ? "rgba(26,122,74,0.18)" : "rgba(85,54,224,0.18)",
+                border: `1px solid ${i % 2 ? "rgba(26,122,74,0.38)" : "rgba(85,54,224,0.38)"}`,
                 borderRadius: 999, padding: "9px 24px",
-                color: i % 2 ? "#86efac" : "#93c5fd", fontSize: 20, fontWeight: 700,
+                color: i % 2 ? "#86efac" : "#c4b8ff", fontSize: 20, fontWeight: 700,
               }}>
                 {app.shortName}
               </div>

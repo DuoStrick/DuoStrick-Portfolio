@@ -6,6 +6,7 @@ import { marked } from "marked";
 import { getAllSlugs, getPostBySlug, getRelatedPosts, extractHeadings } from "../../../lib/posts";
 import { getAppById, getAppForPostTags } from "../../../data/apps";
 import { formatDate, categoryClass } from "../../../lib/postUtils";
+import { Breadcrumb, Icon, JsonLd, TextLink } from "../../../components/ui";
 
 /* ── Custom heading renderer (adds id anchors) ─── */
 const renderer = new marked.Renderer();
@@ -134,6 +135,7 @@ export default async function BlogPostPage({
     inLanguage: "en-US",
     timeRequired: `PT${post.readTime}M`,
     keywords: post.tags.join(", "),
+    ...(post.summary.length > 0 && { abstract: post.summary.join(" ") }),
     author: {
       "@type": "Organization",
       "@id": "https://duostrick.vercel.app/#organization",
@@ -177,305 +179,189 @@ export default async function BlogPostPage({
     ],
   };
 
+  const takeaways = post.summary.length > 0 ? post.summary : [post.description];
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd data={[articleSchema, breadcrumbSchema]} />
 
-      <div className="w-full max-w-6xl mx-auto px-6 py-12 md:py-16">
-        {/* Breadcrumb */}
-        <nav
-          className="flex items-center gap-2 text-sm mb-8 flex-wrap"
-          aria-label="Breadcrumb"
-          style={{ color: "var(--muted)" }}
-        >
-          <Link href="/" style={{ color: "var(--muted)" }}>Home</Link>
-          <span aria-hidden="true">/</span>
-          <Link href="/blog" style={{ color: "var(--muted)" }}>Blog</Link>
-          <span aria-hidden="true">/</span>
-          <span
-            className="line-clamp-1"
-            style={{ color: "var(--fg)", fontWeight: 500, maxWidth: 280 }}
-            aria-current="page"
-          >
-            {post.title}
-          </span>
-        </nav>
+      <article itemScope itemType="https://schema.org/BlogPosting">
+        <meta itemProp="datePublished" content={post.date} />
+        <meta itemProp="dateModified"  content={post.date} />
+        <meta itemProp="author"        content={post.author} />
+        <meta itemProp="wordCount"     content={String(wordCount)} />
 
-        <div className="flex gap-12 items-start">
-          {/* ── Main article ── */}
-          <article className="flex-1 min-w-0" itemScope itemType="https://schema.org/BlogPosting">
-            {/* Hidden machine-readable fields */}
-            <meta itemProp="datePublished" content={post.date} />
-            <meta itemProp="dateModified"  content={post.date} />
-            <meta itemProp="author"        content={post.author} />
-            <meta itemProp="wordCount"     content={String(wordCount)} />
+        {/* ── Header ─── */}
+        <header className="relative overflow-hidden">
+          <div
+            className="absolute inset-x-0 top-0 h-[420px] pointer-events-none"
+            style={{ background: "radial-gradient(60% 70% at 50% 0%, var(--bg-tint) 0%, transparent 70%)" }}
+            aria-hidden="true"
+          />
+          <div className="wrap relative pt-10 md:pt-14">
+            <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }, { label: post.title }]} />
+            <div style={{ maxWidth: 880 }}>
+              <div className="flex flex-wrap items-center gap-3 mb-6 small" style={{ color: "var(--muted)" }}>
+                <span className={`tag ${catClass}`}>{post.category}</span>
+                <time dateTime={post.date}>{dateStr}</time>
+                <span aria-hidden="true">·</span>
+                <span>{post.readTime} min read</span>
+              </div>
+              <h1 className="display-2" itemProp="headline" style={{ fontSize: "clamp(2.1rem, 5vw, 3.5rem)" }}>{post.title}</h1>
+              <p className="lead mt-5" style={{ maxWidth: 680 }}>{post.description}</p>
 
-            {/* Meta row */}
-            <div className="flex items-center gap-3 flex-wrap mb-4">
-              <span className={`badge ${catClass}`}>{post.category}</span>
-              <time dateTime={post.date} className="text-xs" style={{ color: "var(--muted)" }}>
-                {dateStr}
-              </time>
-              <span className="text-xs" style={{ color: "var(--muted)" }}>·</span>
-              <span className="text-xs" style={{ color: "var(--muted)" }}>{post.readTime} min read</span>
-              <span className="text-xs" style={{ color: "var(--muted)" }}>·</span>
-              <span className="text-xs" style={{ color: "var(--muted)" }}>{wordCount} words</span>
-            </div>
-
-            {/* H1 */}
-            <h1
-              className="font-black mb-5"
-              itemProp="headline"
-              style={{
-                fontFamily: "var(--font-syne)",
-                fontSize: "clamp(1.9rem, 4.5vw, 2.8rem)",
-                color: "var(--fg)",
-                letterSpacing: "-0.03em",
-                lineHeight: 1.15,
-              }}
-            >
-              {post.title}
-            </h1>
-
-            {/* Author / share bar */}
-            <div
-              className="flex items-center justify-between flex-wrap gap-4 py-4 mb-6"
-              style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
-            >
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold"
-                  style={{ background: "var(--btn-primary-bg)", color: "var(--btn-primary-text)", fontFamily: "var(--font-syne)" }}
-                  aria-hidden="true"
-                >
-                  DS
-                </div>
-                <div>
-                  <div className="text-sm font-semibold" style={{ color: "var(--fg)" }} itemProp="author">
-                    {post.author}
+              <div className="flex flex-wrap items-center justify-between gap-4 mt-8">
+                <div className="flex items-center gap-3">
+                  <Image src="/duostrick-logo.png" alt="" width={40} height={40} className="rounded-full" />
+                  <div className="small">
+                    <p style={{ fontWeight: 700 }} itemProp="author">{post.author}</p>
+                    <p style={{ color: "var(--muted)" }}>Independent Android studio</p>
                   </div>
-                  <div className="text-xs" style={{ color: "var(--muted)" }}>Indie Studio</div>
                 </div>
-              </div>
-              <div className="flex items-center gap-2" role="group" aria-label="Share this article">
-                <a
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(postUrl)}`}
-                  target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium"
-                  style={{ background: "var(--input)", color: "var(--body-text)", border: "1px solid var(--border)" }}
-                  aria-label="Share on X (Twitter)"
-                >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.254 5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117Z" />
-                  </svg>
-                  Share
-                </a>
-                <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`}
-                  target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium"
-                  style={{ background: "var(--input)", color: "var(--body-text)", border: "1px solid var(--border)" }}
-                  aria-label="Share on LinkedIn"
-                >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                  LinkedIn
-                </a>
+                <div className="flex items-center gap-2" role="group" aria-label="Share this article">
+                  <a
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(postUrl)}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="btn btn-light btn-sm" aria-label="Share on X (Twitter)"
+                  >Share on X</a>
+                  <a
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="btn btn-light btn-sm" aria-label="Share on LinkedIn"
+                  >LinkedIn</a>
+                </div>
               </div>
             </div>
 
-            {/* Featured image */}
-            {hasRealImage ? (
-              <div className="relative w-full mb-8 rounded-xl overflow-hidden" style={{ aspectRatio: "16/8" }}>
+            {hasRealImage && (
+              <div className="relative w-full mt-10 rounded-[28px] overflow-hidden" style={{ aspectRatio: "2 / 1", background: "var(--card)" }}>
                 <Image
                   src={post.image}
                   alt={post.imageAlt || post.title}
                   fill priority
                   className="object-cover"
-                  sizes="(max-width: 1200px) 100vw, 1200px"
+                  sizes="(max-width: 1180px) 100vw, 1180px"
                   itemProp="image"
                 />
               </div>
-            ) : (
-              <div
-                className="w-full mb-8 rounded-xl flex items-center justify-center"
-                style={{ aspectRatio: "16/8", background: "linear-gradient(135deg, var(--badge-info-bg) 0%, var(--badge-success-bg) 100%)", border: "1px solid var(--border)" }}
-              >
-                <div className="text-center" style={{ color: "var(--muted)" }}>
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" className="mx-auto mb-2" aria-hidden="true">
-                    <rect x="4" y="4" width="40" height="40" rx="10" stroke="currentColor" strokeWidth="2" fill="none" />
-                    <path d="M10 38 L20 22 L28 32 L34 22 L42 38 Z" fill="currentColor" opacity="0.3" />
-                    <circle cx="16" cy="16" r="4" fill="currentColor" opacity="0.3" />
-                  </svg>
-                  <span className="text-xs">{post.title}</span>
-                </div>
-              </div>
             )}
+          </div>
+        </header>
 
-            {/* Article body */}
+        {/* ── Body + sidebar ─── */}
+        <div className="wrap pt-12 pb-20 flex gap-14 items-start">
+          <div className="flex-1 min-w-0">
+            {/* Key takeaways — the short answer first, for readers and answer engines */}
+            <section className="answer-box mb-10" aria-label="Key takeaways" style={{ maxWidth: "70ch" }}>
+              <p className="eyebrow mb-3" style={{ color: "var(--brand)" }}>Key takeaways</p>
+              <ul className="flex flex-col gap-2.5">
+                {takeaways.map((t) => (
+                  <li key={t} className="flex gap-3 items-start body">
+                    <span className="mt-[5px] shrink-0" style={{ color: "var(--brand)" }}><Icon name="check" size={16} /></span>
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
             <div className="prose" dangerouslySetInnerHTML={{ __html: htmlContent }} itemProp="articleBody" />
 
             {/* In-article CTA — matched to this post's app */}
-            <div
-              className="my-10 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5"
-              style={{ background: "var(--badge-info-bg)", border: "1px solid var(--stat-border)" }}
-            >
-              <Image
-                src={ctaApp.iconUrl}
-                alt={`${ctaApp.title} icon`}
-                width={60} height={60}
-                className="rounded-[14px] shrink-0"
-                style={{ border: "1px solid var(--stat-border)" }}
-              />
-              <div className="flex-1 text-center sm:text-left">
-                <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--fg)", fontFamily: "var(--font-syne)" }}>
-                  {`Download ${ctaApp.title} — Free`}
-                </p>
-                <p className="text-xs mb-1" style={{ color: "var(--body-text)" }}>{ctaApp.tagline}</p>
-                <Link href={ctaAppHref} className="text-xs font-semibold" style={{ color: "var(--badge-info-text)" }}>
-                  {`All ${ctaApp.shortName} features →`}
-                </Link>
+            <div className="card my-12 p-6 md:p-7 flex flex-col sm:flex-row items-start sm:items-center gap-5" style={{ background: "var(--bg-tint)", maxWidth: "70ch" }}>
+              <Image src={ctaApp.iconUrl} alt={`${ctaApp.title} icon`} width={64} height={64} className="rounded-[16px] shrink-0" />
+              <div className="flex-1">
+                <p style={{ fontWeight: 750, letterSpacing: "-0.02em" }}>{`Get ${ctaApp.title} — free`}</p>
+                <p className="small body mt-1">{ctaApp.tagline}</p>
+                <div className="mt-2"><TextLink href={ctaAppHref} brand>{`All ${ctaApp.shortName} features`}</TextLink></div>
               </div>
-              <a
-                href={ctaApp.playStoreUrl}
-                target="_blank" rel="noopener noreferrer"
-                className="shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold"
-                style={{ background: "var(--btn-primary-bg)", color: "var(--btn-primary-text)" }}
-              >
-                Get it free →
+              <a href={ctaApp.playStoreUrl} target="_blank" rel="noopener noreferrer" className="btn btn-dark btn-chip btn-sm shrink-0">
+                <span>Google Play</span>
+                <span className="chip"><Icon name="arrow-up-right" size={15} /></span>
               </a>
             </div>
 
-            {/* Tags */}
             {post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-6 mb-10" aria-label="Article tags">
-                {post.tags.map(tag => (
-                  <span
-                    key={tag}
-                    className="rounded-full px-3 py-1 text-xs font-medium"
-                    style={{ background: "var(--input)", color: "var(--body-text)", border: "1px solid var(--border)" }}
-                  >
-                    #{tag}
-                  </span>
-                ))}
+              <div className="flex flex-wrap gap-2 mb-12" aria-label="Article tags" style={{ maxWidth: "70ch" }}>
+                {post.tags.map(tag => <span key={tag} className="tag">#{tag}</span>)}
               </div>
             )}
 
-            {/* Related articles */}
-            {related.length > 0 && (
-              <section className="pt-8" style={{ borderTop: "1px solid var(--border)" }} aria-label="Related articles">
-                <h2
-                  className="font-bold mb-5"
-                  style={{ fontFamily: "var(--font-syne)", fontSize: "1.15rem", color: "var(--fg)", letterSpacing: "-0.02em" }}
-                >
-                  Related Articles
-                </h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {related.map(rp => (
-                    <Link
-                      key={rp.slug}
-                      href={`/blog/${rp.slug}`}
-                      className="card-hover flex items-center gap-4 rounded-xl p-4"
-                      style={{ border: "1px solid var(--border)", background: "var(--surface)", textDecoration: "none" }}
-                    >
-                      <div
-                        className="relative w-28 shrink-0 rounded-lg overflow-hidden flex items-center justify-center"
-                        style={{ aspectRatio: "16/10", background: "var(--input)" }}
-                      >
-                        {rp.image && rp.image !== "/og-image.png" ? (
-                          <Image src={rp.image} alt={rp.imageAlt || rp.title} fill className="object-cover" sizes="112px" />
-                        ) : (
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" strokeWidth="1.5" />
-                            <path d="M7 16 L10 10 L13 13 L16 8 L19 16" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-                          </svg>
-                        )}
-                      </div>
-                      <div className="min-w-0">
-                        <span className={`badge ${categoryClass(rp.category)} mb-1`}>{rp.category}</span>
-                        <p
-                          className="text-sm font-semibold line-clamp-2"
-                          style={{ color: "var(--fg)", fontFamily: "var(--font-syne)", lineHeight: 1.35 }}
-                        >
-                          {rp.title}
-                        </p>
-                        <p className="text-xs mt-1" style={{ color: "var(--muted)" }}>
-                          {`${formatDate(rp.date)} · ${rp.readTime} min read`}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            )}
-          </article>
+            {/* About the author */}
+            <div className="hairline pt-8 flex gap-4 items-start" style={{ maxWidth: "70ch" }}>
+              <Image src="/duostrick-logo.png" alt="" width={52} height={52} className="rounded-[14px] shrink-0" />
+              <div>
+                <p className="eyebrow">Written by</p>
+                <p className="mt-1" style={{ fontWeight: 750 }}>{post.author}</p>
+                <p className="small body mt-1">
+                  DuoStrick is an independent Android studio making cute puzzle games and handy offline apps.{" "}
+                  <Link href="/#about" style={{ color: "var(--brand)", fontWeight: 700 }}>About us</Link>
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* ── Sidebar ── */}
-          <aside className="hidden lg:flex flex-col gap-6 w-72 shrink-0" aria-label="Article sidebar">
-            {/* Table of Contents */}
+          <aside className="hidden lg:flex flex-col gap-5 w-72 shrink-0 sticky top-24" aria-label="Article sidebar">
             {headings.length > 0 && (
-              <div
-                className="rounded-2xl p-5 sticky top-24"
-                style={{ border: "1px solid var(--border)", background: "var(--sidebar-bg)" }}
-              >
-                <p
-                  className="text-xs font-semibold uppercase tracking-widest mb-4"
-                  style={{ color: "var(--muted)" }}
-                >
-                  Table of Contents
-                </p>
+              <div className="card p-6">
+                <p className="eyebrow mb-4">On this page</p>
                 <nav aria-label="Table of contents">
                   <ul className="flex flex-col gap-1">
                     {headings.map(({ id, text, level }) => (
-                      <li key={id} style={{ paddingLeft: level === 3 ? "0.75rem" : 0 }}>
-                        <a href={`#${id}`} className="toc-link block py-1 text-sm leading-snug">
-                          {text}
-                        </a>
+                      <li key={id} style={{ paddingLeft: level === 3 ? "0.85rem" : 0 }}>
+                        <a href={`#${id}`} className="toc-link block py-1 text-sm leading-snug">{text}</a>
                       </li>
                     ))}
                   </ul>
                 </nav>
               </div>
             )}
-
-            {/* Sidebar app CTA */}
-            <div
-              className="rounded-2xl p-5 text-center sticky top-72"
-              style={{ border: "1px solid var(--border)", background: "var(--card)" }}
-            >
-              <Image
-                src={ctaApp.iconUrl}
-                alt={`${ctaApp.title} icon`}
-                width={64} height={64}
-                className="rounded-[14px] mx-auto mb-3"
-                style={{ border: "1px solid var(--border)" }}
-              />
-              <p className="font-bold text-sm mb-1" style={{ fontFamily: "var(--font-syne)", color: "var(--fg)" }}>
-                {ctaApp.title}
-              </p>
-              <p className="text-xs mb-4" style={{ color: "var(--muted)", lineHeight: 1.6 }}>
-                {ctaApp.tagline}
-              </p>
-              <a
-                href={ctaApp.playStoreUrl}
-                target="_blank" rel="noopener noreferrer"
-                className="block w-full rounded-full py-2.5 text-sm font-semibold"
-                style={{ background: "var(--btn-primary-bg)", color: "var(--btn-primary-text)" }}
-              >
-                Download free →
+            <div className="card p-6 text-center" style={{ background: "var(--bg-tint)" }}>
+              <Image src={ctaApp.iconUrl} alt={`${ctaApp.title} icon`} width={64} height={64} className="rounded-[16px] mx-auto mb-3" />
+              <p style={{ fontWeight: 750, letterSpacing: "-0.02em" }}>{ctaApp.shortName}</p>
+              <p className="small mt-1 mb-4" style={{ color: "var(--muted)" }}>{ctaApp.tagline}</p>
+              <a href={ctaApp.playStoreUrl} target="_blank" rel="noopener noreferrer" className="btn btn-dark btn-sm w-full justify-center">
+                Download free
               </a>
             </div>
           </aside>
         </div>
-      </div>
+      </article>
+
+      {/* ── Related ─── */}
+      {related.length > 0 && (
+        <section className="section-sm bg-soft" aria-label="Related articles">
+          <div className="wrap">
+            <h2 className="display-2 mb-10" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)" }}>
+              Related <span className="accent">articles.</span>
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {related.map(rp => (
+                <Link
+                  key={rp.slug}
+                  href={`/blog/${rp.slug}`}
+                  className="card group flex items-center gap-4 p-4"
+                  style={{ background: "var(--surface)" }}
+                >
+                  <div className="relative w-28 shrink-0 rounded-[14px] overflow-hidden" style={{ aspectRatio: "16/10", background: "var(--card)" }}>
+                    {rp.image && rp.image !== "/og-image.png" ? (
+                      <Image src={rp.image} alt={rp.imageAlt || rp.title} fill className="object-cover" sizes="112px" />
+                    ) : (
+                      <span className="absolute inset-0 flex items-center justify-center" style={{ color: "var(--brand)" }}><Icon name="book" size={20} /></span>
+                    )}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <span className={`tag ${categoryClass(rp.category)}`}>{rp.category}</span>
+                    <p className="line-clamp-2 mt-2" style={{ fontWeight: 720, letterSpacing: "-0.02em", lineHeight: 1.35 }}>{rp.title}</p>
+                    <p className="small mt-1" style={{ color: "var(--muted)" }}>{`${formatDate(rp.date)} · ${rp.readTime} min read`}</p>
+                  </div>
+                  <span className="hidden sm:block"><span className="arrow-dot"><Icon name="arrow-up-right" size={16} /></span></span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }

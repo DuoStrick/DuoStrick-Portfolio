@@ -9,6 +9,7 @@ image: "/blog/2048-banner.jpg"
 imageAlt: "2048 Offline — infinite grid tile merging game for Android by DuoStrick"
 readTime: 5
 featured: true
+summary: ["2048 Offline is played on an infinite grid, so the board never fills up and you can merge past 2048 to 4096, 8192 and beyond.", "Beginner rule: anchor your highest tile in one corner, use only two or three swipe directions, and merge small tiles early.", "Intermediate and advanced play build a snake of descending tiles, then use the reset move when the board gets messy."]
 ---
 
 2048 Offline is a fresh spin on the tile-merging number puzzle genre — and it has one twist that changes everything: **the grid never ends**.

@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Syne } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { ABOUT, FOUNDED, PLAY_DEV_URL, SITE_URL, SUPPORT_EMAIL, TAGLINE } from "../lib/studio";
 
-const syne = Syne({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
-  variable: "--font-syne",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -100,7 +101,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)",  color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: dark)",  color: "#0d0c14" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -120,15 +121,23 @@ const organizationSchema = {
     width: 512,
     height: 512,
   },
-  image: "https://duostrick.vercel.app/opengraph-image",
-  description:
-    "Cute puzzle games and handy offline apps for Android. Relax your brain, play daily challenges and get more done.",
-  slogan: "Cute games & handy apps",
-  email: "support@tradeslook.com",
-  foundingDate: "2024",
-  sameAs: [
-    "https://play.google.com/store/apps/dev?id=8989641209983926608",
+  image: `${SITE_URL}/opengraph-image`,
+  description: ABOUT,
+  slogan: TAGLINE,
+  email: SUPPORT_EMAIL,
+  foundingDate: FOUNDED,
+  sameAs: [PLAY_DEV_URL],
+  /* Entity facts for answer engines: what the studio makes and knows about */
+  knowsAbout: [
+    "Android app development", "Mobile puzzle games", "Logic puzzles", "Queens puzzle",
+    "2048", "Offline video players", "Offline PDF tools", "Warranty tracking",
   ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: SUPPORT_EMAIL,
+    availableLanguage: ["English"],
+  },
 };
 
 const websiteSchema = {
@@ -150,7 +159,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={syne.variable} suppressHydrationWarning>
+    <html lang="en" className={manrope.variable} suppressHydrationWarning>
       <head>
         {/* Anti-FOUC: set theme before first paint */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
@@ -170,7 +179,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-1 w-full flex flex-col items-center mt-16">
+        <main className="flex-1 w-full">
           {children}
         </main>
         <Footer />

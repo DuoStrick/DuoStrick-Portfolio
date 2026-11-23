@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
-import SectionContainer from "../../../components/SectionContainer";
 import Reveal from "../../../components/Reveal";
 import BlogCard from "../../../components/BlogCard";
+import { AppTile } from "../../../components/AppCard";
+import { Breadcrumb, ButtonLink, FaqList, Icon, JsonLd, SectionHead, TextLink, type IconName } from "../../../components/ui";
 import { getAllApps, getAppById, getAllAppIds } from "../../../data/apps";
 import { getAllPosts } from "../../../lib/posts";
 import { formatDate } from "../../../lib/postUtils";
@@ -59,17 +59,9 @@ export async function generateMetadata({
   };
 }
 
-/* Accent → the existing utility classes in globals.css */
-const ACCENT_BAR: Record<string, string> = {
-  blue:  "accent-bar-blue",
-  green: "accent-bar-green",
-  amber: "accent-bar-gradient",
-};
-const ACCENT_BADGE: Record<string, string> = {
-  blue:  "badge-info",
-  green: "badge-success",
-  amber: "badge-warn",
-};
+const TINT = { blue: "var(--chip-blue-bg)", green: "var(--chip-green-bg)", amber: "var(--chip-amber-bg)" } as const;
+const FEATURE_CHIPS = ["chip-violet", "chip-green", "chip-amber", "chip-blue", "chip-pink"];
+const FEATURE_ICONS: IconName[] = ["sparkle", "star", "heart", "shield", "check"];
 
 export default async function AppPage({
   params,
@@ -80,187 +72,155 @@ export default async function AppPage({
   const app = getAppById(slug);
   if (!app) notFound();
 
-  const barClass  = ACCENT_BAR[app.accent] ?? "accent-bar-blue";
-  const badgeCls  = ACCENT_BADGE[app.accent] ?? "badge-info";
   const otherApps = getAllApps().filter((a) => a.id !== app.id);
-
   /* Posts about this app, matched on the same tags the blog CTA uses */
   const relatedPosts = getAllPosts()
     .filter((p) => app.postTags.some((t) => p.tags.includes(t)))
     .slice(0, 3);
-
   const updated = formatDate(app.storeUpdated);
+
+  /* Key facts — the on-page echo of the SoftwareApplication schema, phrased for answer engines */
+  const facts: [string, string][] = [
+    ["Developer", "DuoStrick"],
+    ["Price", app.inAppPurchases ? "Free, with optional in-app purchases" : "Free"],
+    ["Ads", app.containsAds ? "Contains ads" : "No ads"],
+    ["Works offline", "Yes"],
+    ["Category", app.applicationSubCategory],
+    ["Platform", app.operatingSystem],
+    ["Last updated", updated],
+    ["Package", app.packageName],
+  ];
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema(app)) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(appFaqSchema(app)) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(appBreadcrumbSchema(app)) }}
-      />
+      <JsonLd data={[softwareApplicationSchema(app), appFaqSchema(app), appBreadcrumbSchema(app)]} />
 
-      <div className="w-full flex flex-col items-center">
-        {/* ── Hero ─── */}
-        <SectionContainer>
-          <nav
-            className="flex items-center gap-2 text-sm mb-8 flex-wrap"
-            aria-label="Breadcrumb"
-            style={{ color: "var(--muted)" }}
-          >
-            <Link href="/" style={{ color: "var(--muted)" }}>Home</Link>
-            <span aria-hidden="true">/</span>
-            <Link href="/apps" style={{ color: "var(--muted)" }}>Apps</Link>
-            <span aria-hidden="true">/</span>
-            <span style={{ color: "var(--fg)", fontWeight: 500 }} aria-current="page">{app.shortName}</span>
-          </nav>
+      {/* ── Hero ─── */}
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-x-0 top-0 h-[520px] pointer-events-none"
+          style={{ background: "radial-gradient(60% 70% at 70% 0%, var(--bg-tint) 0%, transparent 70%)" }}
+          aria-hidden="true"
+        />
+        <div className="wrap relative pt-10 md:pt-14 pb-16 md:pb-24">
+          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Apps", href: "/apps" }, { label: app.shortName }]} />
 
-          <div className="flex flex-col sm:flex-row gap-7 items-start">
-            <div
-              className="shrink-0 w-24 h-24 rounded-[22px] overflow-hidden flex items-center justify-center"
-              style={{ border: "1px solid var(--border)", background: "var(--surface)" }}
-            >
-              <Image
-                src={app.iconUrl}
-                alt={`${app.title} app icon`}
-                width={96} height={96}
-                className="w-full h-full object-cover"
-                priority
-              />
-            </div>
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] items-center">
+            <div>
+              <div className="flex items-center gap-4 mb-7">
+                <Image
+                  src={app.iconUrl}
+                  alt={`${app.title} app icon`}
+                  width={76} height={76}
+                  className="rounded-[20px]"
+                  style={{ boxShadow: "0 12px 30px rgba(23, 22, 28, 0.18)" }}
+                  priority
+                />
+                <div>
+                  <p className="eyebrow">{app.genre}</p>
+                  <p className="small mt-1" style={{ color: "var(--muted)" }}>by DuoStrick · Updated {updated}</p>
+                </div>
+              </div>
+              <h1 className="display-2" style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)" }}>{app.title}</h1>
+              <p className="lead mt-5" style={{ maxWidth: 560 }}>{app.tagline}</p>
 
-            <div className="flex-1">
-              <span className={`badge ${badgeCls} mb-4`}>{app.genre}</span>
-              <h1
-                className="font-black mb-2"
-                style={{
-                  fontFamily: "var(--font-syne)",
-                  fontSize: "clamp(1.9rem, 4.5vw, 2.9rem)",
-                  color: "var(--fg)",
-                  letterSpacing: "-0.03em",
-                  lineHeight: 1.12,
-                }}
-              >
-                {app.title}
-              </h1>
-              <div className={`${barClass} mb-4`} />
-              <p className="mb-6" style={{ color: "var(--body-text)", fontSize: "1.05rem", maxWidth: "62ch", lineHeight: 1.8 }}>
-                {app.tagline}
-              </p>
-
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                <a
-                  href={app.playStoreUrl}
-                  target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
-                  style={{ background: "var(--btn-primary-bg)", color: "var(--btn-primary-text)" }}
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M3.18 23.76a2 2 0 0 0 2.85.1l.08-.07 10.15-10.17-2.96-2.97-10.12 10.1a2 2 0 0 0 0 3.01zm15.5-14.87-2.46-2.47-2.05 2.05 2.46 2.47 2.05-2.05zm1.3-1.3 1.07-1.08a2 2 0 0 0 0-2.84L18.5 1.13a2 2 0 0 0-2.83 0L14.6 2.2l5.38 5.39zM1.64 1.43A1 1 0 0 0 0 2.27v19.46a1 1 0 0 0 1.64.77l11.2-9.73-11.2-9.74-.01-.6z" />
-                  </svg>
-                  Get on Google Play
-                </a>
-                <Link
-                  href="/support"
-                  className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
-                  style={{ background: "var(--surface)", color: "var(--body-text)", border: "1px solid var(--border)" }}
-                >
-                  Support &amp; FAQ
-                </Link>
+              <div className="flex flex-wrap items-center gap-3 mt-8">
+                <ButtonLink href={app.playStoreUrl} external>Get it on Google Play</ButtonLink>
+                <ButtonLink href="/support" variant="light" chip={false}>Support &amp; FAQ</ButtonLink>
               </div>
 
-              {/* Quick facts — also the on-page echo of the SoftwareApplication schema */}
-              <dl className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-                {[
-                  ["Price",    "Free"],
-                  ["Platform", app.operatingSystem],
-                  ["Category", app.applicationSubCategory],
-                  ["Ads",      app.containsAds ? "Contains ads" : "No ads"],
-                  ["Updated",  updated],
-                ].map(([label, value]) => (
-                  <div key={label}>
-                    <dt style={{ color: "var(--muted)", fontSize: "0.8rem" }}>{label}</dt>
-                    <dd style={{ color: "var(--fg)", fontWeight: 600 }}>{value}</dd>
+              <div className="flex flex-wrap gap-2 mt-8">
+                <span className="tag">Free</span>
+                <span className={`tag ${app.containsAds ? "tag-amber" : "tag-green"}`}>{app.containsAds ? "Contains ads" : "No ads"}</span>
+                {app.inAppPurchases && <span className="tag tag-blue">In-app purchases</span>}
+                <span className="tag tag-brand">Works offline</span>
+                <span className="tag">{app.operatingSystem}</span>
+              </div>
+            </div>
+
+            {/* Showcase: two store screenshots on the app's tint */}
+            <div className="relative rounded-[32px] p-6 sm:p-10 overflow-hidden" style={{ background: TINT[app.accent] }}>
+              <div className="flex justify-center gap-4 sm:gap-6">
+                {app.screenshots.slice(0, 2).map((shot, i) => (
+                  <div
+                    key={shot.src}
+                    className="rounded-[22px] overflow-hidden w-[46%] max-w-[230px]"
+                    style={{
+                      boxShadow: "0 24px 50px rgba(23, 22, 28, 0.22)",
+                      transform: i === 0 ? "rotate(-3deg) translateY(8px)" : "rotate(3deg) translateY(-8px)",
+                    }}
+                  >
+                    <Image src={shot.src} alt={shot.alt} width={540} height={1100} className="w-full h-auto" sizes="230px" priority={i === 0} />
                   </div>
                 ))}
-              </dl>
+              </div>
             </div>
           </div>
-        </SectionContainer>
+        </div>
+      </section>
 
-        {/* ── Intro + screenshots ─── */}
-        <SectionContainer style={{ background: "var(--bg-alt)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
-          <div className="prose mb-10" style={{ maxWidth: "70ch" }}>
-            {app.intro.map((para) => (
-              <p key={para.slice(0, 40)}>{para}</p>
-            ))}
+      {/* ── What is it? + key facts ─── */}
+      <section className="section bg-soft">
+        <div className="wrap grid gap-12 lg:grid-cols-[1.3fr_1fr] items-start">
+          <div>
+            <p className="eyebrow mb-4">Overview</p>
+            <h2 className="display-2">{`What is ${app.shortName}?`}</h2>
+            <div className="mt-7 flex flex-col gap-5 body" style={{ fontSize: "1.1rem", lineHeight: 1.8, maxWidth: "62ch" }}>
+              {app.intro.map((para) => <p key={para.slice(0, 40)}>{para}</p>)}
+            </div>
           </div>
+          <aside className="card-outline p-6 md:p-7" aria-label={`${app.shortName} key facts`}>
+            <p className="eyebrow mb-4">Key facts</p>
+            <dl className="small">
+              {facts.map(([label, value]) => (
+                <div key={label} className="flex justify-between gap-6 py-3" style={{ borderTop: "1px solid var(--line)" }}>
+                  <dt style={{ color: "var(--muted)" }}>{label}</dt>
+                  <dd className="text-right" style={{ fontWeight: 650, wordBreak: "break-word" }}>{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
+        </div>
+      </section>
 
-          <h2
-            className="font-bold mb-6"
-            style={{ fontFamily: "var(--font-syne)", fontSize: "1.45rem", color: "var(--fg)", letterSpacing: "-0.02em" }}
-          >
-            {`${app.shortName} screenshots`}
-          </h2>
-          <div className="flex gap-4 overflow-x-auto pb-4" style={{ scrollbarWidth: "thin" }}>
+      {/* ── Screenshots ─── */}
+      <section className="section-sm">
+        <div className="wrap">
+          <h2 className="title-3 mb-6">{`${app.shortName} screenshots`}</h2>
+        </div>
+        <div className="wrap">
+          <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
             {app.screenshots.map((shot, i) => (
-              <div
-                key={shot.src}
-                className="shrink-0 rounded-2xl overflow-hidden"
-                style={{ border: "1px solid var(--border)", background: "var(--surface)", width: 220 }}
-              >
+              <div key={shot.src} className="shrink-0 w-[200px] sm:w-[220px] rounded-[20px] overflow-hidden" style={{ background: "var(--card)" }}>
                 <Image
-                  src={shot.src}
-                  alt={shot.alt}
-                  width={540}
-                  height={1100}
-                  loading={i < 2 ? "eager" : "lazy"}
-                  className="w-full h-auto"
-                  sizes="220px"
+                  src={shot.src} alt={shot.alt} width={540} height={1100}
+                  loading={i < 3 ? "eager" : "lazy"} className="w-full h-auto" sizes="220px"
                 />
               </div>
             ))}
           </div>
-        </SectionContainer>
+        </div>
+      </section>
 
-        {/* ── Features ─── */}
-        <SectionContainer>
-          <h2
-            className="font-bold mb-2"
-            style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)", color: "var(--fg)", letterSpacing: "-0.02em" }}
-          >
-            {`What ${app.shortName} does`}
-          </h2>
-          <div className={`${barClass} mb-10`} />
-
-          <div className="grid md:grid-cols-2 gap-5">
+      {/* ── Features ─── */}
+      <section className="section">
+        <div className="wrap">
+          <SectionHead eyebrow="Features" title={`What can you do`} accent={`with ${app.shortName}?`} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
             {app.features.map((feature, i) => (
-              <Reveal key={feature.title} delay={i * 80} direction="up">
-                <div
-                  className="rounded-2xl p-6 h-full"
-                  style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}
-                >
-                  <h3
-                    className="font-bold mb-3"
-                    style={{ fontFamily: "var(--font-syne)", fontSize: "1.1rem", color: "var(--fg)", letterSpacing: "-0.01em" }}
-                  >
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm mb-4" style={{ color: "var(--body-text)", lineHeight: 1.75 }}>
-                    {feature.body}
-                  </p>
+              <Reveal key={feature.title} delay={(i % 3) * 80}>
+                <div className="card p-7 h-full">
+                  <span className={`icon-chip ${FEATURE_CHIPS[i % FEATURE_CHIPS.length]}`}>
+                    <Icon name={FEATURE_ICONS[i % FEATURE_ICONS.length]} size={22} />
+                  </span>
+                  <h3 className="mt-6" style={{ fontSize: "1.2rem", fontWeight: 750, letterSpacing: "-0.03em" }}>{feature.title}</h3>
+                  <p className="body small mt-2" style={{ lineHeight: 1.75 }}>{feature.body}</p>
                   {feature.bullets && (
-                    <ul className="text-sm flex flex-col gap-2" style={{ color: "var(--body-text)" }}>
+                    <ul className="mt-4 flex flex-col gap-2 small">
                       {feature.bullets.map((b) => (
-                        <li key={b} className="flex gap-2.5 items-start">
-                          <span aria-hidden="true" style={{ color: "var(--badge-info-text)", lineHeight: 1.6 }}>•</span>
-                          <span style={{ lineHeight: 1.6 }}>{b}</span>
+                        <li key={b} className="flex gap-2.5 items-start body">
+                          <span className="mt-[3px] shrink-0" style={{ color: "var(--brand)" }}><Icon name="check" size={15} /></span>
+                          <span>{b}</span>
                         </li>
                       ))}
                     </ul>
@@ -269,112 +229,64 @@ export default async function AppPage({
               </Reveal>
             ))}
           </div>
-        </SectionContainer>
+        </div>
+      </section>
 
-        {/* ── FAQ ─── */}
-        <SectionContainer style={{ background: "var(--bg-alt)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
-          <h2
-            className="font-bold mb-2"
-            style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)", color: "var(--fg)", letterSpacing: "-0.02em" }}
-          >
-            {`${app.shortName} — frequently asked questions`}
-          </h2>
-          <div className={`${barClass} mb-10`} />
-
-          <div className="flex flex-col gap-4" style={{ maxWidth: "76ch" }}>
-            {app.faq.map(({ q, a }) => (
-              <details
-                key={q}
-                className="rounded-2xl p-5"
-                style={{ background: "var(--card)", border: "1px solid var(--card-border)" }}
-              >
-                <summary
-                  className="font-semibold cursor-pointer"
-                  style={{ fontFamily: "var(--font-syne)", color: "var(--fg)", fontSize: "1rem" }}
-                >
-                  {q}
-                </summary>
-                <p className="text-sm mt-3" style={{ color: "var(--body-text)", lineHeight: 1.8 }}>
-                  {a}
-                </p>
-              </details>
-            ))}
+      {/* ── FAQ ─── */}
+      <section id="faq" className="section hairline" style={{ scrollMarginTop: 72 }}>
+        <div className="wrap grid gap-10 lg:grid-cols-[1fr_1.4fr]">
+          <div>
+            <SectionHead eyebrow="FAQ" title={`${app.shortName}`} accent="questions, answered." />
+            <p className="body mt-6">Still stuck?</p>
+            <div className="mt-2"><TextLink href="/support" brand>Visit Support &amp; FAQ</TextLink></div>
           </div>
+          <FaqList items={app.faq} openFirst />
+        </div>
+      </section>
 
-          <p className="text-sm mt-8" style={{ color: "var(--muted)" }}>
-            Still stuck? Head to{" "}
-            <Link href="/support" style={{ color: "var(--badge-info-text)" }}>Support &amp; FAQ</Link>{" "}
-            or email{" "}
-            <a href="mailto:support@tradeslook.com" style={{ color: "var(--badge-info-text)" }}>support@tradeslook.com</a>.
-          </p>
-        </SectionContainer>
-
-        {/* ── Related reading ─── */}
-        {relatedPosts.length > 0 && (
-          <SectionContainer>
-            <h2
-              className="font-bold mb-2"
-              style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "var(--fg)", letterSpacing: "-0.02em" }}
-            >
-              {`Read more about ${app.shortName}`}
-            </h2>
-            <div className={`${barClass} mb-8`} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {relatedPosts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
-              ))}
+      {/* ── Related reading ─── */}
+      {relatedPosts.length > 0 && (
+        <section className="section bg-soft">
+          <div className="wrap">
+            <SectionHead eyebrow="From the blog" title={`Read more about`} accent={`${app.shortName}.`} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 mt-12">
+              {relatedPosts.map((post) => <BlogCard key={post.slug} post={post} />)}
             </div>
-          </SectionContainer>
-        )}
-
-        {/* ── Other apps ─── */}
-        <SectionContainer style={{ borderTop: "1px solid var(--border)" }}>
-          <h2
-            className="font-bold mb-2"
-            style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "var(--fg)", letterSpacing: "-0.02em" }}
-          >
-            More from DuoStrick
-          </h2>
-          <div className="accent-bar-gradient mb-8" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {otherApps.map((other) => (
-              <Link
-                key={other.id}
-                href={`/apps/${other.id}`}
-                className="card-hover-blue flex gap-4 items-center rounded-2xl p-5"
-                style={{ background: "var(--card)", border: "1px solid var(--card-border)", textDecoration: "none" }}
-              >
-                <div
-                  className="shrink-0 w-14 h-14 rounded-[14px] overflow-hidden"
-                  style={{ border: "1px solid var(--border)", background: "var(--surface)" }}
-                >
-                  <Image
-                    src={other.iconUrl}
-                    alt={`${other.title} icon`}
-                    width={56} height={56}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <div
-                    className="font-bold mb-1"
-                    style={{ fontFamily: "var(--font-syne)", color: "var(--fg)", fontSize: "1rem", letterSpacing: "-0.01em" }}
-                  >
-                    {other.title}
-                  </div>
-                  <div className="text-sm" style={{ color: "var(--body-text)" }}>
-                    {other.tagline}
-                  </div>
-                </div>
-              </Link>
-            ))}
           </div>
+        </section>
+      )}
 
-          <p className="text-sm mt-8" style={{ color: "var(--muted)" }}>
-            <Link href="/apps" style={{ color: "var(--badge-info-text)" }}>See all DuoStrick apps →</Link>
-          </p>
-        </SectionContainer>
-      </div>
+      {/* ── More apps ─── */}
+      <section className="section">
+        <div className="wrap">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <SectionHead eyebrow="More from DuoStrick" title="You might" accent="also like." />
+            <div className="shrink-0"><ButtonLink href="/apps" size="sm" variant="light">All apps</ButtonLink></div>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+            {otherApps.map((other) => <AppTile key={other.id} app={other} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Closing CTA ─── */}
+      <section className="wrap pb-24">
+        <div className="rounded-[32px] p-8 md:p-14 flex flex-col md:flex-row md:items-center justify-between gap-8" style={{ background: "#17132b" }}>
+          <div className="flex items-center gap-5">
+            <Image src={app.iconUrl} alt="" width={72} height={72} className="rounded-[18px] shrink-0" />
+            <div>
+              <p className="eyebrow" style={{ color: "#b3a5ff" }}>Free on Google Play</p>
+              <p className="mt-2" style={{ color: "#fff", fontWeight: 780, fontSize: "clamp(1.5rem, 3vw, 2.2rem)", letterSpacing: "-0.04em", lineHeight: 1.15 }}>
+                {`Get ${app.shortName} today.`}
+              </p>
+            </div>
+          </div>
+          <a href={app.playStoreUrl} target="_blank" rel="noopener noreferrer" className="btn btn-chip self-start md:self-auto" style={{ background: "#fff", color: "#17161c" }}>
+            <span>Download free</span>
+            <span className="chip"><Icon name="arrow-up-right" size={16} /></span>
+          </a>
+        </div>
+      </section>
     </>
   );
 }

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import SectionContainer from "../../components/SectionContainer";
-import AppCard from "../../components/AppCard";
 import Reveal from "../../components/Reveal";
-import { getAllApps } from "../../data/apps";
+import AppCard from "../../components/AppCard";
+import { Breadcrumb, Icon, JsonLd, SectionHead } from "../../components/ui";
+import { APP_GROUPS, appGroup, getAllApps } from "../../data/apps";
 import { appListSchema, softwareApplicationSchema, SITE } from "../../lib/appSchema";
+import { PLAY_DEV_URL } from "../../lib/studio";
 
 const APPS = getAllApps();
 
@@ -60,75 +60,68 @@ const breadcrumbSchema = {
 export default function AppsIndexPage() {
   return (
     <>
-      {appSchemas.map((schema) => (
-        <script
-          key={schema["@id"]}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      <JsonLd data={[...appSchemas, listSchema, breadcrumbSchema]} />
+
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-x-0 top-0 h-[420px] pointer-events-none"
+          style={{ background: "radial-gradient(60% 70% at 50% 0%, var(--bg-tint) 0%, transparent 70%)" }}
+          aria-hidden="true"
         />
-      ))}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(listSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-
-      <div className="w-full flex flex-col items-center">
-        <SectionContainer>
-          {/* Breadcrumb */}
-          <nav
-            className="flex items-center gap-2 text-sm mb-8"
-            aria-label="Breadcrumb"
-            style={{ color: "var(--muted)" }}
-          >
-            <Link href="/" style={{ color: "var(--muted)" }}>Home</Link>
-            <span aria-hidden="true">/</span>
-            <span style={{ color: "var(--fg)", fontWeight: 500 }} aria-current="page">Apps</span>
-          </nav>
-
-          <div className="mb-12">
-            <span className="badge badge-info mb-4">Google Play</span>
-            <h1
-              className="font-black mb-2"
-              style={{
-                fontFamily: "var(--font-syne)",
-                fontSize: "clamp(2.2rem, 5vw, 3.2rem)",
-                color: "var(--fg)",
-                letterSpacing: "-0.03em",
-                lineHeight: 1.1,
-              }}
-            >
-              Our Android Apps
-            </h1>
-            <div className="accent-bar-gradient mb-4" />
-            <p style={{ color: "var(--body-text)", fontSize: "1.05rem", maxWidth: "62ch" }}>
-              {`${APPS.length} apps, all free on Google Play and all built to work without a connection — logic puzzles, media players, PDF tools and a warranty tracker.`}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {APPS.map((app, i) => (
-              <Reveal key={app.id} delay={i * 110} direction="up">
-                <AppCard app={app} />
-              </Reveal>
+        <div className="wrap relative pt-10 md:pt-14 pb-14">
+          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Apps" }]} />
+          <SectionHead
+            as="h1"
+            eyebrow="Google Play"
+            title="Our Android"
+            accent="games and apps."
+            lead={`${APPS.length} apps, all free on Google Play and all built to work without a connection — logic puzzles, media players, PDF tools and a warranty tracker.`}
+          />
+          <div className="mt-8 flex flex-wrap gap-2">
+            {APP_GROUPS.map((g) => (
+              <a key={g.id} href={`#${g.id}`} className="tag" style={{ padding: "0.5rem 0.95rem", fontSize: "0.85rem" }}>
+                <Icon name={g.icon} size={14} /> {g.title}
+              </a>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-10">
-            <a
-              href="https://play.google.com/store/apps/dev?id=8989641209983926608"
-              target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold rounded-full px-5 py-2.5"
-              style={{ background: "var(--surface)", color: "var(--body-text)", border: "1px solid var(--border)" }}
-            >
-              View our Google Play developer page →
-            </a>
+      {APP_GROUPS.map((group) => {
+        const groupApps = APPS.filter((a) => appGroup(a) === group.id);
+        if (groupApps.length === 0) return null;
+        return (
+          <section key={group.id} id={group.id} className="wrap pb-16" style={{ scrollMarginTop: 90 }}>
+            <div className="hairline pt-10 mb-8 flex items-center gap-4">
+              <span className={`icon-chip ${group.chip}`}><Icon name={group.icon} size={22} /></span>
+              <div>
+                <h2 className="title-3">{group.title}</h2>
+                <p className="small" style={{ color: "var(--muted)" }}>{group.body}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {groupApps.map((app, i) => (
+                <Reveal key={app.id} delay={i * 90}>
+                  <AppCard app={app} />
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        );
+      })}
+
+      <section className="wrap pb-24">
+        <div className="card p-8 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6" style={{ background: "var(--bg-tint)" }}>
+          <div>
+            <p className="eyebrow mb-2">Developer page</p>
+            <p className="title-3">See every DuoStrick app on Google Play.</p>
           </div>
-        </SectionContainer>
-      </div>
+          <a href={PLAY_DEV_URL} target="_blank" rel="noopener noreferrer" className="btn btn-dark btn-chip self-start md:self-auto">
+            <span>Open Google Play</span>
+            <span className="chip"><Icon name="arrow-up-right" size={16} /></span>
+          </a>
+        </div>
+      </section>
     </>
   );
 }

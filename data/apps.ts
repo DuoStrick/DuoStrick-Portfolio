@@ -510,6 +510,7 @@ export const apps: AppEntry[] = [
     applicationSubCategory: "Productivity",
     storeUpdated: "2026-08-10",
     containsAds: false,
+    inAppPurchases: true,
     postTags: ["receiptvault", "warranty-tracker"],
     tagline: "Scan receipts, track warranties & bills. OCR + expiry reminders. Offline.",
 
@@ -715,6 +716,21 @@ export const apps: AppEntry[] = [
       { src: "/apps/2048-offline/06.jpg", alt: "2048 Offline light and dark themes" },
     ],
   },
+];
+
+export type AppGroup = "games" | "media" | "tools";
+
+/** Which shelf an app sits on: puzzle games, media players or everyday tools */
+export function appGroup(app: AppEntry): AppGroup {
+  if (app.applicationCategory === "GameApplication") return "games";
+  if (app.applicationCategory === "MultimediaApplication") return "media";
+  return "tools";
+}
+
+export const APP_GROUPS: { id: AppGroup; title: string; body: string; icon: "puzzle" | "play" | "file"; chip: string }[] = [
+  { id: "games", title: "Puzzle games",    body: "Calm, clever logic and number puzzles you can play anywhere — no Wi-Fi, no timer pressure.", icon: "puzzle", chip: "chip-violet" },
+  { id: "media", title: "Media players",   body: "Players for the videos and music already on your phone, from 4K films to whole TV series.",  icon: "play",   chip: "chip-pink" },
+  { id: "tools", title: "Everyday tools",  body: "Small utilities that handle PDFs and receipts on the device, without uploading your files.",     icon: "file",   chip: "chip-green" },
 ];
 
 export function getAllApps(): AppEntry[] {

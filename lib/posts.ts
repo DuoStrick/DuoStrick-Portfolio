@@ -36,6 +36,7 @@ function parseMeta(filename: string): PostMeta {
     imageAlt: data.imageAlt ?? data.title ?? "",
     readTime: Number(data.readTime) || 5,
     featured: Boolean(data.featured),
+    summary: Array.isArray(data.summary) ? data.summary : [],
   };
 }
 
@@ -90,6 +91,7 @@ export function getPostBySlug(slug: string): Post | null {
     imageAlt: data.imageAlt ?? data.title ?? "",
     readTime: Number(data.readTime) || 5,
     featured: Boolean(data.featured),
+    summary: Array.isArray(data.summary) ? data.summary : [],
     content,
   };
 }

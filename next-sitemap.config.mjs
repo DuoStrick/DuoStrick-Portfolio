@@ -8,6 +8,14 @@ const config = {
   robotsTxtOptions: {
     policies: [
       { userAgent: "*", allow: "/" },
+      /* Answer engines and AI search: named explicitly so the site can be
+         crawled and cited. /llms.txt summarises the site for them. */
+      ...[
+        "GPTBot", "OAI-SearchBot", "ChatGPT-User",
+        "ClaudeBot", "Claude-SearchBot", "Claude-User",
+        "PerplexityBot", "Perplexity-User",
+        "Google-Extended", "Applebot-Extended", "bingbot", "CCBot",
+      ].map((userAgent) => ({ userAgent, allow: "/" })),
     ],
   },
 
@@ -25,6 +33,8 @@ const config = {
     "/privacy-policy",
     "/404",
     "/icon.png",
+    "/apple-icon.png",
+    "/llms.txt",
     "/manifest.webmanifest",
     "/opengraph-image",
     "/*/opengraph-image",

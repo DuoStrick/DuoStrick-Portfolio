@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { Breadcrumb, FaqList, Icon, JsonLd, SectionHead } from "../../components/ui";
+import { getAllApps } from "../../data/apps";
+import { SUPPORT_EMAIL } from "../../lib/studio";
 
 export const metadata: Metadata = {
   title: { absolute: "Support & FAQ — Help for All DuoStrick Apps | DuoStrick" },
@@ -120,118 +124,61 @@ const breadcrumbSchema = {
 };
 
 export default function Support() {
+  const apps = getAllApps();
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd data={[faqSchema, breadcrumbSchema]} />
 
-      <div className="w-full max-w-3xl mx-auto px-6 py-14 md:py-20">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm mb-10" aria-label="Breadcrumb" style={{ color: "var(--muted)" }}>
-          <Link href="/" style={{ color: "var(--muted)" }}>Home</Link>
-          <span aria-hidden="true">/</span>
-          <span style={{ color: "var(--fg)", fontWeight: 500 }} aria-current="page">Support</span>
-        </nav>
-
-        {/* Header */}
-        <div className="mb-12">
-          <span className="badge badge-info mb-4">Help Center</span>
-          <h1
-            className="font-black mb-2"
-            style={{
-              fontFamily: "var(--font-syne)",
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              color: "var(--fg)",
-              letterSpacing: "-0.03em",
-              lineHeight: 1.1,
-            }}
-          >
-            Support &amp; FAQ
-          </h1>
-          <div className="accent-bar-blue mb-4" />
-          <p style={{ color: "var(--body-text)", fontSize: "1.05rem" }}>
-            Answers to common questions about Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault.
-          </p>
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-x-0 top-0 h-[420px] pointer-events-none"
+          style={{ background: "radial-gradient(60% 70% at 50% 0%, var(--bg-tint) 0%, transparent 70%)" }}
+          aria-hidden="true"
+        />
+        <div className="wrap relative pt-10 md:pt-14 pb-12">
+          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Support" }]} />
+          <SectionHead
+            as="h1"
+            eyebrow="Support & FAQ"
+            title="How can we"
+            accent="help you today?"
+            lead="Answers to common questions about Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault."
+          />
         </div>
+      </section>
 
-        {/* FAQ items */}
-        <div className="flex flex-col gap-4" itemScope itemType="https://schema.org/FAQPage">
-          {faqItems.map(({ q, a }, i) => (
-            <details
-              key={i}
-              className="rounded-2xl overflow-hidden"
-              style={{ border: "1px solid var(--border)", background: "var(--card)" }}
-              itemScope itemProp="mainEntity" itemType="https://schema.org/Question"
-            >
-              <summary
-                className="flex items-center justify-between gap-4 cursor-pointer px-6 py-4 font-semibold text-sm"
-                style={{
-                  color: "var(--fg)",
-                  fontFamily: "var(--font-syne)",
-                  fontSize: "0.95rem",
-                  listStyle: "none",
-                  userSelect: "none",
-                }}
-                itemProp="name"
-              >
-                {q}
-                <svg
-                  width="16" height="16" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" strokeWidth="2"
-                  strokeLinecap="round" strokeLinejoin="round"
-                  style={{ color: "var(--muted)", flexShrink: 0 }}
-                  aria-hidden="true"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </summary>
-              <div
-                className="px-6 pb-5 text-sm"
-                style={{ color: "var(--body-text)", lineHeight: 1.75, borderTop: "1px solid var(--border)" }}
-                itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer"
-              >
-                <p className="mt-4" itemProp="text">{a}</p>
-              </div>
-            </details>
+      {/* Per-app help */}
+      <section className="wrap pb-6">
+        <p className="eyebrow mb-4">Help by app</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          {apps.map((app) => (
+            <Link key={app.id} href={`/apps/${app.id}#faq`} className="card flex flex-col items-start gap-3 p-4">
+              <Image src={app.iconUrl} alt="" width={44} height={44} className="rounded-[12px]" />
+              <span style={{ fontWeight: 720, letterSpacing: "-0.02em" }}>{app.shortName}</span>
+            </Link>
           ))}
         </div>
+      </section>
 
-        {/* Still need help? */}
-        <div
-          className="mt-12 rounded-2xl p-8 text-center relative overflow-hidden"
-          style={{ background: "var(--stat-bg)", border: "1px solid var(--stat-border)" }}
-        >
-          <div className="absolute pointer-events-none" style={{ top: -40, right: -40, width: 200, height: 200, background: "radial-gradient(circle, rgba(26,111,168,0.25) 0%, transparent 70%)", filter: "blur(30px)" }} />
-          <h2
-            className="font-bold mb-2"
-            style={{ fontFamily: "var(--font-syne)", fontSize: "1.25rem", color: "var(--fg)", letterSpacing: "-0.02em" }}
-          >
-            Still need help?
-          </h2>
-          <p className="text-sm mb-6" style={{ color: "var(--body-text)" }}>
-            We respond to every message, usually within 24 hours.
-          </p>
-          <a
-            href="mailto:support@tradeslook.com"
-            className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold"
-            style={{ background: "var(--btn-primary-bg)", color: "var(--btn-primary-text)" }}
-          >
-            Email Support →
-          </a>
+      <section className="section">
+        <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.5fr] items-start">
+          <div className="lg:sticky lg:top-28">
+            <SectionHead eyebrow="Common questions" title="Quick" accent="answers." />
+            <div className="card mt-8 p-6" style={{ background: "var(--bg-tint)" }}>
+              <span className="icon-chip chip-violet"><Icon name="mail" size={22} /></span>
+              <p className="mt-5" style={{ fontWeight: 750, fontSize: "1.15rem", letterSpacing: "-0.02em" }}>Still need help?</p>
+              <p className="small body mt-1 mb-5">
+                Email us your device model, Android version and app version. We read every message.
+              </p>
+              <a href={`mailto:${SUPPORT_EMAIL}`} className="btn btn-dark btn-chip btn-sm">
+                <span>{SUPPORT_EMAIL}</span>
+                <span className="chip"><Icon name="arrow-up-right" size={15} /></span>
+              </a>
+            </div>
+          </div>
+          <FaqList items={faqItems} openFirst />
         </div>
-
-        <div className="mt-10" style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}>
-          <Link href="/" className="text-sm font-semibold" style={{ color: "var(--badge-info-text)" }}>
-            ← Back to DuoStrick
-          </Link>
-        </div>
-      </div>
+      </section>
     </>
   );
 }

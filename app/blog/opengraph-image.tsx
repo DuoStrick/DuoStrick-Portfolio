@@ -10,7 +10,7 @@ export default function BlogOgImage() {
     (
       <div
         style={{
-          background: "linear-gradient(135deg, #0a0a0a 0%, #0d1520 60%, #080f0a 100%)",
+          background: "linear-gradient(135deg, #0a0a0a 0%, #17112e 60%, #0c0a16 100%)",
           width: "100%", height: "100%",
           display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center",
@@ -22,7 +22,7 @@ export default function BlogOgImage() {
         <div style={{
           position: "absolute", top: -120, right: -120,
           width: 580, height: 580, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(26,111,168,0.50) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(85,54,224,0.50) 0%, transparent 70%)",
           filter: "blur(80px)",
         }} />
         {/* Green glow */}

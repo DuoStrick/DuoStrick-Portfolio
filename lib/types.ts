@@ -12,6 +12,8 @@ export interface PostMeta {
   imageAlt: string;
   readTime: number;
   featured: boolean;
+  /** "Key takeaways" bullets — the short, quotable answer shown above the article */
+  summary: string[];
 }
 
 export interface Post extends PostMeta {
@@ -56,6 +58,8 @@ export interface AppEntry {
   /** ISO date of the last Play Store update */
   storeUpdated: string;
   containsAds: boolean;
+  /** Google Play lists in-app purchases */
+  inAppPurchases?: boolean;
   /** Blog post tags that mark a post as being about this app */
   postTags: string[];
   /** Play Store short description */

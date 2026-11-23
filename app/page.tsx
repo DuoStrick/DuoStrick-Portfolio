@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Hero from "../components/Hero";
-import SectionContainer from "../components/SectionContainer";
-import AppCard from "../components/AppCard";
+import { AppTile } from "../components/AppCard";
 import BlogCard from "../components/BlogCard";
 import Reveal from "../components/Reveal";
-import { getAllApps } from "../data/apps";
+import { ButtonLink, FaqList, Icon, JsonLd, SectionHead, TextLink, faqSchema } from "../components/ui";
+import { APP_GROUPS, appGroup, getAllApps } from "../data/apps";
 import { softwareApplicationSchema, appListSchema } from "../lib/appSchema";
 import { getAllPosts } from "../lib/posts";
+import { HOME_FAQ, SITE_URL } from "../lib/studio";
 
 export const metadata: Metadata = {
   /* Use absolute to bypass layout template — avoids "DuoStrick | DuoStrick" */
@@ -67,196 +69,232 @@ export const metadata: Metadata = {
   },
 };
 
-/* ── Structured data, generated from data/apps.ts ───────────── */
 const APPS = getAllApps();
-const appSchemas = APPS.map(softwareApplicationSchema);
-const appsListSchema = appListSchema(APPS, "https://duostrick.vercel.app/#apps");
+
+const PROMISES = [
+  { title: "Free on Google Play", body: "Every app is free to download." },
+  { title: "Works offline",       body: "All six apps work without Wi-Fi." },
+  { title: "Files stay local",    body: "Our tools process media and PDFs on the phone." },
+  { title: "Clear about ads",     body: "Each app page says whether it shows ads." },
+];
+
+const PRINCIPLES = [
+  { n: "01", title: "Offline first",        body: "If an app can work without a connection, it should. Puzzles, players and tools all run on the phone." },
+  { n: "02", title: "Easy from the first tap", body: "Short tutorials, plain settings and hints that teach instead of just giving answers." },
+  { n: "03", title: "Respect for your data", body: "Mediqora and Docqora don't even request internet access. We tell you plainly which apps carry ads." },
+  { n: "04", title: "Built from feedback",  body: "We read every review and email, and the next update is shaped by what players actually ask for." },
+];
+
+const STATS = [
+  { value: String(APPS.length), label: "apps on Google Play", body: "Puzzle games, media players and everyday tools — all published as DuoStrick.", href: "/apps", link: "See every app" },
+  { value: "300", label: "logic puzzles in Bunny Puzzle", body: "Queens-style boards from 4×4 to 10×10, plus a fresh daily challenge.", href: "/apps/bunny-puzzle", link: "About Bunny Puzzle" },
+  { value: "8", label: "PDF tools in Docqora", body: "Compress, merge, split, organise, protect, rotate and convert — offline.", href: "/apps/docqora", link: "About Docqora" },
+];
 
 export default function Home() {
   const latestPosts = getAllPosts().slice(0, 3);
 
   return (
     <>
-      {/* App structured data */}
-      {appSchemas.map((schema) => (
-        <script
-          key={schema["@id"]}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(appsListSchema) }}
+      <JsonLd
+        data={[
+          ...APPS.map(softwareApplicationSchema),
+          appListSchema(APPS, `${SITE_URL}/#apps`),
+          faqSchema(HOME_FAQ, `${SITE_URL}/#faq`),
+        ]}
       />
 
-      <div className="w-full flex flex-col items-center">
-        <Hero />
+      <Hero />
 
-        {/* ── Featured Apps ─── */}
-        <SectionContainer id="apps" style={{ borderTop: "1px solid var(--border)" }}>
-          <Reveal direction="up">
-            <div className="mb-10 text-center md:text-left">
-              <span className="badge badge-info mb-4">Google Play</span>
-              <h2 className="font-bold" style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", color: "var(--fg)", letterSpacing: "-0.02em" }}>
-                Featured Apps
-              </h2>
-              <div className="accent-bar-blue" />
-              <p style={{ color: "var(--body-text)", maxWidth: 520 }}>
-                Officially published titles on Google Play, built with care to provide the best experience.
-              </p>
+      {/* ── Promise strip ─── */}
+      <section className="wrap">
+        <div className="hairline grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 py-10">
+          {PROMISES.map((p) => (
+            <div key={p.title} className="flex gap-3">
+              <span className="mt-1 shrink-0" style={{ color: "var(--brand)" }}><Icon name="check" size={18} /></span>
+              <div>
+                <p style={{ fontWeight: 750, letterSpacing: "-0.02em" }}>{p.title}</p>
+                <p className="small" style={{ color: "var(--muted)" }}>{p.body}</p>
+              </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── What we make ─── */}
+      <section className="section">
+        <div className="wrap">
+          <Reveal>
+            <SectionHead
+              align="center"
+              eyebrow="What we make"
+              title="Puzzle games, media players"
+              accent="and everyday tools."
+              lead="Three kinds of apps, one idea: small, focused and genuinely useful — whether you have five minutes or no signal."
+            />
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid gap-5 md:grid-cols-3 mt-14">
+            {APP_GROUPS.map((group, i) => {
+              const groupApps = APPS.filter((a) => appGroup(a) === group.id);
+              return (
+                <Reveal key={group.id} delay={i * 90}>
+                  <div className="card p-7 h-full flex flex-col">
+                    <span className={`icon-chip ${group.chip}`}><Icon name={group.icon} size={22} /></span>
+                    <h3 className="title-3 mt-6">{group.title}</h3>
+                    <p className="body mt-2 mb-6 flex-1">{group.body}</p>
+                    <ul className="flex flex-col gap-2">
+                      {groupApps.map((app) => (
+                        <li key={app.id}>
+                          <Link href={`/apps/${app.id}`} className="group flex items-center gap-3 rounded-2xl p-2 -mx-2" style={{ fontWeight: 700 }}>
+                            <Image src={app.iconUrl} alt="" width={36} height={36} className="rounded-[10px]" />
+                            <span className="flex-1">{app.shortName}</span>
+                            <span style={{ color: "var(--muted)" }}><Icon name="arrow-right" size={16} /></span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Products ─── */}
+      <section id="apps" className="section bg-tint">
+        <div className="wrap">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <SectionHead
+              eyebrow="Our apps"
+              title="Explore our"
+              accent="games and apps."
+              lead="Open an app to see its features, screenshots and answers to common questions."
+            />
+            <div className="shrink-0"><ButtonLink href="/apps" size="sm">View all apps</ButtonLink></div>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {APPS.map((app, i) => (
-              <Reveal key={app.id} delay={i * 120} direction="up">
-                <AppCard app={app} />
+              <Reveal key={app.id} delay={(i % 3) * 80}>
+                <AppTile app={app} />
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
 
-          <Reveal delay={200} direction="up">
-            <div className="mt-8 text-center md:text-left">
-              <a
-                href="https://play.google.com/store/apps/dev?id=8989641209983926608"
-                target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold rounded-full px-5 py-2.5"
-                style={{ background: "var(--surface)", color: "var(--body-text)", border: "1px solid var(--border)" }}
-              >
-                View all on Google Play →
-              </a>
+      {/* ── About + at-a-glance ─── */}
+      <section id="about" className="section" style={{ scrollMarginTop: 72 }}>
+        <div className="wrap grid gap-14 lg:grid-cols-[1.05fr_1fr] items-start">
+          <Reveal direction="left">
+            <SectionHead
+              eyebrow="About DuoStrick"
+              title="Small apps."
+              accent="Made with care."
+              lead="DuoStrick is an independent Android studio founded in 2024. We build cute puzzle games and handy offline apps, and publish them free on Google Play."
+            />
+            <ol className="mt-10 grid sm:grid-cols-2 gap-x-8 gap-y-8">
+              {PRINCIPLES.map((p) => (
+                <li key={p.n}>
+                  <p className="eyebrow" style={{ color: "var(--brand)" }}>{p.n}</p>
+                  <p className="mt-2" style={{ fontWeight: 750, fontSize: "1.1rem", letterSpacing: "-0.02em" }}>{p.title}</p>
+                  <p className="body small mt-1.5">{p.body}</p>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+
+          <Reveal direction="right" delay={80}>
+            <div className="rounded-[28px] p-4 sm:p-6 md:p-8" style={{ background: "var(--chip-amber-bg)" }}>
+              <p className="eyebrow mb-1" style={{ color: "var(--chip-amber-fg)" }}>At a glance</p>
+              <h3 className="title-3 mb-6">Which DuoStrick apps have ads?</h3>
+              <div className="rounded-[20px] overflow-hidden" style={{ background: "var(--surface)" }}>
+                <table className="w-full text-left small">
+                  <thead>
+                    <tr style={{ color: "var(--muted)" }}>
+                      <th scope="col" className="font-semibold px-3 sm:px-4 py-3">App</th>
+                      <th scope="col" className="font-semibold px-2 py-3">Price</th>
+                      <th scope="col" className="font-semibold px-3 sm:px-4 py-3">Ads</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {APPS.map((app) => (
+                      <tr key={app.id} style={{ borderTop: "1px solid var(--line)" }}>
+                        <th scope="row" className="px-3 sm:px-4 py-3 font-bold">
+                          <Link href={`/apps/${app.id}`} className="flex items-center gap-2.5">
+                            <Image src={app.iconUrl} alt="" width={28} height={28} className="rounded-[8px]" />
+                            {app.shortName}
+                          </Link>
+                        </th>
+                        <td className="px-2 py-3" style={{ color: "var(--text)" }}>{app.inAppPurchases ? "Free + IAP" : "Free"}</td>
+                        <td className="px-3 sm:px-4 py-3">
+                          <span className={`tag ${app.containsAds ? "tag-amber" : "tag-green"}`}>{app.containsAds ? "Contains ads" : "No ads"}</span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="small mt-4" style={{ color: "var(--chip-amber-fg)" }}>As listed on Google Play. Every app works offline.</p>
             </div>
           </Reveal>
-        </SectionContainer>
+        </div>
+      </section>
 
-        {/* ── Blog Preview ─── */}
-        {latestPosts.length > 0 && (
-          <SectionContainer style={{ background: "var(--bg-alt)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
-            <Reveal direction="up">
-              <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
-                <div>
-                  <span className="badge badge-success mb-4">Studio Blog</span>
-                  <h2 className="font-bold" style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", color: "var(--fg)", letterSpacing: "-0.02em" }}>
-                    From the Blog
-                  </h2>
-                  <div className="accent-bar-green" />
-                  <p className="mt-0" style={{ color: "var(--body-text)" }}>
-                    Tips, updates, and stories from our studio.
+      {/* ── By the numbers ─── */}
+      <section className="section bg-soft">
+        <div className="wrap">
+          <Reveal>
+            <SectionHead align="center" eyebrow="By the numbers" title="A small studio" accent="with real numbers." />
+          </Reveal>
+          <div className="grid md:grid-cols-3 mt-14">
+            {STATS.map((s, i) => (
+              <Reveal key={s.label} delay={i * 90}>
+                <div className={`py-8 md:py-2 md:px-8 ${i > 0 ? "border-t md:border-t-0 md:border-l" : ""}`} style={{ borderColor: "var(--line)" }}>
+                  <p style={{ fontSize: "clamp(3.4rem, 6vw, 4.6rem)", fontWeight: 800, letterSpacing: "-0.06em", lineHeight: 1 }}>
+                    {s.value}<span style={{ color: "var(--sun)" }} aria-hidden="true">.</span>
                   </p>
+                  <p className="mt-4" style={{ fontWeight: 750, fontSize: "1.15rem", letterSpacing: "-0.02em" }}>{s.label}</p>
+                  <p className="body small mt-2 mb-5">{s.body}</p>
+                  <TextLink href={s.href}>{s.link}</TextLink>
                 </div>
-                <Link href="/blog" className="text-sm font-semibold shrink-0" style={{ color: "var(--badge-info-text)" }}>
-                  View all posts →
-                </Link>
-              </div>
-            </Reveal>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {/* ── Blog ─── */}
+      {latestPosts.length > 0 && (
+        <section className="section">
+          <div className="wrap">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+              <SectionHead eyebrow="From the blog" title="Guides, tips" accent="and studio notes." />
+              <div className="shrink-0"><ButtonLink href="/blog" size="sm" variant="light">All articles</ButtonLink></div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
               {latestPosts.map((post, i) => (
-                <Reveal key={post.slug} delay={i * 110} direction="up">
+                <Reveal key={post.slug} delay={i * 90}>
                   <BlogCard post={post} />
                 </Reveal>
               ))}
             </div>
-          </SectionContainer>
-        )}
-
-        {/* ── About ─── */}
-        <SectionContainer id="about" style={{ borderTop: "1px solid var(--border)" }}>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <Reveal direction="left">
-              <div>
-                <span className="badge badge-default mb-4">Our Story</span>
-                <h2 className="font-bold" style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.75rem, 4vw, 2.5rem)", color: "var(--fg)", letterSpacing: "-0.02em" }}>
-                  About the Studio
-                </h2>
-                <div className="accent-bar-gradient mb-5" />
-                <p className="mb-4" style={{ color: "var(--body-text)", lineHeight: 1.8 }}>
-                  DuoStrick is a small, independent mobile developer studio passionate about building engaging puzzle games and polished mobile applications. We believe in high-quality design, smart mechanics, and intuitive user experiences.
-                </p>
-                <p className="mb-8" style={{ color: "var(--body-text)", lineHeight: 1.8 }}>
-                  From logic puzzles like Bunny Puzzle and 2048 Offline to everyday tools like Mediqora, AV Player, Docqora and ReceiptVault, our goal is to bring joy and seamless functionality to users worldwide across all their Android devices.
-                </p>
-                <Link
-                  href="/#contact"
-                  className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
-                  style={{ background: "var(--btn-primary-bg)", color: "var(--btn-primary-text)" }}
-                >
-                  Get in touch
-                </Link>
-              </div>
-            </Reveal>
-
-            {/* Stats card */}
-            <Reveal direction="right" delay={80}>
-              <div className="rounded-2xl p-8 flex flex-col gap-5 glow-blue" style={{ background: "var(--stat-bg)", border: "1px solid var(--stat-border)" }}>
-                {[
-                  { label: "Apps on Google Play", value: String(APPS.length), icon: "🎮" },
-                  { label: "Happy Users",          value: "500+", icon: "😊" },
-                  { label: "Countries Reached",    value: "30+",  icon: "🌍" },
-                  { label: "Year Founded",         value: "2024", icon: "🚀" },
-                ].map(({ label, value, icon }) => (
-                  <div key={label} className="flex items-center gap-4">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0"
-                      style={{ background: "var(--stat-icon-bg)", border: "1px solid var(--stat-border)" }}
-                    >
-                      {icon}
-                    </div>
-                    <div>
-                      <div className="font-bold" style={{ fontFamily: "var(--font-syne)", color: "var(--fg)", fontSize: "1.1rem" }}>{value}</div>
-                      <div className="text-xs" style={{ color: "var(--muted)" }}>{label}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
           </div>
-        </SectionContainer>
+        </section>
+      )}
 
-        {/* ── Contact ─── */}
-        <SectionContainer id="contact" style={{ borderTop: "1px solid var(--border)" }}>
-          <Reveal direction="scale">
-            <div
-              className="rounded-2xl p-10 md:p-16 text-center relative overflow-hidden"
-              style={{ background: "var(--cta-bg)", color: "var(--cta-text)" }}
-            >
-              <div className="absolute pointer-events-none" style={{ top: "-60px", right: "-60px", width: 340, height: 340, background: "radial-gradient(circle, rgba(26,111,168,0.35) 0%, transparent 65%)", filter: "blur(35px)" }} />
-              <div className="absolute pointer-events-none" style={{ bottom: "-60px", left: "-60px", width: 300, height: 300, background: "radial-gradient(circle, rgba(26,122,74,0.30) 0%, transparent 65%)", filter: "blur(35px)" }} />
-              <div className="absolute pointer-events-none" style={{ top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 400, height: 200, background: "radial-gradient(ellipse, rgba(26,111,168,0.08) 0%, transparent 70%)", filter: "blur(30px)" }} />
-              <h2
-                className="font-bold mb-4 relative"
-                style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.75rem, 4vw, 2.8rem)", letterSpacing: "-0.02em", color: "var(--cta-text)" }}
-              >
-                Get in Touch
-              </h2>
-              <p
-                className="mb-10 relative"
-                style={{ color: "var(--cta-muted)", maxWidth: 460, margin: "0 auto 2.5rem" }}
-              >
-                Have a question, feedback, or need support? We&apos;d love to hear from you.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center relative">
-                <a
-                  href="mailto:support@tradeslook.com"
-                  className="px-7 py-3.5 rounded-full font-semibold text-sm"
-                  style={{ background: "#ffffff", color: "#0d0d0d" }}
-                >
-                  Email Us
-                </a>
-                <a
-                  href="https://play.google.com/store/apps/dev?id=8989641209983926608"
-                  target="_blank" rel="noopener noreferrer"
-                  className="px-7 py-3.5 rounded-full font-semibold text-sm"
-                  style={{ background: "transparent", color: "var(--cta-text)", border: "1.5px solid var(--cta-border)" }}
-                >
-                  Google Play Profile
-                </a>
-              </div>
-            </div>
-          </Reveal>
-        </SectionContainer>
-      </div>
+      {/* ── FAQ ─── */}
+      <section id="faq" className="section hairline">
+        <div className="wrap grid gap-10 lg:grid-cols-[1fr_1.4fr]">
+          <div>
+            <SectionHead eyebrow="Questions" title="Good to know" accent="before you download." />
+            <p className="body mt-6">Have a specific question?</p>
+            <div className="mt-2"><TextLink href="/support" brand>Visit Support &amp; FAQ</TextLink></div>
+          </div>
+          <FaqList items={HOME_FAQ} openFirst />
+        </div>
+      </section>
     </>
   );
 }

@@ -9,6 +9,7 @@ image: "/blog/bunny-puzzle-banner.jpg"
 imageAlt: "Bunny Puzzle: Queens Logic — one bunny in every row, column and colour region"
 readTime: 6
 featured: true
+summary: ["Queens puzzles have one solution reachable by logic: one piece per row, column and colour region, with no two touching.", "Start with the smallest regions, sweep after every placement, and look for regions locked into a single row or column.", "When N regions fit inside N rows, those rows belong to them — Bunny Puzzle's hints teach these techniques step by step."]
 ---
 
 Queens puzzles look like a game of luck the first time you see one: a coloured grid, a handful of rules, and far too many empty squares. They aren't. A well-made queens puzzle has exactly one solution, and you can always find the next move by logic alone.

@@ -12,7 +12,7 @@ export function generateStaticParams() {
 
 /* Category → accent colour, mirrors the badge palette on the site */
 const ACCENTS: Record<string, { fg: string; bg: string; border: string }> = {
-  "Game Dev":      { fg: "#93c5fd", bg: "rgba(26,111,168,0.18)", border: "rgba(26,111,168,0.40)" },
+  "Game Dev":      { fg: "#c4b8ff", bg: "rgba(85,54,224,0.18)", border: "rgba(85,54,224,0.40)" },
   "Tips & Tricks": { fg: "#86efac", bg: "rgba(26,122,74,0.18)",  border: "rgba(26,122,74,0.40)"  },
   "Studio News":   { fg: "#fcd34d", bg: "rgba(168,120,26,0.18)", border: "rgba(168,120,26,0.40)" },
   Updates:         { fg: "#d4d4d4", bg: "rgba(255,255,255,0.07)", border: "rgba(255,255,255,0.16)" },
@@ -38,7 +38,7 @@ export default async function PostOgImage({
     (
       <div
         style={{
-          background: "linear-gradient(135deg, #0a0a0a 0%, #0d1520 60%, #080f0a 100%)",
+          background: "linear-gradient(135deg, #0a0a0a 0%, #17112e 60%, #0c0a16 100%)",
           width: "100%", height: "100%",
           display: "flex", flexDirection: "column",
           justifyContent: "space-between",
@@ -51,7 +51,7 @@ export default async function PostOgImage({
         <div style={{
           position: "absolute", top: -140, right: -140,
           width: 620, height: 620, borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(26,111,168,0.52) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(85,54,224,0.52) 0%, transparent 70%)",
           filter: "blur(90px)",
         }} />
         {/* Green glow — bottom left */}

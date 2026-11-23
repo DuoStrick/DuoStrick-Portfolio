@@ -1,70 +1,72 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getAllApps } from "../data/apps";
+import { ABOUT, PLAY_DEV_URL, SUPPORT_EMAIL } from "../lib/studio";
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="w-full mt-auto" style={{ background: "var(--bg-alt)", borderTop: "1px solid var(--border)" }}>
-      <div className="max-w-6xl mx-auto px-6 py-10">
-        <div className="flex flex-col md:flex-row justify-between gap-8">
-          {/* Brand */}
+    <footer className="footer w-full overflow-hidden">
+      <div className="wrap pt-20 pb-10">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <div>
-            <Link href="/" className="flex items-center gap-2 font-bold mb-3" style={{ fontFamily: "var(--font-syne)", color: "var(--fg)", fontSize: "1.05rem", letterSpacing: "-0.02em" }}>
-              <Image src="/duostrick-logo.png" alt="DuoStrick Logo" width={26} height={26} className="rounded-md" />
-              DuoStrick
+            <Link href="/" className="flex items-center gap-2.5 mb-5">
+              <Image src="/duostrick-logo.png" alt="" width={36} height={36} className="rounded-[10px]" />
+              <span style={{ fontWeight: 800, fontSize: "1.25rem", letterSpacing: "-0.04em", color: "#fff" }}>DuoStrick</span>
             </Link>
-            <p className="text-sm" style={{ color: "var(--muted)", maxWidth: 260, lineHeight: 1.7 }}>
-              Cute puzzle games and handy offline apps for Android.
+            <p style={{ maxWidth: 300, lineHeight: 1.7 }}>{ABOUT}</p>
+            <p className="mt-5 flex items-center gap-2 small" style={{ color: "#8f8ca3" }}>
+              <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: "#5fd38d" }} />
+              Independent studio · since 2024
             </p>
-            <a
-              href="https://play.google.com/store/apps/dev?id=8989641209983926608"
-              target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-4 text-xs font-medium rounded-full px-3 py-1.5"
-              style={{ background: "var(--card)", border: "1px solid var(--border)", color: "var(--body-text)" }}
-            >
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3.18 23.76a2 2 0 0 0 2.85.1l.08-.07 10.15-10.17-2.96-2.97-10.12 10.1a2 2 0 0 0 0 3.01zm15.5-14.87-2.46-2.47-2.05 2.05 2.46 2.47 2.05-2.05zm1.3-1.3 1.07-1.08a2 2 0 0 0 0-2.84L18.5 1.13a2 2 0 0 0-2.83 0L14.6 2.2l5.38 5.39zM1.64 1.43A1 1 0 0 0 0 2.27v19.46a1 1 0 0 0 1.64.77l11.2-9.73-11.2-9.74-.01-.6z"/>
-              </svg>
-              Google Play Profile
-            </a>
           </div>
 
-          {/* Links */}
-          <div className="flex flex-wrap gap-10">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--muted)" }}>Navigate</p>
-              <ul className="flex flex-col gap-2">
-                {[["All apps","/apps"],["Blog","/blog"],["About","/#about"],["Contact","/#contact"]].map(([l,h])=>(
-                  <li key={h}><Link href={h} className="text-sm" style={{ color: "var(--body-text)" }}>{l}</Link></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--muted)" }}>Our Apps</p>
-              <ul className="flex flex-col gap-2">
-                {getAllApps().map((app)=>(
-                  <li key={app.id}><Link href={`/apps/${app.id}`} className="text-sm" style={{ color: "var(--body-text)" }}>{app.shortName}</Link></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--muted)" }}>Legal & Support</p>
-              <ul className="flex flex-col gap-2">
-                {[["Privacy Policy","/privacy-policy"],["Support","/support"]].map(([l,h])=>(
-                  <li key={h}><Link href={h} className="text-sm" style={{ color: "var(--body-text)" }}>{l}</Link></li>
-                ))}
-                {/* A plain <a>: the sitemap is a static file, not a route Link can prefetch */}
-                <li><a href="/sitemap.xml" className="text-sm" style={{ color: "var(--body-text)" }}>Sitemap</a></li>
-              </ul>
-            </div>
+          <div>
+            <p className="eyebrow mb-5">Our apps</p>
+            <ul className="flex flex-col gap-3">
+              {getAllApps().map((app) => (
+                <li key={app.id}><Link href={`/apps/${app.id}`}>{app.shortName}</Link></li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="eyebrow mb-5">Explore</p>
+            <ul className="flex flex-col gap-3">
+              <li><Link href="/apps">All apps</Link></li>
+              <li><Link href="/blog">Blog</Link></li>
+              <li><Link href="/#about">About DuoStrick</Link></li>
+              <li><Link href="/support">Support &amp; FAQ</Link></li>
+              <li><a href={PLAY_DEV_URL} target="_blank" rel="noopener noreferrer">Google Play ↗</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="eyebrow mb-5">Say hello</p>
+            <ul className="flex flex-col gap-3">
+              <li><a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a></li>
+              <li style={{ color: "#8f8ca3" }}>We read every message.</li>
+            </ul>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-8 pt-6 text-xs" style={{ borderTop: "1px solid var(--border)", color: "var(--muted)" }}>
+        <div
+          className="mt-16 pt-6 flex flex-col sm:flex-row justify-between gap-4 small"
+          style={{ borderTop: "1px solid #24213a", color: "#8f8ca3" }}
+        >
           <span>&copy; {year} DuoStrick. All rights reserved.</span>
-          <span>Built with ❤️ by DuoStrick</span>
+          <span className="flex flex-wrap gap-x-5 gap-y-2">
+            <Link href="/privacy-policy">Privacy policy</Link>
+            <Link href="/support">Support</Link>
+            {/* A plain <a>: the sitemap is a static file, not a route Link can prefetch */}
+            <a href="/sitemap.xml">Sitemap</a>
+            <a href="/llms.txt">llms.txt</a>
+          </span>
         </div>
+      </div>
+
+      <div className="wrap" aria-hidden="true">
+        <div className="wordmark -mb-[0.12em]">DuoStrick</div>
       </div>
     </footer>
   );

@@ -28,8 +28,8 @@ export default function ThemeToggle() {
     return (
       <button
         aria-label="Toggle theme"
-        className="w-9 h-9 rounded-full flex items-center justify-center"
-        style={{ background: "var(--input)", border: "1px solid var(--border)" }}
+        className="w-10 h-10 rounded-full flex items-center justify-center"
+        style={{ background: "var(--btn-light-bg)" }}
       />
     );
   }
@@ -39,13 +39,8 @@ export default function ThemeToggle() {
       onClick={toggle}
       aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
       title={theme === "light" ? "Dark mode" : "Light mode"}
-      className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
-      style={{
-        background: "var(--input)",
-        border: "1px solid var(--border)",
-        color: "var(--body-text)",
-        cursor: "pointer",
-      }}
+      className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+      style={{ background: "var(--btn-light-bg)", color: "var(--fg)", cursor: "pointer" }}
     >
       {theme === "light" ? (
         /* Moon */

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getAllPosts } from "../../lib/posts";
 import BlogCard from "../../components/BlogCard";
 import BlogFilters from "../../components/BlogFilters";
+import { Breadcrumb, JsonLd, SectionHead } from "../../components/ui";
 
 export const metadata: Metadata = {
   title: { absolute: "Blog — Android Game Tips, App Guides & Studio News | DuoStrick" },
@@ -93,71 +93,39 @@ export default function BlogPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd data={[blogPageSchema, breadcrumbSchema]} />
 
-      <div className="w-full max-w-6xl mx-auto px-6 py-12 md:py-16">
-        {/* Breadcrumb nav */}
-        <nav
-          className="flex items-center gap-2 text-sm mb-8"
-          aria-label="Breadcrumb"
-          style={{ color: "var(--muted)" }}
-        >
-          <Link href="/" style={{ color: "var(--muted)" }}>Home</Link>
-          <span aria-hidden="true">/</span>
-          <span style={{ color: "var(--fg)", fontWeight: 500 }} aria-current="page">Blog</span>
-        </nav>
-
-        {/* Header */}
-        <div className="mb-12">
-          <h1
-            className="font-black mb-2"
-            style={{
-              fontFamily: "var(--font-syne)",
-              fontSize: "clamp(2.2rem, 5vw, 3.2rem)",
-              color: "var(--fg)",
-              letterSpacing: "-0.03em",
-              lineHeight: 1.1,
-            }}
-          >
-            DuoStrick Blog
-          </h1>
-          <div className="accent-bar-gradient mb-4" />
-          <p style={{ color: "var(--body-text)", fontSize: "1.05rem" }}>
-            Puzzle strategies, how-to guides for our Android apps, and studio updates from our indie team.
-          </p>
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-x-0 top-0 h-[420px] pointer-events-none"
+          style={{ background: "radial-gradient(60% 70% at 50% 0%, var(--bg-tint) 0%, transparent 70%)" }}
+          aria-hidden="true"
+        />
+        <div className="wrap relative pt-10 md:pt-14 pb-12">
+          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
+          <SectionHead
+            as="h1"
+            eyebrow="The DuoStrick blog"
+            title="Guides, tips"
+            accent="and studio notes."
+            lead="Puzzle strategies, step-by-step how-tos for our Android apps, and updates from the studio."
+          />
         </div>
+      </section>
 
-        {/* Featured post */}
+      <div className="wrap pb-24">
         {featured && (
-          <div className="mb-12">
+          <div className="mb-16">
             <BlogCard post={featured} featured />
           </div>
         )}
 
-        {/* Filtered grid */}
         {rest.length > 0 && <BlogFilters posts={rest} />}
 
         {posts.length === 0 && (
-          <div
-            className="text-center py-20 rounded-2xl"
-            style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
-          >
-            <p
-              className="font-bold mb-2"
-              style={{ fontFamily: "var(--font-syne)", fontSize: "1.3rem", color: "var(--fg)" }}
-            >
-              No posts yet
-            </p>
-            <p style={{ color: "var(--muted)" }}>
-              We&apos;re working on something great. Check back soon!
-            </p>
+          <div className="card text-center py-20">
+            <p className="title-3 mb-2">No posts yet</p>
+            <p style={{ color: "var(--muted)" }}>We&apos;re working on something great. Check back soon!</p>
           </div>
         )}
       </div>

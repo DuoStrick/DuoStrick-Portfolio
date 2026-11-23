@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Breadcrumb, JsonLd, TextLink } from "../../components/ui";
 
 export const metadata: Metadata = {
   title: { absolute: "Privacy Policy | DuoStrick" },
@@ -24,33 +24,13 @@ export default function PrivacyPolicy() {
   const updated = "October 7, 2026";
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-6 py-14 md:py-20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+    <div className="wrap py-10 md:py-14" style={{ maxWidth: 880 }}>
+      <JsonLd data={breadcrumbSchema} />
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]} />
 
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm mb-10" aria-label="Breadcrumb" style={{ color: "var(--muted)" }}>
-        <Link href="/" style={{ color: "var(--muted)" }}>Home</Link>
-        <span aria-hidden="true">/</span>
-        <span style={{ color: "var(--fg)", fontWeight: 500 }} aria-current="page">Privacy Policy</span>
-      </nav>
-
-      <h1
-        className="font-black mb-2"
-        style={{
-          fontFamily: "var(--font-syne)",
-          fontSize: "clamp(2rem, 5vw, 3rem)",
-          color: "var(--fg)",
-          letterSpacing: "-0.03em",
-          lineHeight: 1.1,
-        }}
-      >
-        Privacy Policy
-      </h1>
-      <div className="accent-bar-blue mb-6" />
-      <p className="text-sm mb-10" style={{ color: "var(--muted)" }}>Last updated: {updated}</p>
+      <p className="eyebrow mb-4">Legal</p>
+      <h1 className="display-2">Privacy <span className="accent">policy.</span></h1>
+      <p className="small mt-4 mb-12" style={{ color: "var(--muted)" }}>Last updated: {updated}</p>
 
       <div className="prose" style={{ maxWidth: "none" }}>
         <p>
@@ -235,14 +215,8 @@ export default function PrivacyPolicy() {
         </p>
       </div>
 
-      <div className="mt-12 pt-6" style={{ borderTop: "1px solid var(--border)" }}>
-        <Link
-          href="/"
-          className="text-sm font-semibold"
-          style={{ color: "var(--badge-info-text)" }}
-        >
-          ← Back to DuoStrick
-        </Link>
+      <div className="hairline mt-12 pt-6">
+        <TextLink href="/" brand>Back to DuoStrick</TextLink>
       </div>
     </div>
   );
