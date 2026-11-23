@@ -44,7 +44,7 @@ export default function BlogOgImage() {
             borderRadius: 999, padding: "9px 28px",
             color: "#86efac", fontSize: 20, fontWeight: 600,
           }}>
-            DuoStrick Studio
+            DuoStrick
           </div>
 
           {/* Title */}
@@ -66,7 +66,7 @@ export default function BlogOgImage() {
 
           {/* Topic pills */}
           <div style={{ display: "flex", gap: 14, marginTop: 10, flexWrap: "wrap", justifyContent: "center" }}>
-            {["2048 Strategy", "AV Player Tips", "Game Dev", "App Guides"].map((t) => (
+            {["Puzzle Strategy", "App Guides", "Offline Tools", "Studio News"].map((t) => (
               <div key={t} style={{
                 background: "rgba(255,255,255,0.06)",
                 border: "1px solid rgba(255,255,255,0.1)",

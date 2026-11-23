@@ -2,6 +2,7 @@
 title: "How to Compress, Merge and Split PDFs on Android Without Uploading Them"
 description: "Online PDF tools upload your files to a server. Here's how to compress, merge, split and password-protect PDFs on Android entirely offline with Docqora."
 date: "2026-11-21"
+seoTitle: "Compress, Merge & Split PDFs on Android Offline"
 author: "DuoStrick Studio"
 category: "Tips & Tricks"
 tags: ["docqora", "pdf-tools", "compress-pdf", "merge-pdf", "split-pdf", "offline-pdf", "pdf-privacy", "android-tips", "free-android-app", "android-tools"]

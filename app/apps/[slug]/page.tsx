@@ -45,7 +45,7 @@ export async function generateMetadata({
       title: app.seoTitle,
       description: app.seoDescription,
       url,
-      siteName: "DuoStrick Game Studio",
+      siteName: "DuoStrick",
       type: "website",
       locale: "en_US",
       images: [ogImage],

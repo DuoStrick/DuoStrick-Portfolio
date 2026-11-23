@@ -2,6 +2,7 @@
 title: "AV Player: Video & MP3 Player — Every Feature Explained"
 description: "Complete AV Player guide: free 4K video player for MP4, MKV, AVI and FLAC, plus Picture-in-Picture, gesture controls, 8 themes, subtitles and offline MP3."
 date: "2026-05-22"
+updated: "2026-11-23"
 author: "DuoStrick Studio"
 category: "Studio News"
 tags: ["av-player", "av-player-android", "android", "video-player", "mp3-player", "media-player", "4k-video-player", "offline", "flac-player", "mkv-player", "all-format-player", "picture-in-picture", "gesture-controls", "subtitle-support", "offline-music-player", "free-android-app", "best-video-player-android"]

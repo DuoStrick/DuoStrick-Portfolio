@@ -31,7 +31,7 @@ export const apps: AppEntry[] = [
     description:
       "A cosy queens-style logic puzzle. Place one bunny in every row, every column and every colour region — and never let two bunnies touch. Level after level of hand-checked puzzles from 4×4 to 10×10, a fresh Daily Challenge, smart hints and no timer. Plays offline.",
 
-    seoTitle: "Bunny Puzzle: Queens Logic — Cosy Queens Puzzle Game for Android",
+    seoTitle: "Bunny Puzzle: Queens Logic Puzzle Game for Android",
     seoDescription:
       "A cosy queens logic puzzle for Android: one bunny per row, column and colour region. Many levels, a daily challenge, smart hints. Offline, no timer.",
     schemaDescription:
@@ -157,7 +157,7 @@ export const apps: AppEntry[] = [
     description:
       "An offline video and music player that turns the files on your phone into a real library. Mediqora reads filenames and groups them into series, seasons and episodes, remembers where you stopped, and queues up Up Next. No account, no ads — it has no internet permission at all.",
 
-    seoTitle: "Mediqora — Offline Video & Music Player for Android with Series Detection",
+    seoTitle: "Mediqora: Offline Video & Music Player for Android",
     seoDescription:
       "Free offline Android video & music player. Mediqora groups files into series and episodes, resumes where you stopped, and has no internet permission at all.",
     schemaDescription:
@@ -285,7 +285,7 @@ export const apps: AppEntry[] = [
     description:
       "All-format HD video player and offline MP3 music player for Android. Supports MP4, MKV, AVI, FLAC and more. Features 4K playback, Picture-in-Picture, gesture controls, subtitles, a built-in equalizer and volume booster, and 8 premium themes. Works fully offline.",
 
-    seoTitle: "AV Player — All-Format 4K Video & Offline MP3 Player for Android",
+    seoTitle: "AV Player: 4K Video & Offline MP3 Player for Android",
     seoDescription:
       "Free all-format Android video and music player. Plays MP4, MKV, AVI, FLAC with 4K playback, equalizer, volume boost, PiP and gesture controls. Works offline.",
     schemaDescription:
@@ -411,7 +411,7 @@ export const apps: AppEntry[] = [
     description:
       "Every everyday PDF job in one app — compress, merge, split, organise, password-protect, rotate, and convert to and from images. Docqora does it all on your phone: it has no internet permission, so your documents are never uploaded anywhere.",
 
-    seoTitle: "Docqora — Offline PDF Tools for Android: Compress, Merge, Split",
+    seoTitle: "Docqora: Offline PDF Tools — Compress, Merge, Split",
     seoDescription:
       "Compress, merge, split, organise, protect and convert PDFs on Android without uploading them. Docqora works fully offline. Free, no sign-up, no ads.",
     schemaDescription:
@@ -522,7 +522,7 @@ export const apps: AppEntry[] = [
     description:
       "A warranty tracker and receipt organiser. Snap a bill and on-device OCR fills in the brand, model, date, price and warranty period; ReceiptVault then reminds you 30, 14, 7 and 1 day before the warranty runs out. Works offline, no ads.",
 
-    seoTitle: "ReceiptVault — Warranty Tracker & Receipt Scanner for Android",
+    seoTitle: "ReceiptVault: Warranty Tracker & Receipt Scanner",
     seoDescription:
       "Scan receipts, track warranties and get reminded before they expire. On-device OCR, offline storage and search. ReceiptVault for Android — no ads.",
     schemaDescription:
@@ -635,7 +635,7 @@ export const apps: AppEntry[] = [
     description:
       "Merge numbers, chase bigger tiles and play 2048 offline on an infinite grid. Most 2048 games stop at the 2048 tile — this one does not. Unlock special powers and new boards, climb a global leaderboard, and play with no wifi needed.",
 
-    seoTitle: "2048 Offline: Merge Numbers — Infinite Grid 2048 Puzzle Game for Android",
+    seoTitle: "2048 Offline: Infinite Grid 2048 Game for Android",
     seoDescription:
       "Play 2048 offline on an infinite grid. Merge numbers past 2048 to 4096, 8192 and beyond, unlock special powers and climb the leaderboard. No wifi needed.",
     schemaDescription:

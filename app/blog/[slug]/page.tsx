@@ -59,7 +59,8 @@ export async function generateMetadata({
 
   return {
     /* absolute bypasses layout template — avoids "Title | DuoStrick Blog | DuoStrick" */
-    title: { absolute: `${post.title} | DuoStrick Blog` },
+    /* Keep the search-result title under ~65 characters: brand suffix only when it fits */
+    title: { absolute: `${post.seoTitle ?? post.title} | DuoStrick`.length <= 65 ? `${post.seoTitle ?? post.title} | DuoStrick` : (post.seoTitle ?? post.title) },
     description: post.description,
     keywords: [
       ...post.tags,
@@ -73,10 +74,10 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       url: postUrl,
-      siteName: "DuoStrick Game Studio",
+      siteName: "DuoStrick",
       type: "article",
       publishedTime: `${post.date}T00:00:00+00:00`,
-      modifiedTime:  `${post.date}T00:00:00+00:00`,
+      modifiedTime:  `${post.updated}T00:00:00+00:00`,
       authors: [post.author],
       tags: post.tags,
       section: post.category,
@@ -129,7 +130,7 @@ export default async function BlogPostPage({
     description: post.description,
     image: schemaImages,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated,
     articleSection: post.category,
     wordCount,
     inLanguage: "en-US",
@@ -139,13 +140,13 @@ export default async function BlogPostPage({
     author: {
       "@type": "Organization",
       "@id": "https://duostrick.vercel.app/#organization",
-      name: post.author,
+      name: "DuoStrick",
       url: "https://duostrick.vercel.app",
     },
     publisher: {
       "@type": "Organization",
       "@id": "https://duostrick.vercel.app/#organization",
-      name: "DuoStrick Studio",
+      name: "DuoStrick",
       url: "https://duostrick.vercel.app",
       logo: {
         "@type": "ImageObject",
@@ -187,7 +188,7 @@ export default async function BlogPostPage({
 
       <article itemScope itemType="https://schema.org/BlogPosting">
         <meta itemProp="datePublished" content={post.date} />
-        <meta itemProp="dateModified"  content={post.date} />
+        <meta itemProp="dateModified"  content={post.updated} />
         <meta itemProp="author"        content={post.author} />
         <meta itemProp="wordCount"     content={String(wordCount)} />
 
@@ -204,6 +205,12 @@ export default async function BlogPostPage({
               <div className="flex flex-wrap items-center gap-3 mb-6 small" style={{ color: "var(--muted)" }}>
                 <span className={`tag ${catClass}`}>{post.category}</span>
                 <time dateTime={post.date}>{dateStr}</time>
+                {post.updated !== post.date && (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span>Updated <time dateTime={post.updated}>{formatDate(post.updated)}</time></span>
+                  </>
+                )}
                 <span aria-hidden="true">·</span>
                 <span>{post.readTime} min read</span>
               </div>
@@ -294,7 +301,7 @@ export default async function BlogPostPage({
                 <p className="mt-1" style={{ fontWeight: 750 }}>{post.author}</p>
                 <p className="small body mt-1">
                   DuoStrick is an independent Android studio making cute puzzle games and handy offline apps.{" "}
-                  <Link href="/#about" style={{ color: "var(--brand)", fontWeight: 700 }}>About us</Link>
+                  <Link href="/about" style={{ color: "var(--brand)", fontWeight: 700 }}>About us</Link>
                 </p>
               </div>
             </div>

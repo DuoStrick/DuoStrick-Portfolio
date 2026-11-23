@@ -91,7 +91,7 @@ export default async function PostOgImage({
         }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             <div style={{ fontSize: 26, fontWeight: 700, color: "#e8e8e8" }}>
-              DuoStrick Studio
+              DuoStrick
             </div>
             <div style={{ fontSize: 20, color: "#666666" }}>
               duostrick.vercel.app/blog

@@ -35,3 +35,11 @@ export const HOME_FAQ: FaqEntry[] = [
     a: "Check the Support & FAQ page, or email support@tradeslook.com with your device model, Android version and app version. We read every message.",
   },
 ];
+
+/* How the studio builds — shown on the home page and /about */
+export const PRINCIPLES = [
+  { n: "01", title: "Offline first",        body: "If an app can work without a connection, it should. Puzzles, players and tools all run on the phone." },
+  { n: "02", title: "Easy from the first tap", body: "Short tutorials, plain settings and hints that teach instead of just giving answers." },
+  { n: "03", title: "Respect for your data", body: "Our tools keep your files on your phone — Mediqora and Docqora don't even request internet access." },
+  { n: "04", title: "Built from feedback",  body: "We read every review and email, and the next update is shaped by what players actually ask for." },
+];

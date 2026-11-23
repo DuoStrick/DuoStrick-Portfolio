@@ -35,6 +35,7 @@ const config = {
     "/icon.png",
     "/apple-icon.png",
     "/llms.txt",
+    "/llms-full.txt",
     "/manifest.webmanifest",
     "/opengraph-image",
     "/*/opengraph-image",
@@ -68,7 +69,8 @@ const config = {
         const raw  = fs.readFileSync(path.join(postsDir, f), "utf8");
 
         // Extract date for lastmod
-        const dateMatch  = raw.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})/m);
+        const dateMatch  = raw.match(/^updated:\s*["']?(\d{4}-\d{2}-\d{2})/m)
+                        ?? raw.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})/m);
         const lastmod    = dateMatch ? dateMatch[1] : new Date().toISOString().slice(0, 10);
 
         // Featured posts get slightly higher priority

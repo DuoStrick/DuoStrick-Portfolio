@@ -5,6 +5,10 @@ export interface PostMeta {
   title: string;
   description: string;
   date: string;
+  /** Last material edit; defaults to date */
+  updated: string;
+  /** Shorter <title> for search results when the headline is long */
+  seoTitle?: string;
   author: string;
   category: string;
   tags: string[];

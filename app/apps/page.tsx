@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       "Bunny Puzzle, 2048 Offline, Mediqora, AV Player, Docqora and ReceiptVault — free Android games and apps from an indie studio.",
     url: `${SITE}/apps`,
-    siteName: "DuoStrick Game Studio",
+    siteName: "DuoStrick",
     type: "website",
     locale: "en_US",
   },

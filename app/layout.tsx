@@ -14,7 +14,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://duostrick.vercel.app"),
-  applicationName: "DuoStrick Game Studio",
+  applicationName: "DuoStrick",
   title: {
     default: "DuoStrick — Indie Android Game Studio",
     template: "%s | DuoStrick",
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
     "mobile game download",
     "offline first android apps",
   ],
-  authors: [{ name: "DuoStrick Studio", url: "https://duostrick.vercel.app" }],
-  creator: "DuoStrick Studio",
-  publisher: "DuoStrick Studio",
+  authors: [{ name: "DuoStrick", url: "https://duostrick.vercel.app" }],
+  creator: "DuoStrick",
+  publisher: "DuoStrick",
   formatDetection: { telephone: false, email: false, address: false },
   alternates: { canonical: "https://duostrick.vercel.app" },
   /* Favicon and apple touch icon come from app/icon.png and app/apple-icon.png */
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     description:
       "Free Android games and apps from an indie studio — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora (offline PDF tools) and ReceiptVault.",
     url: "https://duostrick.vercel.app",
-    siteName: "DuoStrick Game Studio",
+    siteName: "DuoStrick",
     /* No hardcoded images — Next.js auto-uses app/opengraph-image.tsx */
     locale: "en_US",
     type: "website",
@@ -112,8 +112,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": "https://duostrick.vercel.app/#organization",
-  name: "DuoStrick Studio",
-  alternateName: "DuoStrick Game Studio",
+  name: "DuoStrick",
+  alternateName: ["DuoStrick Studio", "DuoStrick Game Studio"],
   url: "https://duostrick.vercel.app",
   logo: {
     "@type": "ImageObject",
@@ -145,7 +145,8 @@ const websiteSchema = {
   "@type": "WebSite",
   "@id": "https://duostrick.vercel.app/#website",
   url: "https://duostrick.vercel.app",
-  name: "DuoStrick Game Studio",
+  name: "DuoStrick",
+  alternateName: "DuoStrick Studio",
   description:
     "Indie Android mobile game and app studio — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault.",
   inLanguage: "en-US",

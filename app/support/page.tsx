@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       "Get help with Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault. Answers about features, settings and troubleshooting.",
     url: "https://duostrick.vercel.app/support",
-    siteName: "DuoStrick Game Studio",
+    siteName: "DuoStrick",
     type: "website",
     locale: "en_US",
   },

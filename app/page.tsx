@@ -9,7 +9,7 @@ import { ButtonLink, FaqList, Icon, JsonLd, SectionHead, TextLink, faqSchema } f
 import { APP_GROUPS, appGroup, getAllApps } from "../data/apps";
 import { softwareApplicationSchema, appListSchema } from "../lib/appSchema";
 import { getAllPosts } from "../lib/posts";
-import { HOME_FAQ, SITE_URL } from "../lib/studio";
+import { HOME_FAQ, PRINCIPLES, SITE_URL } from "../lib/studio";
 
 export const metadata: Metadata = {
   /* Use absolute to bypass layout template — avoids "DuoStrick | DuoStrick" */
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     description:
       "Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault — free Android games and apps on Google Play, built to work offline.",
     url: "https://duostrick.vercel.app",
-    siteName: "DuoStrick Game Studio",
+    siteName: "DuoStrick",
     type: "website",
     locale: "en_US",
     /* OG image auto-served by app/opengraph-image.tsx */
@@ -78,12 +78,6 @@ const PROMISES = [
   { title: "Real support",        body: "We read and answer every email." },
 ];
 
-const PRINCIPLES = [
-  { n: "01", title: "Offline first",        body: "If an app can work without a connection, it should. Puzzles, players and tools all run on the phone." },
-  { n: "02", title: "Easy from the first tap", body: "Short tutorials, plain settings and hints that teach instead of just giving answers." },
-  { n: "03", title: "Respect for your data", body: "Our tools keep your files on your phone — Mediqora and Docqora don't even request internet access." },
-  { n: "04", title: "Built from feedback",  body: "We read every review and email, and the next update is shaped by what players actually ask for." },
-];
 
 const STATS = [
   { value: String(APPS.length), label: "apps on Google Play", body: "Puzzle games, media players and everyday tools — all published as DuoStrick.", href: "/apps", link: "See every app" },

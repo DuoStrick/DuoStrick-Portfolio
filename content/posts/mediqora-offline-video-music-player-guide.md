@@ -2,6 +2,8 @@
 title: "Mediqora: The Offline Player That Turns Your Files Into a Library"
 description: "Mediqora is an offline Android video & music player that reads your filenames into series and episodes and remembers where you stopped. No ads, no internet."
 date: "2026-10-07"
+seoTitle: "Mediqora Guide: Offline Video & Music Library"
+updated: "2026-11-23"
 author: "DuoStrick Studio"
 category: "Studio News"
 tags: ["mediqora", "mediqora-android", "android", "video-player", "music-player", "offline", "offline-video-player", "local-media-player", "series-detection", "episode-tracking", "resume-playback", "up-next", "picture-in-picture", "background-playback", "no-ads", "privacy", "material-you", "free-android-app"]

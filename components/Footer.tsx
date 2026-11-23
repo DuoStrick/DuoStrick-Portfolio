@@ -35,7 +35,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               <li><Link href="/apps">All apps</Link></li>
               <li><Link href="/blog">Blog</Link></li>
-              <li><Link href="/#about">About DuoStrick</Link></li>
+              <li><Link href="/about">About DuoStrick</Link></li>
               <li><Link href="/support">Support &amp; FAQ</Link></li>
               <li><a href={PLAY_DEV_URL} target="_blank" rel="noopener noreferrer">Google Play ↗</a></li>
             </ul>

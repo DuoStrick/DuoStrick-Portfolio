@@ -2,6 +2,7 @@
 title: "How to Keep Track of Warranties and Receipts So You Never Pay for a Free Repair"
 description: "A simple system for tracking warranties, bills and AMC renewals on Android — scan receipts with OCR and get reminded before cover expires, with ReceiptVault."
 date: "2026-11-19"
+seoTitle: "How to Track Warranties & Receipts on Android"
 author: "DuoStrick Studio"
 category: "Tips & Tricks"
 tags: ["receiptvault", "warranty-tracker", "receipt-scanner", "bill-organiser", "warranty-reminder", "amc-reminder", "android-tips", "productivity", "free-android-app"]

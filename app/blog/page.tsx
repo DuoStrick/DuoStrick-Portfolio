@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     description:
       "Queens logic puzzle techniques, 2048 strategy, offline PDF tools, warranty tracking, and AV Player and Mediqora guides from the DuoStrick indie studio.",
     url: "https://duostrick.vercel.app/blog",
-    siteName: "DuoStrick Game Studio",
+    siteName: "DuoStrick",
     type: "website",
     locale: "en_US",
     /* OG image auto-served by app/blog/opengraph-image.tsx */

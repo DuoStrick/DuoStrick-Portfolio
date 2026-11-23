@@ -9,7 +9,7 @@ import { Icon } from "./ui";
 const NAV_LINKS = [
   { label: "Apps",    href: "/apps"    },
   { label: "Blog",    href: "/blog"    },
-  { label: "About",   href: "/#about"  },
+  { label: "About",   href: "/about"   },
   { label: "Support", href: "/support" },
 ];
 
