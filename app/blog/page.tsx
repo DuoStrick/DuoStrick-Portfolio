@@ -7,12 +7,16 @@ import BlogFilters from "../../components/BlogFilters";
 export const metadata: Metadata = {
   title: { absolute: "Blog — Android Game Tips, App Guides & Studio News | Duostrick" },
   description:
-    "2048 strategy guides to 8192+, AV Player hidden features, Mediqora offline library tips and Android app guides from the Duostrick indie studio.",
+    "Queens puzzle and 2048 strategy guides, offline PDF and warranty-tracking how-tos, and AV Player and Mediqora tips from the Duostrick indie studio.",
   keywords: [
     "duostrick blog",
     "2048 strategy guide",
     "2048 tips android",
     "how to reach 8192 in 2048",
+    "how to solve queens puzzle",
+    "queens logic puzzle techniques",
+    "compress pdf offline android",
+    "how to track warranties",
     "2048 snake pattern",
     "av player tips android",
     "av player hidden features",
@@ -34,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blog — Android Game Tips, App Guides & Studio News | Duostrick",
     description:
-      "2048 strategy guides, AV Player hidden features, Mediqora offline library guides, Android game tips and studio updates from the Duostrick indie game studio.",
+      "Queens logic puzzle techniques, 2048 strategy, offline PDF tools, warranty tracking, and AV Player and Mediqora guides from the Duostrick indie studio.",
     url: "https://duostrick.vercel.app/blog",
     siteName: "Duostrick Game Studio",
     type: "website",
@@ -45,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Duostrick Blog — Android Game Tips & App Guides",
     description:
-      "2048 strategy guides, AV Player and Mediqora tips, and indie studio updates from Duostrick.",
+      "Puzzle strategy, Android app guides and studio updates from Duostrick.",
   },
 };
 
@@ -126,7 +130,7 @@ export default function BlogPage() {
           </h1>
           <div className="accent-bar-gradient mb-4" />
           <p style={{ color: "var(--body-text)", fontSize: "1.05rem" }}>
-            Android game strategies, AV Player and Mediqora tips, app guides and studio updates from our indie team.
+            Puzzle strategies, how-to guides for our Android apps, and studio updates from our indie team.
           </p>
         </div>
 

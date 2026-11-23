@@ -19,13 +19,19 @@ export const metadata: Metadata = {
     template: "%s | Duostrick",
   },
   description:
-    "Indie Android studio building free, offline-first games and apps — 2048 Puzzle Offline, AV Player and Mediqora. No ads, no sign-up, free on Google Play.",
+    "Indie Android studio building free, offline-first games and apps — Bunny Puzzle, 2048 Offline, Docqora, Mediqora and more. Free on Google Play.",
   keywords: [
     "duostrick",
     "indie game studio",
     "android game developer",
     "mobile game studio",
     "indie mobile studio",
+    "bunny puzzle",
+    "queens logic puzzle android",
+    "docqora pdf tools",
+    "offline pdf tools android",
+    "receiptvault warranty tracker",
+    "warranty tracker app android",
     "2048 puzzle game offline",
     "2048 infinite grid",
     "2048 puzzle game android",
@@ -59,16 +65,11 @@ export const metadata: Metadata = {
   publisher: "Duostrick Studio",
   formatDetection: { telephone: false, email: false, address: false },
   alternates: { canonical: "https://duostrick.vercel.app" },
-  /* Icons — logo.png as favicon + apple touch icon */
-  icons: {
-    icon:     [{ url: "/logo.png", type: "image/png" }],
-    apple:    [{ url: "/logo.png", sizes: "180x180" }],
-    shortcut: [{ url: "/logo.png" }],
-  },
+  /* Favicon and apple touch icon come from app/icon.png and app/apple-icon.png */
   openGraph: {
     title: "Duostrick — Indie Android Game Studio",
     description:
-      "Free Android games and apps from an indie studio — 2048 Puzzle Offline, AV Player (all-format 4K media player) and Mediqora (offline media library).",
+      "Free Android games and apps from an indie studio — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora (offline PDF tools) and ReceiptVault.",
     url: "https://duostrick.vercel.app",
     siteName: "Duostrick Game Studio",
     /* No hardcoded images — Next.js auto-uses app/opengraph-image.tsx */
@@ -79,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Duostrick — Indie Android Game Studio",
     description:
-      "Free mobile puzzle games and smart Android apps — 2048 Puzzle Game Offline, AV Player & Mediqora on Google Play.",
+      "Free puzzle games and smart Android apps — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora & ReceiptVault.",
     /* No hardcoded images — auto-detected from opengraph-image.tsx */
   },
   robots: {
@@ -136,17 +137,9 @@ const websiteSchema = {
   url: "https://duostrick.vercel.app",
   name: "Duostrick Game Studio",
   description:
-    "Indie Android mobile game and app studio — 2048 Puzzle Game Offline, AV Player and Mediqora.",
+    "Indie Android mobile game and app studio — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault.",
   inLanguage: "en-US",
   publisher: { "@id": "https://duostrick.vercel.app/#organization" },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://duostrick.vercel.app/blog?q={search_term_string}",
-    },
-    "query-input": "required name=search_term_string",
-  },
 };
 
 /** Inline script injected before React hydrates — prevents flash of wrong theme */
@@ -160,6 +153,10 @@ export default function RootLayout({
       <head>
         {/* Anti-FOUC: set theme before first paint */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/* Reveal sections start hidden and are shown by JS — keep them visible without it */}
+        <noscript>
+          <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         {/* Global structured data */}
         <script
           type="application/ld+json"

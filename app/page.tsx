@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   /* Use absolute to bypass layout template — avoids "Duostrick | Duostrick" */
   title: { absolute: "Duostrick — Indie Android Game Studio | Free Mobile Games & Apps" },
   description:
-    "Free Android apps from indie studio Duostrick: 2048 Puzzle Offline, AV Player (4K video & MP3) and Mediqora (offline media library). No ads, no internet needed.",
+    "Free Android games and apps from indie studio Duostrick: Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora PDF tools and ReceiptVault.",
   keywords: [
     "duostrick game studio",
     "indie android game studio",
@@ -41,12 +41,18 @@ export const metadata: Metadata = {
     "mobile game developer india",
     "indie mobile studio",
     "free google play apps",
+    "bunny puzzle queens logic",
+    "queens puzzle game android",
+    "offline pdf tools android",
+    "compress pdf offline android",
+    "warranty tracker app",
+    "receipt scanner android",
   ],
   alternates: { canonical: "https://duostrick.vercel.app" },
   openGraph: {
     title: "Duostrick — Indie Android Game Studio | Free Mobile Games & Apps",
     description:
-      "Download 2048 Puzzle Offline, AV Player (4K video & MP3) and Mediqora (offline media library) — free on Google Play, no ads, no internet needed.",
+      "Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault — free Android games and apps on Google Play, built to work offline.",
     url: "https://duostrick.vercel.app",
     siteName: "Duostrick Game Studio",
     type: "website",
@@ -57,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Duostrick — Indie Android Game Studio",
     description:
-      "Free Android puzzle games & media apps — 2048 Puzzle Game Offline (infinite grid), AV Player (4K + MP3) and Mediqora (offline media library) on Google Play.",
+      "Free Android puzzle games and offline apps — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault on Google Play.",
   },
 };
 
@@ -169,7 +175,7 @@ export default function Home() {
                   Duostrick is a small, independent mobile developer studio passionate about building engaging puzzle games and polished mobile applications. We believe in high-quality design, smart mechanics, and intuitive user experiences.
                 </p>
                 <p className="mb-8" style={{ color: "var(--body-text)", lineHeight: 1.8 }}>
-                  From the endless challenges of 2048 Puzzle Game Offline to our media players AV Player and Mediqora, our goal is to bring joy and seamless functionality to users worldwide across all their Android devices.
+                  From logic puzzles like Bunny Puzzle and 2048 Offline to everyday tools like Mediqora, AV Player, Docqora and ReceiptVault, our goal is to bring joy and seamless functionality to users worldwide across all their Android devices.
                 </p>
                 <Link
                   href="/#contact"
@@ -185,7 +191,7 @@ export default function Home() {
             <Reveal direction="right" delay={80}>
               <div className="rounded-2xl p-8 flex flex-col gap-5 glow-blue" style={{ background: "var(--stat-bg)", border: "1px solid var(--stat-border)" }}>
                 {[
-                  { label: "Apps on Google Play", value: "3+",   icon: "🎮" },
+                  { label: "Apps on Google Play", value: String(APPS.length), icon: "🎮" },
                   { label: "Happy Users",          value: "500+", icon: "😊" },
                   { label: "Countries Reached",    value: "30+",  icon: "🌍" },
                   { label: "Year Founded",         value: "2024", icon: "🚀" },

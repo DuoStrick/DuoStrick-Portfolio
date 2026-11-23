@@ -101,4 +101,4 @@ Combined with OLED true-black backgrounds and full-screen video, it creates a th
 
 AV Player is updated regularly based on user feedback. If there's a feature you'd like to see added, tap the feedback option in the app's settings or email us at support@tradeslook.com. We build the features our users actually ask for.
 
-Download AV Player free on Google Play — all formats, all features, no ads.
+Download AV Player free on Google Play — all formats, all features, no paywall.

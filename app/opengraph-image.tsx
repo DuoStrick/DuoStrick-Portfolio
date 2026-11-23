@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { getAllApps } from "../data/apps";
 
 export const runtime     = "edge";
 export const alt         = "Duostrick — Indie Android Game Studio";
@@ -68,23 +69,17 @@ export default function OgImage() {
           </div>
 
           {/* App chips */}
-          <div style={{ display: "flex", gap: 18, marginTop: 12 }}>
-            <div style={{
-              background: "rgba(26,111,168,0.18)",
-              border: "1px solid rgba(26,111,168,0.38)",
-              borderRadius: 999, padding: "11px 28px",
-              color: "#93c5fd", fontSize: 22, fontWeight: 700,
-            }}>
-              🎮 2048 Puzzle Game
-            </div>
-            <div style={{
-              background: "rgba(26,122,74,0.18)",
-              border: "1px solid rgba(26,122,74,0.38)",
-              borderRadius: 999, padding: "11px 28px",
-              color: "#86efac", fontSize: 22, fontWeight: 700,
-            }}>
-              🎵 AV Player
-            </div>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 14, marginTop: 12, maxWidth: 980 }}>
+            {getAllApps().map((app, i) => (
+              <div key={app.id} style={{
+                background: i % 2 ? "rgba(26,122,74,0.18)" : "rgba(26,111,168,0.18)",
+                border: `1px solid ${i % 2 ? "rgba(26,122,74,0.38)" : "rgba(26,111,168,0.38)"}`,
+                borderRadius: 999, padding: "9px 24px",
+                color: i % 2 ? "#86efac" : "#93c5fd", fontSize: 20, fontWeight: 700,
+              }}>
+                {app.shortName}
+              </div>
+            ))}
           </div>
 
           {/* URL */}

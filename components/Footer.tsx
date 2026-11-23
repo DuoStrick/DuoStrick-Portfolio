@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getAllApps } from "../data/apps";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -42,17 +43,19 @@ export default function Footer() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--muted)" }}>Our Apps</p>
               <ul className="flex flex-col gap-2">
-                {[["Mediqora","/apps/mediqora"],["AV Player","/apps/av-player"],["2048 Offline","/apps/2048-offline"]].map(([l,h])=>(
-                  <li key={h}><Link href={h} className="text-sm" style={{ color: "var(--body-text)" }}>{l}</Link></li>
+                {getAllApps().map((app)=>(
+                  <li key={app.id}><Link href={`/apps/${app.id}`} className="text-sm" style={{ color: "var(--body-text)" }}>{app.shortName}</Link></li>
                 ))}
               </ul>
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--muted)" }}>Legal & Support</p>
               <ul className="flex flex-col gap-2">
-                {[["Privacy Policy","/privacy-policy"],["Support","/support"],["Sitemap","/sitemap.xml"]].map(([l,h])=>(
+                {[["Privacy Policy","/privacy-policy"],["Support","/support"]].map(([l,h])=>(
                   <li key={h}><Link href={h} className="text-sm" style={{ color: "var(--body-text)" }}>{l}</Link></li>
                 ))}
+                {/* A plain <a>: the sitemap is a static file, not a route Link can prefetch */}
+                <li><a href="/sitemap.xml" className="text-sm" style={{ color: "var(--body-text)" }}>Sitemap</a></li>
               </ul>
             </div>
           </div>

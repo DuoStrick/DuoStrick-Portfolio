@@ -11,7 +11,7 @@ readTime: 4
 featured: false
 ---
 
-AV Player: Video & MP3 Player is our all-in-one media player for Android. It handles every video and audio format you're likely to encounter — no third-party codecs, no subscriptions, no ads.
+AV Player: Video & MP3 Player is our all-in-one media player for Android. It handles every video and audio format you're likely to encounter — no third-party codecs and no subscriptions.
 
 This guide walks through every feature in detail so you know exactly what you're getting.
 
@@ -105,9 +105,9 @@ AV Player includes 8 built-in themes — no purchase required:
 
 Switch themes instantly from the settings menu.
 
-## No Ads. No Internet Required.
+## No Internet Required
 
-AV Player works 100% offline. Your media files play without any internet connection — no buffering, no tracking, no data usage. We also don't run ads inside the player at any point during playback.
+AV Player works 100% offline. Your media files play without any internet connection — no buffering and no data usage. The app is free and supported by a single banner ad on the library screens; nothing interrupts a video once it's playing.
 
 ## Performance on Any Device
 
@@ -120,6 +120,6 @@ We optimized AV Player across the full range of Android hardware:
 
 ## Download AV Player Free
 
-Available now on Google Play. Free, no ads, no in-app purchases.
+Available now on Google Play. Free, with no in-app purchases.
 
 If you have feedback or a feature request, use the in-app feedback option or email us at support@tradeslook.com — we read every message and build features based on what users actually need.

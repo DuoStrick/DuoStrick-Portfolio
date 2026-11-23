@@ -76,15 +76,6 @@ export function getAllSlugs(): { slug: string }[] {
   return readPostFiles().map((f) => ({ slug: f.replace(/\.md$/, "") }));
 }
 
-/** Format a date string like "May 20, 2026" */
-export function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
 /** Extract H2/H3 headings from raw markdown for a Table of Contents */
 export function extractHeadings(
   markdown: string
@@ -103,15 +94,4 @@ export function extractHeadings(
     results.push({ id, text, level });
   }
   return results;
-}
-
-/** Category → CSS class suffix */
-export function categoryClass(cat: string): string {
-  switch (cat) {
-    case "Game Dev":       return "cat-game-dev";
-    case "Tips & Tricks":  return "cat-tips";
-    case "Studio News":    return "cat-studio-news";
-    case "Updates":        return "cat-updates";
-    default:               return "badge-default";
-  }
 }

@@ -330,13 +330,12 @@ export default async function BlogPostPage({
               className="my-10 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5"
               style={{ background: "var(--badge-info-bg)", border: "1px solid var(--stat-border)" }}
             >
-              <img
+              <Image
                 src={ctaApp.iconUrl}
                 alt={`${ctaApp.title} icon`}
                 width={60} height={60}
                 className="rounded-[14px] shrink-0"
                 style={{ border: "1px solid var(--stat-border)" }}
-                loading="lazy"
               />
               <div className="flex-1 text-center sm:text-left">
                 <p className="font-semibold text-sm mb-0.5" style={{ color: "var(--fg)", fontFamily: "var(--font-syne)" }}>
@@ -449,13 +448,12 @@ export default async function BlogPostPage({
               className="rounded-2xl p-5 text-center sticky top-72"
               style={{ border: "1px solid var(--border)", background: "var(--card)" }}
             >
-              <img
+              <Image
                 src={ctaApp.iconUrl}
                 alt={`${ctaApp.title} icon`}
                 width={64} height={64}
                 className="rounded-[14px] mx-auto mb-3"
                 style={{ border: "1px solid var(--border)" }}
-                loading="lazy"
               />
               <p className="font-bold text-sm mb-1" style={{ fontFamily: "var(--font-syne)", color: "var(--fg)" }}>
                 {ctaApp.title}

@@ -11,7 +11,7 @@ const APPS = getAllApps();
 export const metadata: Metadata = {
   title: { absolute: "Android Apps & Games by Duostrick — Free on Google Play" },
   description:
-    "Every Duostrick Android app: Mediqora (offline media library), AV Player (all-format 4K video & MP3) and 2048 Offline (infinite-grid number puzzle).",
+    "Every Duostrick Android app: Bunny Puzzle, 2048 Offline, Mediqora, AV Player, Docqora (offline PDF tools) and ReceiptVault (warranty tracker).",
   keywords: [
     "duostrick apps",
     "duostrick android apps",
@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     "mediqora",
     "av player android",
     "2048 offline merge numbers",
+    "bunny puzzle queens logic",
+    "docqora pdf tools",
+    "receiptvault warranty tracker",
     "android media player apps",
     "android puzzle games",
     "indie android developer apps",
@@ -28,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Android Apps & Games by Duostrick",
     description:
-      "Mediqora, AV Player and 2048 Offline — free Android apps and games from an indie studio. Offline-capable, no sign-up.",
+      "Bunny Puzzle, 2048 Offline, Mediqora, AV Player, Docqora and ReceiptVault — free Android games and apps from an indie studio.",
     url: `${SITE}/apps`,
     siteName: "Duostrick Game Studio",
     type: "website",
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Android Apps & Games by Duostrick",
-    description: "Mediqora, AV Player and 2048 Offline — free on Google Play.",
+    description: "Bunny Puzzle, 2048 Offline, Mediqora, AV Player, Docqora and ReceiptVault — free on Google Play.",
   },
 };
 
@@ -102,7 +105,7 @@ export default function AppsIndexPage() {
             </h1>
             <div className="accent-bar-gradient mb-4" />
             <p style={{ color: "var(--body-text)", fontSize: "1.05rem", maxWidth: "62ch" }}>
-              {`Three apps, all free on Google Play and all built to work without a connection — an offline media library, an all-format player, and an endless number puzzle.`}
+              {`${APPS.length} apps, all free on Google Play and all built to work without a connection — logic puzzles, media players, PDF tools and a warranty tracker.`}
             </p>
           </div>
 

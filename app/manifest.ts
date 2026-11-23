@@ -9,7 +9,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Duostrick — Indie Android Game Studio",
     short_name: "Duostrick",
     description:
-      "Free Android games and apps from indie studio Duostrick — 2048 Puzzle Offline, AV Player and Mediqora.",
+      "Free Android games and apps from indie studio Duostrick — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault.",
     start_url: "/",
     scope: "/",
     display: "standalone",
@@ -19,8 +19,8 @@ export default function manifest(): MetadataRoute.Manifest {
     dir: "ltr",
     categories: ["games", "entertainment", "utilities"],
     icons: [
-      { src: "/logo.png", sizes: "512x512", type: "image/png", purpose: "any" },
-      { src: "/logo.png", sizes: "192x192", type: "image/png", purpose: "maskable" },
+      { src: "/logo-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+      { src: "/logo.png",     sizes: "512x512", type: "image/png", purpose: "any" },
     ],
   };
 }

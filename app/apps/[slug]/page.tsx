@@ -7,6 +7,7 @@ import Reveal from "../../../components/Reveal";
 import BlogCard from "../../../components/BlogCard";
 import { getAllApps, getAppById, getAllAppIds } from "../../../data/apps";
 import { getAllPosts } from "../../../lib/posts";
+import { formatDate } from "../../../lib/postUtils";
 import {
   appPageUrl,
   softwareApplicationSchema,
@@ -88,9 +89,7 @@ export default async function AppPage({
     .filter((p) => app.postTags.some((t) => p.tags.includes(t)))
     .slice(0, 3);
 
-  const updated = new Date(app.storeUpdated).toLocaleDateString("en-US", {
-    year: "numeric", month: "long", day: "numeric",
-  });
+  const updated = formatDate(app.storeUpdated);
 
   return (
     <>

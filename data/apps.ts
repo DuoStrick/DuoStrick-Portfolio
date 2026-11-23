@@ -9,6 +9,131 @@
 import type { AppEntry } from "../lib/types";
 
 export const apps: AppEntry[] = [
+  /* ─────────────────────────────────────────────────────── Bunny Puzzle ── */
+  {
+    id: "bunny-puzzle",
+    title: "Bunny Puzzle: Queens Logic",
+    shortName: "Bunny Puzzle",
+    genre: "Logic Puzzle",
+    accent: "green",
+    packageName: "com.duostrick.buddypuzzle",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.duostrick.buddypuzzle",
+    iconUrl: "/bunny-puzzle-icon.png",
+    operatingSystem: "Android",
+    applicationCategory: "GameApplication",
+    applicationSubCategory: "Puzzle",
+    storeUpdated: "2026-11-22",
+    containsAds: true,
+    postTags: ["bunny-puzzle", "queens-puzzle"],
+    tagline: "Queens logic puzzle: one bunny per row, column & colour. Like sudoku, but cuter!",
+
+    description:
+      "A cosy queens-style logic puzzle. Place one bunny in every row, every column and every colour region — and never let two bunnies touch. 300 hand-checked puzzles from 4×4 to 10×10, a fresh Daily Challenge, smart hints and no timer. Plays offline.",
+
+    seoTitle: "Bunny Puzzle: Queens Logic — Cosy Queens Puzzle Game for Android",
+    seoDescription:
+      "A cosy queens logic puzzle for Android: one bunny per row, column and colour region. 300 puzzles, a daily challenge, smart hints. Offline, no timer.",
+    schemaDescription:
+      "Bunny Puzzle: Queens Logic is a relaxing queens-style logic puzzle game for Android. Place one bunny in every row, every column and every colour region, with no two bunnies touching — even diagonally. Every puzzle has exactly one solution reachable by pure logic. Includes 300 puzzles from 4×4 to 10×10, a Daily Challenge with streaks and monthly gifts, 80 Tightrope bonus levels, hints that explain the next logical step, five themed worlds, collectible avatars and frames, and accessibility options. Plays offline with no sign-in.",
+
+    keywords: [
+      "bunny puzzle", "queens puzzle", "queens logic puzzle", "queens game android",
+      "star battle puzzle", "logic puzzle game android", "sudoku like puzzle",
+      "daily logic puzzle", "brain teaser offline", "cosy puzzle game",
+      "relaxing puzzle game", "no timer puzzle game", "offline logic game",
+      "colour region puzzle", "deduction puzzle android",
+    ],
+
+    intro: [
+      "Bunny Puzzle takes the queens puzzle — the one-per-row, one-per-column, one-per-region logic grid that sudoku and star battle fans love — and turns it into something calm. Buddy the bunny keeps you company, there's no timer, and every board has exactly one answer you can reach without guessing.",
+      "Start on a friendly 4×4 and work up to 10×10 grids that need real deduction. When you're stuck, a hint explains the next logical step rather than just placing a bunny for you, so you get better as you play.",
+    ],
+
+    features: [
+      {
+        title: "Four rules, one answer",
+        body: "The rules fit on a sticky note. Each puzzle is built so pure logic reaches the single solution — no luck, no trial and error.",
+        bullets: [
+          "One bunny in each row and each column",
+          "Exactly one bunny in every colour region",
+          "Bunnies never touch, not even diagonally",
+          "Auto-mark ✕ clears the squares a bunny rules out",
+        ],
+      },
+      {
+        title: "300 puzzles plus bonus levels",
+        body: "A steady climb from gentle 4×4 boards to tricky 10×10 grids, with extra modes when you want a twist.",
+        bullets: [
+          "300 logic puzzles, 4×4 to 10×10",
+          "80 Tightrope Bonus levels — one life, one Golden Carrot",
+          "Weekly events with Carrot Points",
+        ],
+      },
+      {
+        title: "A fresh puzzle every day",
+        body: "The Daily Challenge gives you one new brain teaser a day, with a calendar to track it.",
+        bullets: [
+          "Daily Challenge calendar and streaks",
+          "Monthly gifts for showing up",
+          "A five-minute brain break that fits any day",
+        ],
+      },
+      {
+        title: "Help that teaches",
+        body: "Hints explain why a square must hold a bunny, so the technique sticks. Helpers get you moving when a board stalls.",
+        bullets: [
+          "Smart hints that explain the next step",
+          "Bunny, Sweep and Undo helpers",
+          "A one-minute hands-on tutorial",
+        ],
+      },
+      {
+        title: "Cosy, and yours",
+        body: "Five worlds to play in — under the sea, a sunny meadow, a starry night, snowy woods or classic paper — with soft music and sounds.",
+        bullets: [
+          "Collect carrots, coins and gift boxes",
+          "75 frames and 56 animal avatars",
+          "Large text, reduce motion and left-handed options",
+          "Plays offline — no Wi-Fi, no sign-in",
+        ],
+      },
+    ],
+
+    faq: [
+      {
+        q: "How do you play Bunny Puzzle?",
+        a: "Place one bunny in every row, every column and every colour region of the grid. Two bunnies can never touch, not even diagonally. Each puzzle has exactly one solution, and you can always reach it by logic without guessing.",
+      },
+      {
+        q: "Is Bunny Puzzle the same as the queens puzzle?",
+        a: "It uses the same rules as the popular queens logic puzzle — one per row, one per column, one per colour region, none touching — with bunnies in place of queens, a calm no-timer pace and hints that explain each step.",
+      },
+      {
+        q: "Does Bunny Puzzle work offline?",
+        a: "Yes. You can play every puzzle, the Daily Challenge and the bonus levels without Wi-Fi or mobile data, and there's no sign-in.",
+      },
+      {
+        q: "What should I do when I'm stuck?",
+        a: "Tap Hint. Instead of just giving away a square, the hint points to the region, row or column that forces the next move and explains why. Helpers like Sweep and Undo are there too, and Auto-mark ✕ clears squares that a placed bunny has ruled out.",
+      },
+      {
+        q: "Is Bunny Puzzle free?",
+        a: "Yes, Bunny Puzzle is free to download and play on Google Play. It is supported by ads.",
+      },
+    ],
+
+    screenshots: [
+      { src: "/apps/bunny-puzzle/01.jpg", alt: "Bunny Puzzle home screen with Buddy the bunny and the Daily Challenge" },
+      { src: "/apps/bunny-puzzle/02.jpg", alt: "Bunny Puzzle board — one bunny in every row, column and colour region" },
+      { src: "/apps/bunny-puzzle/03.jpg", alt: "Bunny Puzzle hint explaining the next logical step" },
+      { src: "/apps/bunny-puzzle/04.jpg", alt: "Bunny Puzzle level complete screen with carrots and score" },
+      { src: "/apps/bunny-puzzle/05.jpg", alt: "Bunny Puzzle Daily Challenge calendar with streaks and monthly gifts" },
+      { src: "/apps/bunny-puzzle/06.jpg", alt: "Bunny Puzzle Tightrope Bonus level for the Golden Carrot" },
+      { src: "/apps/bunny-puzzle/07.jpg", alt: "Bunny Puzzle background picker with five themed worlds" },
+      { src: "/apps/bunny-puzzle/08.jpg", alt: "Bunny Puzzle profile with collectible animal avatars and frames" },
+    ],
+  },
+
   /* ──────────────────────────────────────────────────────────── Mediqora ── */
   {
     id: "mediqora",
@@ -152,7 +277,7 @@ export const apps: AppEntry[] = [
     storeUpdated: "2026-08-13",
     containsAds: true,
     postTags: ["av-player", "av-player-android"],
-    tagline: "All-format video & music player with equalizer & volume boost. Offline, no ads.",
+    tagline: "All-format video & music player with equalizer & volume boost. Works offline.",
 
     description:
       "All-format HD video player and offline MP3 music player for Android. Supports MP4, MKV, AVI, FLAC and more. Features 4K playback, Picture-in-Picture, gesture controls, subtitles, a built-in equalizer and volume booster, and 8 premium themes. Works fully offline.",
@@ -261,6 +386,226 @@ export const apps: AppEntry[] = [
     ],
   },
 
+  /* ──────────────────────────────────────────────────────────── Docqora ── */
+  {
+    id: "docqora",
+    title: "Docqora - PDF Tools Offline",
+    shortName: "Docqora",
+    genre: "PDF Tools",
+    accent: "blue",
+    packageName: "com.duostrick.docqora",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.duostrick.docqora",
+    iconUrl: "/docqora-icon.png",
+    operatingSystem: "Android 8.0+",
+    applicationCategory: "UtilitiesApplication",
+    applicationSubCategory: "Tools",
+    storeUpdated: "2026-10-23",
+    containsAds: false,
+    postTags: ["docqora", "pdf-tools"],
+    tagline: "Compress, merge, split, protect & convert PDFs offline. 100% private & free",
+
+    description:
+      "Every everyday PDF job in one app — compress, merge, split, organise, password-protect, rotate, and convert to and from images. Docqora does it all on your phone: it has no internet permission, so your documents are never uploaded anywhere.",
+
+    seoTitle: "Docqora — Offline PDF Tools for Android: Compress, Merge, Split",
+    seoDescription:
+      "Compress, merge, split, organise, protect and convert PDFs on Android without uploading them. Docqora works fully offline. Free, no sign-up, no ads.",
+    schemaDescription:
+      "Docqora is a free offline PDF toolkit for Android. Compress PDFs, merge several files into one, split by page range, organise pages, add or remove a password, rotate pages, convert images to PDF and export PDF pages as JPG or PNG. All processing happens on the device — the app has no internet permission, so documents are never uploaded. No account, no ads, light and dark themes with Material You colours.",
+
+    keywords: [
+      "docqora", "offline pdf tools android", "compress pdf offline",
+      "merge pdf android", "split pdf android", "pdf password protect android",
+      "image to pdf android", "pdf to jpg android", "rotate pdf pages",
+      "organise pdf pages", "private pdf app", "pdf tools no upload",
+      "free pdf toolkit android", "reduce pdf size android",
+    ],
+
+    intro: [
+      "Most free PDF tools are websites: you upload a contract, a payslip or an ID scan to someone else's server and hope it gets deleted. Docqora does the same jobs on your phone instead. It doesn't request the internet permission at all, so a file you open in Docqora has no way to leave the device.",
+      "Compress a scan so it fits an upload limit, stitch receipts into one file, pull three pages out of a long report, or lock a document with a password — each tool is one tap from the home screen.",
+    ],
+
+    features: [
+      {
+        title: "Compress and convert",
+        body: "Shrink large PDFs for email and upload forms, and move between PDFs and images.",
+        bullets: [
+          "Compress PDF — light, balanced or strong",
+          "Image to PDF from JPG, PNG and more",
+          "PDF to Image — export pages as JPG or PNG",
+        ],
+      },
+      {
+        title: "Merge, split and organise",
+        body: "Build exactly the document you need from the pages you have.",
+        bullets: [
+          "Merge several PDFs into one, in the order you choose",
+          "Split by page ranges, every N pages, or one file per page",
+          "Reorder, delete, duplicate or insert pages",
+          "Rotate sideways or upside-down scans",
+        ],
+      },
+      {
+        title: "Protect",
+        body: "Add a password to a confidential PDF, or remove one from a file you own.",
+      },
+      {
+        title: "Private by construction",
+        body: "Docqora has no internet permission. Processing happens on your phone, nothing is uploaded, and there is no account to create.",
+        bullets: [
+          "Works without Wi-Fi or mobile data",
+          "No sign-up, no login",
+          "No ads",
+          "Light, dark and Material You themes",
+        ],
+      },
+    ],
+
+    faq: [
+      {
+        q: "Does Docqora upload my PDFs?",
+        a: "No. Docqora does not request the internet permission, so it cannot upload anything. Every tool — compress, merge, split, protect, convert — runs on your phone.",
+      },
+      {
+        q: "How do I compress a PDF on Android without uploading it?",
+        a: "Open Docqora, tap Compress, pick the PDF and choose a strength. The smaller copy is saved on your phone. Because nothing is uploaded, it works the same with no connection at all.",
+      },
+      {
+        q: "Can I merge PDFs in a specific order?",
+        a: "Yes. Tap Merge, choose the files, and reorder them before you combine them into a single PDF.",
+      },
+      {
+        q: "Can Docqora remove a password from a PDF?",
+        a: "Yes, for files you own and know the password to. Docqora can also add a password to protect a PDF before you share it.",
+      },
+      {
+        q: "Is Docqora free?",
+        a: "Yes. Docqora is free on Google Play, with no ads and no sign-up.",
+      },
+    ],
+
+    screenshots: [
+      { src: "/apps/docqora/01.jpg", alt: "Docqora home screen with compress, merge, split, organise, convert and protect tools" },
+      { src: "/apps/docqora/02.jpg", alt: "Docqora merging several PDFs into one file" },
+      { src: "/apps/docqora/03.jpg", alt: "Docqora split options — by page range, every N pages or one file per page" },
+      { src: "/apps/docqora/04.jpg", alt: "Docqora organised PDF saved on the phone, never uploaded" },
+      { src: "/apps/docqora/05.jpg", alt: "Docqora in light and dark mode" },
+      { src: "/apps/docqora/06.jpg", alt: "Docqora settings for theme, save folder and compression defaults" },
+    ],
+  },
+
+  /* ─────────────────────────────────────────────────────── ReceiptVault ── */
+  {
+    id: "receiptvault",
+    title: "ReceiptVault: Warranty Tracker",
+    shortName: "ReceiptVault",
+    genre: "Productivity",
+    accent: "green",
+    packageName: "com.duostrick.receiptvault",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.duostrick.receiptvault",
+    iconUrl: "/receiptvault-icon.png",
+    operatingSystem: "Android",
+    applicationCategory: "UtilitiesApplication",
+    applicationSubCategory: "Productivity",
+    storeUpdated: "2026-08-10",
+    containsAds: false,
+    postTags: ["receiptvault", "warranty-tracker"],
+    tagline: "Scan receipts, track warranties & bills. OCR + expiry reminders. Offline.",
+
+    description:
+      "A warranty tracker and receipt organiser. Snap a bill and on-device OCR fills in the brand, model, date, price and warranty period; ReceiptVault then reminds you 30, 14, 7 and 1 day before the warranty runs out. Works offline, no ads.",
+
+    seoTitle: "ReceiptVault — Warranty Tracker & Receipt Scanner for Android",
+    seoDescription:
+      "Scan receipts, track warranties and get reminded before they expire. On-device OCR, offline storage and search. ReceiptVault for Android — no ads.",
+    schemaDescription:
+      "ReceiptVault is a warranty tracker, receipt scanner and bill organiser for Android. Photograph a receipt or warranty card and on-device OCR reads the brand, model, serial number, purchase date, price and warranty period. Reminders fire 30, 14, 7 and 1 day before a warranty, AMC or policy expires. Search every field, filter by active, expiring or expired, and choose from six light and dark themes. Data is stored on the device, with optional encrypted backup.",
+
+    keywords: [
+      "receiptvault", "warranty tracker app", "receipt scanner android",
+      "warranty reminder app", "bill organiser android", "receipt organizer offline",
+      "track appliance warranty", "amc reminder app", "warranty card app",
+      "ocr receipt scanner", "expiry reminder app android", "invoice tracker",
+    ],
+
+    intro: [
+      "The warranty card is in a drawer, the invoice is somewhere in your email, and the fridge has just stopped working. ReceiptVault keeps all of that in one searchable place and tells you before a warranty runs out — while a repair is still free.",
+      "Photograph a receipt and on-device text recognition reads the details for you. Add phones, laptops, appliances, vehicle insurance, AMC contracts or document renewals, and let the reminders do the remembering.",
+    ],
+
+    features: [
+      {
+        title: "Snap, and the details fill in",
+        body: "On-device OCR reads printed receipts, digital invoices, warranty cards and even handwritten notes — without sending them to a cloud service.",
+        bullets: [
+          "Brand name and model number",
+          "Purchase date and price",
+          "Serial number",
+          "Warranty period",
+        ],
+      },
+      {
+        title: "Reminders before it's too late",
+        body: "Reminders fire 30, 14, 7 and 1 day before any warranty, AMC or policy expires — even when the app is closed. Tap one to jump straight to the receipt.",
+      },
+      {
+        title: "Track more than gadgets",
+        body: "Anything with a receipt or an expiry date belongs in the vault.",
+        bullets: [
+          "Electronics — phones, laptops, TVs, earphones",
+          "Home appliances — AC, washing machine, fridge, geyser",
+          "Vehicle service, insurance and PUC renewals",
+          "Health insurance, memberships and document expiries",
+          "Online-order invoices",
+        ],
+      },
+      {
+        title: "Find any receipt fast",
+        body: "Full-text search across product, brand, model, serial number and notes. Filter by active, expiring or expired, and sort by date, price or category.",
+      },
+      {
+        title: "Your data stays with you",
+        body: "Receipts are stored on your device and the app works offline. Backup is optional and encrypted.",
+        bullets: [
+          "No ads",
+          "No subscription",
+          "Six light and dark themes",
+        ],
+      },
+    ],
+
+    faq: [
+      {
+        q: "How does ReceiptVault read my receipts?",
+        a: "It uses on-device text recognition. Take a photo of a receipt, invoice or warranty card and ReceiptVault fills in the brand, model, serial number, purchase date, price and warranty period for you to confirm.",
+      },
+      {
+        q: "When will ReceiptVault remind me?",
+        a: "30, 14, 7 and 1 day before a warranty, AMC or policy expires. Notifications arrive even when the app is closed, and tapping one opens that receipt.",
+      },
+      {
+        q: "Does ReceiptVault work offline?",
+        a: "Yes. Your receipts are stored on your device and scanning, search and reminders all work without a connection. Backup is optional.",
+      },
+      {
+        q: "Does ReceiptVault have ads or a subscription?",
+        a: "No ads and no subscription. ReceiptVault is free to download; Google Play lists optional in-app purchases.",
+      },
+    ],
+
+    screenshots: [
+      { src: "/apps/receiptvault/01.jpg", alt: "ReceiptVault onboarding — lost receipts cost you money" },
+      { src: "/apps/receiptvault/02.jpg", alt: "ReceiptVault home with warranties expiring soon and categories" },
+      { src: "/apps/receiptvault/03.jpg", alt: "ReceiptVault warranty reminders 30, 7 and 1 day before expiry" },
+      { src: "/apps/receiptvault/04.jpg", alt: "ReceiptVault — private, offline, free to start" },
+      { src: "/apps/receiptvault/05.jpg", alt: "ReceiptVault product details with warranty and purchase information" },
+      { src: "/apps/receiptvault/06.jpg", alt: "ReceiptVault search with active, expiring and expired filters" },
+      { src: "/apps/receiptvault/07.jpg", alt: "ReceiptVault scan receipt, gallery upload or manual entry" },
+      { src: "/apps/receiptvault/08.jpg", alt: "ReceiptVault six light and dark themes" },
+    ],
+  },
+
   /* ──────────────────────────────────────────────────────── 2048 Offline ── */
   {
     id: "2048-offline",
@@ -299,7 +644,7 @@ export const apps: AppEntry[] = [
 
     intro: [
       "Swipe to merge matching tiles, build 128, 512, 1024, 2048 — and then keep going. There is no fixed ceiling here: reach 4096, 8192, 16384 and beyond for as long as your strategy holds.",
-      "The whole game plays offline. No internet, no loading screens, no interruptions.",
+      "The whole game plays offline. No internet and no loading screens.",
     ],
 
     features: [

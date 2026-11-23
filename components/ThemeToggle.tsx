@@ -1,29 +1,30 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+type Theme = "light" | "dark";
+
+/* The anti-FOUC script in app/layout.tsx sets data-theme before hydration, so the
+   <html> attribute is the source of truth — subscribe to it rather than copying it into state. */
+function subscribe(onChange: () => void) {
+  const mo = new MutationObserver(onChange);
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  return () => mo.disconnect();
+}
+const getTheme = (): Theme =>
+  document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+const getServerTheme = (): Theme | null => null;
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem("theme") as "light" | "dark" | null;
-    const initial =
-      stored ??
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    setTheme(initial);
-    document.documentElement.setAttribute("data-theme", initial);
-  }, []);
+  const theme = useSyncExternalStore<Theme | null>(subscribe, getTheme, getServerTheme);
 
   function toggle() {
     const next = theme === "light" ? "dark" : "light";
-    setTheme(next);
-    localStorage.setItem("theme", next);
+    try { localStorage.setItem("theme", next); } catch {}
     document.documentElement.setAttribute("data-theme", next);
   }
 
-  // Render placeholder (same size) until mounted to avoid layout shift
-  if (!mounted) {
+  // Render placeholder (same size) on the server and during hydration to avoid layout shift
+  if (theme === null) {
     return (
       <button
         aria-label="Toggle theme"

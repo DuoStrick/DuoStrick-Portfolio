@@ -1,18 +1,19 @@
-const fs   = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
 /** @type {import('next-sitemap').IConfig} */
-module.exports = {
+const config = {
   siteUrl: "https://duostrick.vercel.app",
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
       { userAgent: "*", allow: "/" },
     ],
-    additionalSitemaps: [
-      "https://duostrick.vercel.app/sitemap.xml",
-    ],
   },
+
+  /* Only blog posts carry a real lastmod (their frontmatter date). Stamping every
+     static page with the build date tells crawlers nothing and gets lastmod ignored. */
+  autoLastmod: false,
 
   /* Default for static pages not listed in additionalPaths */
   changefreq: "weekly",
@@ -32,18 +33,16 @@ module.exports = {
 
   /* Override priorities per route type */
   transform: async (config, path) => {
-    const today = new Date().toISOString().slice(0, 10);
-    if (path === "/")        return { loc: path, changefreq: "weekly",   priority: 1.0,  lastmod: today };
-    if (path === "/blog")    return { loc: path, changefreq: "weekly",   priority: 0.9,  lastmod: today };
-    if (path === "/apps")    return { loc: path, changefreq: "weekly",   priority: 0.9,  lastmod: today };
+    if (path === "/")        return { loc: path, changefreq: "weekly",   priority: 1.0  };
+    if (path === "/blog")    return { loc: path, changefreq: "weekly",   priority: 0.9  };
+    if (path === "/apps")    return { loc: path, changefreq: "weekly",   priority: 0.9  };
     if (path.startsWith("/apps/"))
-                             return { loc: path, changefreq: "weekly",   priority: 0.85, lastmod: today };
-    if (path === "/support") return { loc: path, changefreq: "monthly",  priority: 0.65, lastmod: today };
+                             return { loc: path, changefreq: "weekly",   priority: 0.85 };
+    if (path === "/support") return { loc: path, changefreq: "monthly",  priority: 0.65 };
     return {
       loc:        path,
       changefreq: config.changefreq,
       priority:   config.priority,
-      lastmod:    today,
     };
   },
 
@@ -74,3 +73,5 @@ module.exports = {
       });
   },
 };
+
+export default config;

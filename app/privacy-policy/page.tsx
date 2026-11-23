@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: { absolute: "Privacy Policy | Duostrick" },
   description:
-    "How Duostrick handles your data across 2048 Puzzle Offline, AV Player and Mediqora — which apps collect nothing, advertising, and children's privacy.",
+    "How Duostrick handles your data across 2048 Offline, AV Player and Mediqora — which apps collect nothing, advertising, and children's privacy.",
   alternates: { canonical: "https://duostrick.vercel.app/privacy-policy" },
   /* Legal pages should not appear in search results */
   robots: { index: false, follow: true },
