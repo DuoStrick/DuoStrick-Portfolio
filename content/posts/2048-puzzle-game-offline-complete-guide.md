@@ -13,7 +13,7 @@ featured: true
 summary: ["2048 Offline is played on an infinite grid, so the board never fills up and you can merge past 2048 to 4096, 8192 and beyond.", "Beginner rule: anchor your highest tile in one corner, use only two or three swipe directions, and merge small tiles early.", "Intermediate and advanced play build a snake of descending tiles, then use the reset move when the board gets messy."]
 ---
 
-2048 Offline is a fresh spin on the tile-merging number puzzle genre — and it has one twist that changes everything: **the grid never ends**.
+[2048 Offline is a fresh spin](/apps/2048-offline) on the tile-merging number puzzle genre — and it has one twist that changes everything: **the grid never ends**.
 
 In the original 2048, you get a 4×4 board. Fill it up, and it's game over. Our version removes that ceiling entirely. Merge tiles, keep pushing higher numbers, and play for as long as your strategy holds. Whether you're a casual player or a hardcore puzzle fan, this guide will take you from your first swipe to tiles you never thought possible.
 
@@ -26,6 +26,8 @@ Classic 2048 is a finite game — every move matters because the board fills up 
 - The game stays **completely offline** — no internet needed to play
 
 It also features a **global leaderboard** so you can compete with players worldwide for the highest tile reached.
+
+Already know the basics? Jump to our [advanced guide to reaching 8192](/blog/how-to-reach-8192-in-2048-infinite-grid).
 
 ## How to Play: The Basics
 

@@ -168,6 +168,7 @@ export default function RootLayout({
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
+        <link rel="alternate" type="application/rss+xml" title="DuoStrick Blog" href={`${SITE_URL}/feed.xml`} />
         {/* Global structured data */}
         <script
           type="application/ld+json"

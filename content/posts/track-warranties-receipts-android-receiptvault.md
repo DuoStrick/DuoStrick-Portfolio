@@ -49,13 +49,15 @@ Capture these the day you buy something and a claim takes minutes.
 
 ## Doing It on Your Phone With ReceiptVault
 
-We built **ReceiptVault: Warranty Tracker** to make that routine take seconds:
+We built [**ReceiptVault: Warranty Tracker**](/apps/receiptvault) to make that routine take seconds:
 
 - **Snap a receipt** and on-device OCR fills in the brand, model, serial number, purchase date, price and warranty period for you to confirm
 - **Reminders 30, 14, 7 and 1 day** before any warranty, AMC or policy expires — even when the app is closed. Tap one and you're on that receipt.
 - **Search everything** — product, brand, model, serial number, notes — and filter by active, expiring or expired
 - **Stored on your device** and usable offline, with optional encrypted backup
 - **No ads and no subscription**, with six light and dark themes
+
+Need to send an invoice as a PDF for a claim? Here's [how to compress and merge PDFs offline](/blog/compress-merge-pdf-offline-android-docqora).
 
 ## Start With the Expensive Things
 

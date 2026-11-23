@@ -15,7 +15,7 @@ summary: ["Queens puzzles have one solution reachable by logic: one piece per ro
 
 Queens puzzles look like a game of luck the first time you see one: a coloured grid, a handful of rules, and far too many empty squares. They aren't. A well-made queens puzzle has exactly one solution, and you can always find the next move by logic alone.
 
-This guide walks through the techniques that solve almost every board, from a beginner's 4×4 to a 10×10 that takes real thought. We'll use the rules from our game **Bunny Puzzle: Queens Logic**, where you place bunnies instead of queens, but they work on any queens-style puzzle.
+This guide walks through the techniques that solve almost every board, from a beginner's 4×4 to a 10×10 that takes real thought. We'll use the rules from our game [**Bunny Puzzle: Queens Logic**](/apps/bunny-puzzle), where you place bunnies instead of queens, but they work on any queens-style puzzle.
 
 ## The Rules in One Minute
 
@@ -80,6 +80,8 @@ A reliable loop for any board:
 5. Repeat.
 
 You'll rarely need anything beyond this, even on 10×10 boards.
+
+Enjoy number puzzles too? Our [2048 strategy guide](/blog/2048-puzzle-game-offline-complete-guide) uses the same plan-ahead thinking.
 
 ## Practise With Bunny Puzzle
 

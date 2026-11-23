@@ -16,7 +16,7 @@ summary: ["Mediqora turns the video and music files on your phone into a library
 
 Most local video players on Android show you a list of filenames. You scroll, you squint at `Show.Name.S03E04.1080p.mkv`, you tap, and if you stopped halfway through last night you get to hunt for your place all over again.
 
-**Mediqora** does something different. It *reads* those filenames. A folder of downloads becomes Show Name → Season 3 → Episode 4, with your progress tracked per episode and the next one waiting on the home screen.
+**[Mediqora](/apps/mediqora)** does something different. It *reads* those filenames. A folder of downloads becomes Show Name → Season 3 → Episode 4, with your progress tracked per episode and the next one waiting on the home screen.
 
 It's out now on Google Play, it's free, and it has no internet permission at all.
 

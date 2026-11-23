@@ -36,6 +36,7 @@ const config = {
     "/apple-icon.png",
     "/llms.txt",
     "/llms-full.txt",
+    "/feed.xml",
     "/manifest.webmanifest",
     "/opengraph-image",
     "/*/opengraph-image",

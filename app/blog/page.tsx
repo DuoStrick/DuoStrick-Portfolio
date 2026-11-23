@@ -64,6 +64,14 @@ const blogPageSchema = {
   inLanguage: "en-US",
   publisher: { "@id": "https://duostrick.vercel.app/#organization" },
   isPartOf: { "@id": "https://duostrick.vercel.app/#website" },
+  blogPost: getAllPosts().map((p) => ({
+    "@type": "BlogPosting",
+    "@id": `https://duostrick.vercel.app/blog/${p.slug}/#article`,
+    headline: p.title,
+    url: `https://duostrick.vercel.app/blog/${p.slug}`,
+    datePublished: p.date,
+    dateModified: p.updated,
+  })),
 };
 
 const breadcrumbSchema = {

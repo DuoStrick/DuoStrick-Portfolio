@@ -13,7 +13,7 @@ featured: false
 summary: ["AV Player plays most video and audio formats, including MKV, MP4, AVI, FLAC and MP3, without extra codecs.", "Gestures control brightness, volume and seeking; picture-in-picture, playback speed and subtitles are built in.", "It works fully offline and is free, supported by a single banner ad on the library screens — never during playback."]
 ---
 
-AV Player: Video & MP3 Player is our all-in-one media player for Android. It handles every video and audio format you're likely to encounter — no third-party codecs and no subscriptions.
+[AV Player: Video & MP3 Player](/apps/av-player) is our all-in-one media player for Android. It handles every video and audio format you're likely to encounter — no third-party codecs and no subscriptions.
 
 This guide walks through every feature in detail so you know exactly what you're getting.
 
@@ -119,6 +119,8 @@ We optimized AV Player across the full range of Android hardware:
 - **Low RAM usage** — won't slow down older phones
 - **Fast library scanning** — indexes files in the background without freezing the UI
 - **Resume playback** — remembers exactly where you stopped for every file
+
+Want shortcuts most people miss? See our [10 hidden AV Player features](/blog/top-10-hidden-features-av-player).
 
 ## Download AV Player Free
 

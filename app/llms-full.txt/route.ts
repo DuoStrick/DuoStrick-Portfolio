@@ -29,7 +29,7 @@ export function GET() {
       `URL: ${SITE_URL}/apps/${app.id}`,
       `Google Play: ${app.playStoreUrl}`,
       `Developer: DuoStrick · Category: ${app.applicationSubCategory} · Platform: ${app.operatingSystem}`,
-      `Price: ${app.inAppPurchases ? "free, with optional in-app purchases" : "free"} · Ads: ${app.containsAds ? "contains ads" : "no ads"} · Works offline: yes · Last updated: ${app.storeUpdated}`,
+      `Price: ${app.inAppPurchases ? "free, with optional in-app purchases" : "free"} · Ads: ${app.containsAds ? "contains ads" : "no ads"} · Works offline: yes · Rated: Everyone · Last updated: ${app.storeUpdated}`,
       "",
       app.schemaDescription,
       "",

@@ -17,7 +17,7 @@ You need to email a scanned form, but it's 18 MB and the limit is 5. Or a portal
 
 That's fine for a recipe. It's a different matter for a rental agreement, a payslip, a medical report or a scan of your ID. Once a file is uploaded, you're trusting a stranger's server to process it and delete it afterwards.
 
-You can do the same jobs on your phone instead. This guide uses **Docqora**, our free PDF toolkit for Android, which works fully offline.
+You can do the same jobs on your phone instead. This guide uses [**Docqora**](/apps/docqora), our free PDF toolkit for Android, which works fully offline.
 
 ## Why Offline Matters for PDFs
 
@@ -68,6 +68,8 @@ Tap **Split** and choose how to cut it:
 - Remove pages the recipient doesn't need
 - Add a password if it contains personal or financial details
 - Send the password through a different channel from the file
+
+Keeping paper receipts as well? See [how to track warranties and receipts on Android](/blog/track-warranties-receipts-android-receiptvault).
 
 ## Get Docqora
 

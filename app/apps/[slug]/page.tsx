@@ -85,6 +85,7 @@ export default async function AppPage({
     ["Price", app.inAppPurchases ? "Free, with optional in-app purchases" : "Free"],
     ["Ads", app.containsAds ? "Contains ads" : "No ads"],
     ["Works offline", "Yes"],
+    ["Content rating", "Everyone"],
     ["Category", app.applicationSubCategory],
     ["Platform", app.operatingSystem],
     ["Last updated", updated],

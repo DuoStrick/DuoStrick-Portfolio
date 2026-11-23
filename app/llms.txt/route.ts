@@ -43,6 +43,7 @@ export function GET() {
     `- [Support & FAQ](${SITE_URL}/support): answers for each app and how to contact the studio`,
     `- [Privacy policy](${SITE_URL}/privacy-policy): how each app handles data`,
     `- [Sitemap](${SITE_URL}/sitemap.xml)`,
+    `- [RSS feed](${SITE_URL}/feed.xml): new guides as they are published`,
     "",
   ];
 

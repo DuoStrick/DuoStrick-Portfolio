@@ -39,6 +39,7 @@ export function softwareApplicationSchema(app: AppEntry) {
     publisher: { "@id": `${SITE}/#organization` },
     author: { "@id": `${SITE}/#organization` },
     inLanguage: "en",
+    contentRating: "Everyone",
     isAccessibleForFree: true,
     keywords: app.keywords.join(", "),
   };

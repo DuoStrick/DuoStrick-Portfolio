@@ -15,7 +15,9 @@ summary: ["Build a snake pattern: keep your highest tile in a corner and lay des
 
 Most 2048 players plateau at 512 or 1024. They swipe reactively, their boards get messy, and eventually there's nowhere to go. If that sounds familiar, this guide is for you.
 
-These are the same techniques used by players who regularly reach 4096, 8192, and higher in 2048 Offline. The infinite grid gives you more room than classic 2048 — but discipline still wins every time.
+These are the same techniques used by players who regularly reach 4096, 8192, and higher in [2048 Offline](/apps/2048-offline). The infinite grid gives you more room than classic 2048 — but discipline still wins every time.
+
+New to the game? Start with our [complete 2048 Offline beginner guide](/blog/2048-puzzle-game-offline-complete-guide).
 
 ## The #1 Mistake: Swiping Without a Plan
 

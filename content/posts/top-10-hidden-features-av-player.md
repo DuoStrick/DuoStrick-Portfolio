@@ -13,7 +13,9 @@ featured: false
 summary: ["Swipe gestures adjust brightness, volume and seek position without opening any menu.", "Lesser-known extras include an AMOLED black theme, picture-in-picture, a sleep timer, screen lock and hidden private folders.", "AV Player remembers playback speed and resume position per file, and lets you sort and filter your library."]
 ---
 
-AV Player: Video & MP3 Player packs a lot more than what's visible on the surface. Most users discover the basic playback controls quickly — but these ten features go deeper, and once you know about them, you'll wonder how you managed without them.
+[AV Player](/apps/av-player): Video & MP3 Player packs a lot more than what's visible on the surface. Most users discover the basic playback controls quickly — but these ten features go deeper, and once you know about them, you'll wonder how you managed without them.
+
+For the full tour of every feature, read our [complete AV Player guide](/blog/av-player-android-features-guide).
 
 ## 1. Gesture Controls (The Fastest Way to Adjust Anything)
 

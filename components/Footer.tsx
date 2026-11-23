@@ -60,6 +60,7 @@ export default function Footer() {
             <Link href="/support">Support</Link>
             {/* A plain <a>: the sitemap is a static file, not a route Link can prefetch */}
             <a href="/sitemap.xml">Sitemap</a>
+            <a href="/feed.xml">RSS</a>
             <a href="/llms.txt">llms.txt</a>
           </span>
         </div>
