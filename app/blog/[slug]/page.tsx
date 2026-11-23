@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { marked } from "marked";
-import { getAllSlugs, getPostBySlug, getAllPosts, extractHeadings } from "../../../lib/posts";
+import { getAllSlugs, getPostBySlug, getRelatedPosts, extractHeadings } from "../../../lib/posts";
 import { getAppById, getAppForPostTags } from "../../../data/apps";
 import { formatDate, categoryClass } from "../../../lib/postUtils";
 
@@ -57,8 +57,8 @@ export async function generateMetadata({
   };
 
   return {
-    /* absolute bypasses layout template — avoids "Title | Duostrick Blog | Duostrick" */
-    title: { absolute: `${post.title} | Duostrick Blog` },
+    /* absolute bypasses layout template — avoids "Title | DuoStrick Blog | DuoStrick" */
+    title: { absolute: `${post.title} | DuoStrick Blog` },
     description: post.description,
     keywords: [
       ...post.tags,
@@ -72,7 +72,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       url: postUrl,
-      siteName: "Duostrick Game Studio",
+      siteName: "DuoStrick Game Studio",
       type: "article",
       publishedTime: `${post.date}T00:00:00+00:00`,
       modifiedTime:  `${post.date}T00:00:00+00:00`,
@@ -102,9 +102,7 @@ export default async function BlogPostPage({
 
   const htmlContent  = await marked.parse(post.content);
   const headings     = extractHeadings(post.content);
-  const related      = getAllPosts()
-    .filter(p => p.category === post.category && p.slug !== post.slug)
-    .slice(0, 2);
+  const related      = getRelatedPosts(post);
   const dateStr      = formatDate(post.date);
   const catClass     = categoryClass(post.category);
   const postUrl      = `https://duostrick.vercel.app/blog/${post.slug}`;
@@ -145,11 +143,11 @@ export default async function BlogPostPage({
     publisher: {
       "@type": "Organization",
       "@id": "https://duostrick.vercel.app/#organization",
-      name: "Duostrick Studio",
+      name: "DuoStrick Studio",
       url: "https://duostrick.vercel.app",
       logo: {
         "@type": "ImageObject",
-        url: "https://duostrick.vercel.app/logo.png",
+        url: "https://duostrick.vercel.app/duostrick-logo.png",
         width: 512,
         height: 512,
       },
@@ -161,7 +159,7 @@ export default async function BlogPostPage({
     isPartOf: {
       "@type": "Blog",
       "@id": "https://duostrick.vercel.app/blog/#blog",
-      name: "Duostrick Blog",
+      name: "DuoStrick Blog",
       url: "https://duostrick.vercel.app/blog",
     },
     about: { "@id": `https://duostrick.vercel.app/#app-${ctaApp.id}` },
@@ -385,20 +383,23 @@ export default async function BlogPostPage({
                     <Link
                       key={rp.slug}
                       href={`/blog/${rp.slug}`}
-                      className="card-hover flex gap-4 rounded-xl p-4"
+                      className="card-hover flex items-center gap-4 rounded-xl p-4"
                       style={{ border: "1px solid var(--border)", background: "var(--surface)", textDecoration: "none" }}
                     >
                       <div
-                        className="w-14 h-14 rounded-lg shrink-0 flex items-center justify-center"
-                        style={{ background: "var(--input)" }}
-                        aria-hidden="true"
+                        className="relative w-28 shrink-0 rounded-lg overflow-hidden flex items-center justify-center"
+                        style={{ aspectRatio: "16/10", background: "var(--input)" }}
                       >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                          <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" strokeWidth="1.5" />
-                          <path d="M7 16 L10 10 L13 13 L16 8 L19 16" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-                        </svg>
+                        {rp.image && rp.image !== "/og-image.png" ? (
+                          <Image src={rp.image} alt={rp.imageAlt || rp.title} fill className="object-cover" sizes="112px" />
+                        ) : (
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" strokeWidth="1.5" />
+                            <path d="M7 16 L10 10 L13 13 L16 8 L19 16" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                          </svg>
+                        )}
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <span className={`badge ${categoryClass(rp.category)} mb-1`}>{rp.category}</span>
                         <p
                           className="text-sm font-semibold line-clamp-2"
@@ -406,7 +407,9 @@ export default async function BlogPostPage({
                         >
                           {rp.title}
                         </p>
-                        <p className="text-xs mt-1" style={{ color: "var(--muted)" }}>{formatDate(rp.date)}</p>
+                        <p className="text-xs mt-1" style={{ color: "var(--muted)" }}>
+                          {`${formatDate(rp.date)} · ${rp.readTime} min read`}
+                        </p>
                       </div>
                     </Link>
                   ))}

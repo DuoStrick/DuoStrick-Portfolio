@@ -76,9 +76,9 @@ export function appListSchema(list: AppEntry[], atId: string) {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "@id": atId,
-    name: "Duostrick Android Apps on Google Play",
+    name: "DuoStrick Android Apps on Google Play",
     description:
-      "Free Android games and apps published by Duostrick Studio — all offline-capable.",
+      "Free Android games and apps published by DuoStrick Studio — all offline-capable.",
     numberOfItems: list.length,
     itemListOrder: "https://schema.org/ItemListUnordered",
     itemListElement: list.map((app, i) => ({

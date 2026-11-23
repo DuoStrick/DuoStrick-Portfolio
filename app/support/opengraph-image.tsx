@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime     = "edge";
-export const alt         = "Duostrick Support & FAQ — AV Player, Mediqora & 2048 Game Help";
+export const alt         = "DuoStrick Support & FAQ — help for every DuoStrick app";
 export const size        = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -54,7 +54,7 @@ export default function SupportOgImage() {
           </div>
 
           <div style={{ fontSize: 28, color: "#777777", textAlign: "center" }}>
-            Answers for every Duostrick app
+            Answers for every DuoStrick app
           </div>
 
           <div style={{ display: "flex", gap: 14, marginTop: 10, flexWrap: "wrap", justifyContent: "center" }}>

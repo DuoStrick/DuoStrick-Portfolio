@@ -25,11 +25,11 @@ export default function Hero() {
       {/* Logo — scale-in entrance */}
       <div className="hero-anim-scale hero-delay-1 mb-8">
         <Image
-          src="/logo.png"
-          alt="Duostrick Studio Logo"
+          src="/duostrick-logo.png"
+          alt="DuoStrick Studio Logo"
           width={88} height={88}
           className="mx-auto"
-          style={{ borderRadius: 20, border: "1px solid rgba(26,111,168,0.25)", boxShadow: "0 8px 32px rgba(26,111,168,0.18), 0 0 0 6px rgba(26,111,168,0.07)" }}
+          style={{ borderRadius: 20, border: "1px solid rgba(60,34,169,0.30)", boxShadow: "0 8px 32px rgba(60,34,169,0.22), 0 0 0 6px rgba(60,34,169,0.08)" }}
           priority
         />
       </div>
@@ -53,8 +53,8 @@ export default function Hero() {
 
       {/* Subtitle */}
       <p className="hero-anim hero-delay-3 max-w-2xl mb-10 text-lg" style={{ color: "var(--subtle)", lineHeight: 1.75 }}>
-        Duostrick is an indie studio crafting polished puzzle games and smart
-        Android apps — designed for everyone.
+        Cute puzzle games and handy offline apps for Android. Relax your brain,
+        play daily challenges and get more done.
       </p>
 
       {/* CTAs */}

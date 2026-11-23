@@ -9,9 +9,9 @@ import { appListSchema, softwareApplicationSchema, SITE } from "../../lib/appSch
 const APPS = getAllApps();
 
 export const metadata: Metadata = {
-  title: { absolute: "Android Apps & Games by Duostrick — Free on Google Play" },
+  title: { absolute: "Android Apps & Games by DuoStrick — Free on Google Play" },
   description:
-    "Every Duostrick Android app: Bunny Puzzle, 2048 Offline, Mediqora, AV Player, Docqora (offline PDF tools) and ReceiptVault (warranty tracker).",
+    "Every DuoStrick Android app: Bunny Puzzle, 2048 Offline, Mediqora, AV Player, Docqora (offline PDF tools) and ReceiptVault (warranty tracker).",
   keywords: [
     "duostrick apps",
     "duostrick android apps",
@@ -29,17 +29,17 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: `${SITE}/apps` },
   openGraph: {
-    title: "Android Apps & Games by Duostrick",
+    title: "Android Apps & Games by DuoStrick",
     description:
       "Bunny Puzzle, 2048 Offline, Mediqora, AV Player, Docqora and ReceiptVault — free Android games and apps from an indie studio.",
     url: `${SITE}/apps`,
-    siteName: "Duostrick Game Studio",
+    siteName: "DuoStrick Game Studio",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Android Apps & Games by Duostrick",
+    title: "Android Apps & Games by DuoStrick",
     description: "Bunny Puzzle, 2048 Offline, Mediqora, AV Player, Docqora and ReceiptVault — free on Google Play.",
   },
 };

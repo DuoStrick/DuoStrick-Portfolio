@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { getAppById, getAllAppIds } from "../../../data/apps";
 
-export const alt         = "Duostrick Android apps — free on Google Play";
+export const alt         = "DuoStrick Android apps — free on Google Play";
 export const size        = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -23,7 +23,7 @@ export default async function AppOgImage({
   const { slug } = await params;
   const app = getAppById(slug);
 
-  const title   = app?.title ?? "Duostrick";
+  const title   = app?.title ?? "DuoStrick";
   const tagline = app?.tagline ?? "Free Android apps and games";
   const genre   = app?.genre ?? "Google Play";
   const accent  = ACCENTS[app?.accent ?? "blue"] ?? ACCENTS.blue;
@@ -89,7 +89,7 @@ export default async function AppOgImage({
         }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             <div style={{ fontSize: 26, fontWeight: 700, color: "#e8e8e8" }}>
-              Duostrick Studio
+              DuoStrick Studio
             </div>
             <div style={{ fontSize: 20, color: "#666666" }}>
               {`duostrick.vercel.app/apps/${slug}`}

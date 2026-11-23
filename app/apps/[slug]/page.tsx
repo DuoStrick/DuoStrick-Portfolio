@@ -37,7 +37,7 @@ export async function generateMetadata({
   };
 
   return {
-    title: { absolute: `${app.seoTitle} | Duostrick` },
+    title: { absolute: `${app.seoTitle} | DuoStrick` },
     description: app.seoDescription,
     keywords: [...app.keywords, "duostrick", "free android app", "google play"],
     alternates: { canonical: url },
@@ -45,7 +45,7 @@ export async function generateMetadata({
       title: app.seoTitle,
       description: app.seoDescription,
       url,
-      siteName: "Duostrick Game Studio",
+      siteName: "DuoStrick Game Studio",
       type: "website",
       locale: "en_US",
       images: [ogImage],
@@ -333,7 +333,7 @@ export default async function AppPage({
             className="font-bold mb-2"
             style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1.5rem, 3vw, 2rem)", color: "var(--fg)", letterSpacing: "-0.02em" }}
           >
-            More from Duostrick
+            More from DuoStrick
           </h2>
           <div className="accent-bar-gradient mb-8" />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -371,7 +371,7 @@ export default async function AppPage({
           </div>
 
           <p className="text-sm mt-8" style={{ color: "var(--muted)" }}>
-            <Link href="/apps" style={{ color: "var(--badge-info-text)" }}>See all Duostrick apps →</Link>
+            <Link href="/apps" style={{ color: "var(--badge-info-text)" }}>See all DuoStrick apps →</Link>
           </p>
         </SectionContainer>
       </div>

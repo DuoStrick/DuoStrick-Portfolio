@@ -1,6 +1,6 @@
-# Duostrick website
+# DuoStrick website
 
-Marketing site and blog for the Duostrick Android apps — https://duostrick.vercel.app
+Marketing site and blog for the DuoStrick Android apps — https://duostrick.vercel.app
 
 Next.js 16 (App Router) · React 19 · Tailwind 4 · Markdown blog (gray-matter + marked).
 

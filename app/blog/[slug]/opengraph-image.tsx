@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { getPostBySlug, getAllSlugs } from "../../../lib/posts";
 
-export const alt         = "Duostrick Blog — Android Game Tips & App Guides";
+export const alt         = "DuoStrick Blog — Android Game Tips & App Guides";
 export const size        = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -26,7 +26,7 @@ export default async function PostOgImage({
   const { slug } = await params;
   const post = getPostBySlug(slug);
 
-  const title    = post?.title ?? "Duostrick Blog";
+  const title    = post?.title ?? "DuoStrick Blog";
   const category = post?.category ?? "Studio News";
   const readTime = post?.readTime ?? 5;
   const accent   = ACCENTS[category] ?? ACCENTS.Updates;
@@ -91,7 +91,7 @@ export default async function PostOgImage({
         }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             <div style={{ fontSize: 26, fontWeight: 700, color: "#e8e8e8" }}>
-              Duostrick Studio
+              DuoStrick Studio
             </div>
             <div style={{ fontSize: 20, color: "#666666" }}>
               duostrick.vercel.app/blog

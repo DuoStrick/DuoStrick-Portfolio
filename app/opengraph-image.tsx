@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { getAllApps } from "../data/apps";
 
 export const runtime     = "edge";
-export const alt         = "Duostrick — Indie Android Game Studio";
+export const alt         = "DuoStrick — Indie Android Game Studio";
 export const size        = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -57,7 +57,7 @@ export default function OgImage() {
             letterSpacing: "-4px", lineHeight: 1.05,
             textAlign: "center",
           }}>
-            Duostrick
+            DuoStrick
           </div>
 
           {/* Tagline */}
@@ -65,7 +65,7 @@ export default function OgImage() {
             fontSize: 30, color: "#777777",
             textAlign: "center", letterSpacing: "0px",
           }}>
-            Indie Android Game Studio
+            Cute games &amp; handy apps
           </div>
 
           {/* App chips */}

@@ -13,10 +13,10 @@ const syne = Syne({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://duostrick.vercel.app"),
-  applicationName: "Duostrick Game Studio",
+  applicationName: "DuoStrick Game Studio",
   title: {
-    default: "Duostrick — Indie Android Game Studio",
-    template: "%s | Duostrick",
+    default: "DuoStrick — Indie Android Game Studio",
+    template: "%s | DuoStrick",
   },
   description:
     "Indie Android studio building free, offline-first games and apps — Bunny Puzzle, 2048 Offline, Docqora, Mediqora and more. Free on Google Play.",
@@ -60,25 +60,25 @@ export const metadata: Metadata = {
     "mobile game download",
     "offline first android apps",
   ],
-  authors: [{ name: "Duostrick Studio", url: "https://duostrick.vercel.app" }],
-  creator: "Duostrick Studio",
-  publisher: "Duostrick Studio",
+  authors: [{ name: "DuoStrick Studio", url: "https://duostrick.vercel.app" }],
+  creator: "DuoStrick Studio",
+  publisher: "DuoStrick Studio",
   formatDetection: { telephone: false, email: false, address: false },
   alternates: { canonical: "https://duostrick.vercel.app" },
   /* Favicon and apple touch icon come from app/icon.png and app/apple-icon.png */
   openGraph: {
-    title: "Duostrick — Indie Android Game Studio",
+    title: "DuoStrick — Indie Android Game Studio",
     description:
       "Free Android games and apps from an indie studio — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora (offline PDF tools) and ReceiptVault.",
     url: "https://duostrick.vercel.app",
-    siteName: "Duostrick Game Studio",
+    siteName: "DuoStrick Game Studio",
     /* No hardcoded images — Next.js auto-uses app/opengraph-image.tsx */
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Duostrick — Indie Android Game Studio",
+    title: "DuoStrick — Indie Android Game Studio",
     description:
       "Free puzzle games and smart Android apps — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora & ReceiptVault.",
     /* No hardcoded images — auto-detected from opengraph-image.tsx */
@@ -111,18 +111,19 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": "https://duostrick.vercel.app/#organization",
-  name: "Duostrick Studio",
-  alternateName: "Duostrick Game Studio",
+  name: "DuoStrick Studio",
+  alternateName: "DuoStrick Game Studio",
   url: "https://duostrick.vercel.app",
   logo: {
     "@type": "ImageObject",
-    url: "https://duostrick.vercel.app/logo.png",
+    url: "https://duostrick.vercel.app/duostrick-logo.png",
     width: 512,
     height: 512,
   },
   image: "https://duostrick.vercel.app/opengraph-image",
   description:
-    "Independent mobile game and app studio building fun Android puzzle games and smart applications.",
+    "Cute puzzle games and handy offline apps for Android. Relax your brain, play daily challenges and get more done.",
+  slogan: "Cute games & handy apps",
   email: "support@tradeslook.com",
   foundingDate: "2024",
   sameAs: [
@@ -135,7 +136,7 @@ const websiteSchema = {
   "@type": "WebSite",
   "@id": "https://duostrick.vercel.app/#website",
   url: "https://duostrick.vercel.app",
-  name: "Duostrick Game Studio",
+  name: "DuoStrick Game Studio",
   description:
     "Indie Android mobile game and app studio — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault.",
   inLanguage: "en-US",

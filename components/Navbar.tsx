@@ -35,8 +35,8 @@ export default function Navbar() {
             letterSpacing: "-0.02em",
           }}
         >
-          <Image src="/logo.png" alt="Duostrick Logo" width={30} height={30} className="rounded-lg" />
-          Duostrick
+          <Image src="/duostrick-logo.png" alt="DuoStrick Logo" width={30} height={30} className="rounded-lg" />
+          DuoStrick
         </Link>
 
         {/* Desktop nav */}

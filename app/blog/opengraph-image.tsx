@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime     = "edge";
-export const alt         = "Duostrick Blog — Android Game Tips & App Guides";
+export const alt         = "DuoStrick Blog — Android Game Tips & App Guides";
 export const size        = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -44,7 +44,7 @@ export default function BlogOgImage() {
             borderRadius: 999, padding: "9px 28px",
             color: "#86efac", fontSize: 20, fontWeight: 600,
           }}>
-            Duostrick Studio
+            DuoStrick Studio
           </div>
 
           {/* Title */}
@@ -53,7 +53,7 @@ export default function BlogOgImage() {
             letterSpacing: "-3px", lineHeight: 1.08,
             textAlign: "center",
           }}>
-            Duostrick Blog
+            DuoStrick Blog
           </div>
 
           {/* Subtitle */}

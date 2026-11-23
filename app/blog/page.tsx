@@ -5,9 +5,9 @@ import BlogCard from "../../components/BlogCard";
 import BlogFilters from "../../components/BlogFilters";
 
 export const metadata: Metadata = {
-  title: { absolute: "Blog — Android Game Tips, App Guides & Studio News | Duostrick" },
+  title: { absolute: "Blog — Android Game Tips, App Guides & Studio News | DuoStrick" },
   description:
-    "Queens puzzle and 2048 strategy guides, offline PDF and warranty-tracking how-tos, and AV Player and Mediqora tips from the Duostrick indie studio.",
+    "Queens puzzle and 2048 strategy guides, offline PDF and warranty-tracking how-tos, and AV Player and Mediqora tips from the DuoStrick indie studio.",
   keywords: [
     "duostrick blog",
     "2048 strategy guide",
@@ -36,20 +36,20 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://duostrick.vercel.app/blog" },
   openGraph: {
-    title: "Blog — Android Game Tips, App Guides & Studio News | Duostrick",
+    title: "Blog — Android Game Tips, App Guides & Studio News | DuoStrick",
     description:
-      "Queens logic puzzle techniques, 2048 strategy, offline PDF tools, warranty tracking, and AV Player and Mediqora guides from the Duostrick indie studio.",
+      "Queens logic puzzle techniques, 2048 strategy, offline PDF tools, warranty tracking, and AV Player and Mediqora guides from the DuoStrick indie studio.",
     url: "https://duostrick.vercel.app/blog",
-    siteName: "Duostrick Game Studio",
+    siteName: "DuoStrick Game Studio",
     type: "website",
     locale: "en_US",
     /* OG image auto-served by app/blog/opengraph-image.tsx */
   },
   twitter: {
     card: "summary_large_image",
-    title: "Duostrick Blog — Android Game Tips & App Guides",
+    title: "DuoStrick Blog — Android Game Tips & App Guides",
     description:
-      "Puzzle strategy, Android app guides and studio updates from Duostrick.",
+      "Puzzle strategy, Android app guides and studio updates from DuoStrick.",
   },
 };
 
@@ -57,9 +57,9 @@ const blogPageSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "@id": "https://duostrick.vercel.app/blog/#blog",
-  name: "Duostrick Blog",
+  name: "DuoStrick Blog",
   description:
-    "Android game strategy guides, app tips and tricks, and indie studio updates from Duostrick.",
+    "Android game strategy guides, app tips and tricks, and indie studio updates from DuoStrick.",
   url: "https://duostrick.vercel.app/blog",
   inLanguage: "en-US",
   publisher: { "@id": "https://duostrick.vercel.app/#organization" },
@@ -126,7 +126,7 @@ export default function BlogPage() {
               lineHeight: 1.1,
             }}
           >
-            Duostrick Blog
+            DuoStrick Blog
           </h1>
           <div className="accent-bar-gradient mb-4" />
           <p style={{ color: "var(--body-text)", fontSize: "1.05rem" }}>

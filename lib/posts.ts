@@ -7,6 +7,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import type { PostMeta, Post } from "./types";
+import { getAppForPostTags } from "../data/apps";
 
 export type { PostMeta, Post };
 
@@ -28,7 +29,7 @@ function parseMeta(filename: string): PostMeta {
     title: data.title ?? "",
     description: data.description ?? "",
     date: data.date ?? "",
-    author: data.author ?? "Duostrick Studio",
+    author: data.author ?? "DuoStrick Studio",
     category: data.category ?? "Game Dev",
     tags: Array.isArray(data.tags) ? data.tags : [],
     image: data.image ?? "/og-image.png",
@@ -47,6 +48,28 @@ export function getAllPosts(): PostMeta[] {
     );
 }
 
+/**
+ * Posts most related to `post`, best first: same app outranks shared tags,
+ * which outrank a shared category; ties go to the newer post.
+ */
+export function getRelatedPosts(post: PostMeta, limit = 4): PostMeta[] {
+  const app = getAppForPostTags(post.tags);
+  const tags = new Set(post.tags);
+
+  return getAllPosts()
+    .filter((p) => p.slug !== post.slug)
+    .map((p) => {
+      const sameApp = app !== null && getAppForPostTags(p.tags)?.id === app.id;
+      const sharedTags = p.tags.filter((t) => tags.has(t)).length;
+      const score = (sameApp ? 100 : 0) + sharedTags * 3 + (p.category === post.category ? 1 : 0);
+      return { p, score };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(({ p }) => p);
+}
+
 /** Single post (frontmatter + raw markdown content) or null if not found */
 export function getPostBySlug(slug: string): Post | null {
   const filePath = path.join(POSTS_DIR, `${slug}.md`);
@@ -60,7 +83,7 @@ export function getPostBySlug(slug: string): Post | null {
     title: data.title ?? "",
     description: data.description ?? "",
     date: data.date ?? "",
-    author: data.author ?? "Duostrick Studio",
+    author: data.author ?? "DuoStrick Studio",
     category: data.category ?? "Game Dev",
     tags: Array.isArray(data.tags) ? data.tags : [],
     image: data.image ?? "/og-image.png",

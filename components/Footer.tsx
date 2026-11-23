@@ -11,11 +11,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2 font-bold mb-3" style={{ fontFamily: "var(--font-syne)", color: "var(--fg)", fontSize: "1.05rem", letterSpacing: "-0.02em" }}>
-              <Image src="/logo.png" alt="Duostrick Logo" width={26} height={26} className="rounded-md" />
-              Duostrick
+              <Image src="/duostrick-logo.png" alt="DuoStrick Logo" width={26} height={26} className="rounded-md" />
+              DuoStrick
             </Link>
             <p className="text-sm" style={{ color: "var(--muted)", maxWidth: 260, lineHeight: 1.7 }}>
-              Independent mobile studio crafting polished games and smart apps for Android.
+              Cute puzzle games and handy offline apps for Android.
             </p>
             <a
               href="https://play.google.com/store/apps/dev?id=8989641209983926608"
@@ -62,8 +62,8 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 mt-8 pt-6 text-xs" style={{ borderTop: "1px solid var(--border)", color: "var(--muted)" }}>
-          <span>&copy; {year} Duostrick. All rights reserved.</span>
-          <span>Built with ❤️ by Duostrick</span>
+          <span>&copy; {year} DuoStrick. All rights reserved.</span>
+          <span>Built with ❤️ by DuoStrick</span>
         </div>
       </div>
     </footer>

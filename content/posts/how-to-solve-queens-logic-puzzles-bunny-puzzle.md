@@ -2,7 +2,7 @@
 title: "How to Solve Queens Logic Puzzles: 7 Techniques That Never Need a Guess"
 description: "Learn to solve queens logic puzzles step by step — region locks, neighbour sweeps and pigeonhole tricks — and practise them in Bunny Puzzle on Android."
 date: "2026-11-23"
-author: "Duostrick Studio"
+author: "DuoStrick Studio"
 category: "Tips & Tricks"
 tags: ["bunny-puzzle", "queens-puzzle", "queens-logic-puzzle", "logic-puzzle", "puzzle-strategy", "star-battle", "brain-game", "android-puzzle-game", "offline-game", "daily-puzzle"]
 image: "/blog/bunny-puzzle-banner.jpg"

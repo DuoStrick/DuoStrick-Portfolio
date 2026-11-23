@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: { absolute: "Support & FAQ — Help for All Duostrick Apps | Duostrick" },
+  title: { absolute: "Support & FAQ — Help for All DuoStrick Apps | DuoStrick" },
   description:
     "Help for Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault — how-tos, common questions and troubleshooting.",
   keywords: [
@@ -25,18 +25,18 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://duostrick.vercel.app/support" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Support & FAQ — Help for All Duostrick Apps | Duostrick",
+    title: "Support & FAQ — Help for All DuoStrick Apps | DuoStrick",
     description:
       "Get help with Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault. Answers about features, settings and troubleshooting.",
     url: "https://duostrick.vercel.app/support",
-    siteName: "Duostrick Game Studio",
+    siteName: "DuoStrick Game Studio",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Duostrick Support & FAQ",
-    description: "Help and answers for every Duostrick app.",
+    title: "DuoStrick Support & FAQ",
+    description: "Help and answers for every DuoStrick app.",
   },
 };
 
@@ -228,7 +228,7 @@ export default function Support() {
 
         <div className="mt-10" style={{ borderTop: "1px solid var(--border)", paddingTop: "1.5rem" }}>
           <Link href="/" className="text-sm font-semibold" style={{ color: "var(--badge-info-text)" }}>
-            ← Back to Duostrick
+            ← Back to DuoStrick
           </Link>
         </div>
       </div>

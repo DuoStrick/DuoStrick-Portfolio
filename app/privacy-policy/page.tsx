@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: { absolute: "Privacy Policy | Duostrick" },
+  title: { absolute: "Privacy Policy | DuoStrick" },
   description:
-    "How Duostrick handles your data across 2048 Offline, AV Player and Mediqora — which apps collect nothing, advertising, and children's privacy.",
+    "How DuoStrick handles your data across 2048 Offline, AV Player and Mediqora — which apps collect nothing, advertising, and children's privacy.",
   alternates: { canonical: "https://duostrick.vercel.app/privacy-policy" },
   /* Legal pages should not appear in search results */
   robots: { index: false, follow: true },
@@ -54,7 +54,7 @@ export default function PrivacyPolicy() {
 
       <div className="prose" style={{ maxWidth: "none" }}>
         <p>
-          Duostrick (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) respects your privacy. This Privacy
+          DuoStrick (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) respects your privacy. This Privacy
           Policy explains how we collect, use, and protect your information when you use our mobile games,
           applications, and website.
         </p>
@@ -241,7 +241,7 @@ export default function PrivacyPolicy() {
           className="text-sm font-semibold"
           style={{ color: "var(--badge-info-text)" }}
         >
-          ← Back to Duostrick
+          ← Back to DuoStrick
         </Link>
       </div>
     </div>

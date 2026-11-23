@@ -10,10 +10,10 @@ import { softwareApplicationSchema, appListSchema } from "../lib/appSchema";
 import { getAllPosts } from "../lib/posts";
 
 export const metadata: Metadata = {
-  /* Use absolute to bypass layout template — avoids "Duostrick | Duostrick" */
-  title: { absolute: "Duostrick — Indie Android Game Studio | Free Mobile Games & Apps" },
+  /* Use absolute to bypass layout template — avoids "DuoStrick | DuoStrick" */
+  title: { absolute: "DuoStrick — Indie Android Game Studio | Free Mobile Games & Apps" },
   description:
-    "Free Android games and apps from indie studio Duostrick: Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora PDF tools and ReceiptVault.",
+    "Free Android games and apps from indie studio DuoStrick: Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora PDF tools and ReceiptVault.",
   keywords: [
     "duostrick game studio",
     "indie android game studio",
@@ -50,18 +50,18 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://duostrick.vercel.app" },
   openGraph: {
-    title: "Duostrick — Indie Android Game Studio | Free Mobile Games & Apps",
+    title: "DuoStrick — Indie Android Game Studio | Free Mobile Games & Apps",
     description:
       "Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault — free Android games and apps on Google Play, built to work offline.",
     url: "https://duostrick.vercel.app",
-    siteName: "Duostrick Game Studio",
+    siteName: "DuoStrick Game Studio",
     type: "website",
     locale: "en_US",
     /* OG image auto-served by app/opengraph-image.tsx */
   },
   twitter: {
     card: "summary_large_image",
-    title: "Duostrick — Indie Android Game Studio",
+    title: "DuoStrick — Indie Android Game Studio",
     description:
       "Free Android puzzle games and offline apps — Bunny Puzzle, 2048 Offline, AV Player, Mediqora, Docqora and ReceiptVault on Google Play.",
   },
@@ -172,7 +172,7 @@ export default function Home() {
                 </h2>
                 <div className="accent-bar-gradient mb-5" />
                 <p className="mb-4" style={{ color: "var(--body-text)", lineHeight: 1.8 }}>
-                  Duostrick is a small, independent mobile developer studio passionate about building engaging puzzle games and polished mobile applications. We believe in high-quality design, smart mechanics, and intuitive user experiences.
+                  DuoStrick is a small, independent mobile developer studio passionate about building engaging puzzle games and polished mobile applications. We believe in high-quality design, smart mechanics, and intuitive user experiences.
                 </p>
                 <p className="mb-8" style={{ color: "var(--body-text)", lineHeight: 1.8 }}>
                   From logic puzzles like Bunny Puzzle and 2048 Offline to everyday tools like Mediqora, AV Player, Docqora and ReceiptVault, our goal is to bring joy and seamless functionality to users worldwide across all their Android devices.

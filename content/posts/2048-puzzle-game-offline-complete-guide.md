@@ -2,11 +2,11 @@
 title: "2048 Offline: Complete Beginner to Expert Guide"
 description: "Master 2048 Offline: infinite grid rules, snake pattern strategy, tile anchoring and board resets. Beginner to expert guide to 4096 and 8192."
 date: "2026-05-26"
-author: "Duostrick Studio"
+author: "DuoStrick Studio"
 category: "Game Dev"
 tags: ["2048", "2048-puzzle-game", "2048-offline", "2048-infinite-grid", "puzzle", "android", "offline-game", "strategy", "brain-game", "tile-merging", "number-puzzle", "2048-guide", "2048-tips", "2048-strategy", "android-puzzle-game", "free-puzzle-game", "mobile-game-guide", "global-leaderboard"]
 image: "/blog/2048-banner.jpg"
-imageAlt: "2048 Offline — infinite grid tile merging game for Android by Duostrick"
+imageAlt: "2048 Offline — infinite grid tile merging game for Android by DuoStrick"
 readTime: 5
 featured: true
 ---
