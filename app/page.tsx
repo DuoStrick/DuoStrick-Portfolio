@@ -87,7 +87,7 @@ const PRINCIPLES = [
 
 const STATS = [
   { value: String(APPS.length), label: "apps on Google Play", body: "Puzzle games, media players and everyday tools — all published as DuoStrick.", href: "/apps", link: "See every app" },
-  { value: "300", label: "logic puzzles in Bunny Puzzle", body: "Queens-style boards from 4×4 to 10×10, plus a fresh daily challenge.", href: "/apps/bunny-puzzle", link: "About Bunny Puzzle" },
+  { value: "4", label: "warranty reminders in ReceiptVault", body: "Alerts 30, 14, 7 and 1 day before a warranty or AMC runs out.", href: "/apps/receiptvault", link: "About ReceiptVault" },
   { value: "8", label: "PDF tools in Docqora", body: "Compress, merge, split, organise, protect, rotate and convert — offline.", href: "/apps/docqora", link: "About Docqora" },
 ];
 

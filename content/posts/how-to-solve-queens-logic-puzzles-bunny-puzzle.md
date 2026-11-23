@@ -84,10 +84,10 @@ You'll rarely need anything beyond this, even on 10×10 boards.
 
 **Bunny Puzzle: Queens Logic** is built for exactly this kind of practice:
 
-- **300 puzzles** that climb from 4×4 to 10×10, so each technique shows up when you're ready for it
+- **Level after level** that climbs from 4×4 to 10×10, so each technique shows up when you're ready for it
 - **Smart hints** that point to the row, column or region forcing the next move and explain why — the hint teaches the technique rather than just placing a bunny
 - A **Daily Challenge** with a calendar, streaks and monthly gifts
-- **80 Tightrope Bonus levels** with one life — a good test once you trust your logic
+- **Tightrope Bonus levels** with one life — a good test once you trust your logic
 - **No timer**, so you can take each deduction at your own pace
 - Plays **offline**, with no sign-in
 

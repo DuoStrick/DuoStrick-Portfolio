@@ -28,7 +28,7 @@ export const HOME_FAQ: FaqEntry[] = [
   },
   {
     q: "Which DuoStrick games are best for logic puzzle fans?",
-    a: "Bunny Puzzle: Queens Logic has 300 queens-style puzzles plus a daily challenge, and 2048 Offline: Merge Numbers is an infinite-grid take on 2048 where you can merge past 2048 to 4096, 8192 and beyond.",
+    a: "Bunny Puzzle: Queens Logic has level after level of queens-style puzzles plus a daily challenge, and 2048 Offline: Merge Numbers is an infinite-grid take on 2048 where you can merge past 2048 to 4096, 8192 and beyond.",
   },
   {
     q: "How do I get help with a DuoStrick app?",

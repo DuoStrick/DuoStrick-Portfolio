@@ -28,13 +28,13 @@ export const apps: AppEntry[] = [
     tagline: "Queens logic puzzle: one bunny per row, column & colour. Like sudoku, but cuter!",
 
     description:
-      "A cosy queens-style logic puzzle. Place one bunny in every row, every column and every colour region — and never let two bunnies touch. 300 hand-checked puzzles from 4×4 to 10×10, a fresh Daily Challenge, smart hints and no timer. Plays offline.",
+      "A cosy queens-style logic puzzle. Place one bunny in every row, every column and every colour region — and never let two bunnies touch. Level after level of hand-checked puzzles from 4×4 to 10×10, a fresh Daily Challenge, smart hints and no timer. Plays offline.",
 
     seoTitle: "Bunny Puzzle: Queens Logic — Cosy Queens Puzzle Game for Android",
     seoDescription:
-      "A cosy queens logic puzzle for Android: one bunny per row, column and colour region. 300 puzzles, a daily challenge, smart hints. Offline, no timer.",
+      "A cosy queens logic puzzle for Android: one bunny per row, column and colour region. Many levels, a daily challenge, smart hints. Offline, no timer.",
     schemaDescription:
-      "Bunny Puzzle: Queens Logic is a relaxing queens-style logic puzzle game for Android. Place one bunny in every row, every column and every colour region, with no two bunnies touching — even diagonally. Every puzzle has exactly one solution reachable by pure logic. Includes 300 puzzles from 4×4 to 10×10, a Daily Challenge with streaks and monthly gifts, 80 Tightrope bonus levels, hints that explain the next logical step, five themed worlds, collectible avatars and frames, and accessibility options. Plays offline with no sign-in.",
+      "Bunny Puzzle: Queens Logic is a relaxing queens-style logic puzzle game for Android. Place one bunny in every row, every column and every colour region, with no two bunnies touching — even diagonally. Every puzzle has exactly one solution reachable by pure logic. Includes many levels of puzzles from 4×4 to 10×10, a Daily Challenge with streaks and monthly gifts, Tightrope bonus levels, hints that explain the next logical step, five themed worlds, collectible avatars and frames, and accessibility options. Plays offline with no sign-in.",
 
     keywords: [
       "bunny puzzle", "queens puzzle", "queens logic puzzle", "queens game android",
@@ -61,11 +61,11 @@ export const apps: AppEntry[] = [
         ],
       },
       {
-        title: "300 puzzles plus bonus levels",
+        title: "Level after level, plus bonus rounds",
         body: "A steady climb from gentle 4×4 boards to tricky 10×10 grids, with extra modes when you want a twist.",
         bullets: [
-          "300 logic puzzles, 4×4 to 10×10",
-          "80 Tightrope Bonus levels — one life, one Golden Carrot",
+          "Logic puzzle levels from 4×4 to 10×10",
+          "Tightrope Bonus levels — one life, one Golden Carrot",
           "Weekly events with Carrot Points",
         ],
       },
